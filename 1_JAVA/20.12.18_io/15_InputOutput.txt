@@ -1,0 +1,46 @@
+2020.12.18/ ⓚ금경용
+
+입출력 InputOutput
+
+I/O란? 입력(Input)과 출력(Output)을 뜻합니다. 
+컴퓨터한테 입력하는 것은 Input이며, 컴퓨터가 어떤 것을 출력하는 것을 Output이라고 합니다. ‘System.out.println("HelloWorld~~");’ 구문이 바로 Output 입니다.
+
+	앞으로 여러분은 어떤 데이터를 ‘읽는다’ 라고 하면 입력(Input)이라고 생각하시면 되고, 
+	데이터를 ‘쓴다‘라고 하면 출력(Output)이라고 생각 하면 됩니다
+	(1)Input : 파일 데이터를 읽는다. 키보드의 데이터를 읽는다. 네트워크상의 데이터를 읽는다(전송)
+	(2)Output :파일에 데이터를 쓴다. 모니터에 데이터를 쓴다(출력). 네트워크상에 데이터를 쓴다(전송)
+
+	2.Java에서의 파일입출력 API
+	(1)InputStream : 1byte단위 입력 API. 이미지, 동영상 등의 데이터에 주로 사용
+	(2)OutputStream : 1byte단위 출력 API. 이미지, 동영상 등의 데이터에 주로 사용
+	(3)Reader : 2byte단위 입력 API. 문자열에 주로 사용
+	(4)Writer : 2byte단위 출력 API. 문자열에 주로 사용
+	
+	이미지동영상 등 데이터용(1byte단위)	문자열용(2byte단위)	
+	입력 API	    InputStream	                    Reader
+	출력 API	    OutputStream	                    Writer
+	(5)DataInputStream / DataOutputStream
+	(6)BufferedReader / BufferedWriter
+	(7)PrintWriter
+
+	(1)InputStream 사용법 =//1. 파일(스트림)을 연다 2.read한다 3.파일을닫는다(스트림객체.close)
+	①InputStream(추상) 클래스를 상속받은 여러 가지 API 하위 클래스 중의 하나를 이용해서 객체를 만든다. 
+	또는 다른 클래스의 메소드에서 반환(리턴)되는 타입 객체를 얻는다.
+	②read(), read(byte[]) 두 개의 메소드를 이용하여 데이터를 읽는다.
+	i.read() 1byte씩 읽는다. 속도가 느리다
+	ii.read(byte[]) byte[]만큼씩 읽는다. 속도가 빠르다.
+	③예외 처리와 무조건 close() 실행
+	i.I/O를 하면서 반드시 해야 하는 예외처리가 있습니다. IOException입니다. 반드시 하도록 컴파일러가 강요합니다
+	ii.I/O 작업 마지막은 close()로 외부 연결을 끝내야 합니다
+
+	(2)OutputStream 사용법=//1.파일을연다(스트림객체생성) 2.write한다 3.파일을닫는다(스트림객체.close)
+	①OutputStream(추상) 클래스를 상속받은 여러가지 API 하위 클래스들 중의 하나를 이용해서 객체를 만든다. 
+	또는 다른 클래스의 메소드에서 반환(리턴)되는 타입 객체를 얻는다.
+	②write()메소드를 이용해서 데이터를 읽으면 됩니다.
+	③write(int), write(byte[]), write(byte[], int, int) 세개의 메소드를 이용할 수 있습니다.
+	④예외 처리와 무조건 close() 실행
+	i.I/O를 하면서 반드시 해야 하는 예외처리가 있습니다. IOException입니다. 반드시 하도록 컴파일러가 강요합니다
+	ii.I/O 작업 마지막은 close()로 외부 연결을 끝내야 합니다
+
+
+

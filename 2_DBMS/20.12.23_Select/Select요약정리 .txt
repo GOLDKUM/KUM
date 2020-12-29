@@ -1,0 +1,46 @@
+2020-12-23 ⓚ금경용
+Select문 
+1.SQL 문장 작성법
+SQL 문장은 대소문자를 구별하지 않습니다 
+SQL 문장은 한 줄 또는 여러 줄에 입력될 수 있습니다. 
+절은 보통 읽고 편집하기 쉽게 줄을 나누도록 합니다.(권장)
+탭과 줄 넣기(들여쓰기)는 코드를 보다 읽기 쉽게 하기 위해 사용됩니다.(권장)
+일반적으로 키워드는 대문자로 입력합니다
+키워드를 제외한 다른 모든 단어, 즉 테이블 이름, 열 이름은 소문자로 입력하기도 합니다
+명령어의 끝은 ;
+주석처리는 --
+
+#SELECT * FROM TAB; --scott이 소유하고 있는 table을 전부 보여줌
+­scott(사용자)가 소유한 테이블
+SELECT * FROM dept; -- dept테이블 데이터 전체 보기
+DESC dept;          -- dept테이블의 구조보기
+­not null : null값이 있으면 안 된다.
+­number(4) : 부서코드는 정수 4자리
+­number(7,2) ; 총자리수 7자리 중 소수점 이하는 2자리
+SELECT * FROM emp;
+
+#SQL 연산자
+DISTINCT 필드; 필드 중복제거
+BETWEEN a AND b : a부터 b (a,b값 포함. a가 작은 값) 
+IN(list)            : list의 값 중 어느 하나와 일치한다
+LIKE pattern       : 검색하고자 하는 값을 정확히 모를 경우 pattern과 일치하는지를 검색하며 pattern에는 다음의 두가지 와일드카드가 사용된다.
+­% : 문자가 없거나, 하나 이상의 문자가 어떤 값이 와도 상관없다.
+­_ : 하나의 문자가 어떤 값이 와도 상관없다
+IS NULL                : null값을 가졌다
+NOT BETWEEN a AND b : a와 b 사이에 있지 않다(a,b값 포함되지 않음)
+NOT IN (list)            : list의 값과 일치하지 않는다.
+NOT LIKE pattern       : 문자형태가 pattern과 일치하지 않는다.
+NOT IS NULL           : null값을 갖지 않다
+­SELECT DISTINCT deptno FROM emp; -- 부서코드들 중복제거해서 출력
+­SELECT DISTINCT job FROM emp;
+­SELECT DISTINCT deptno, job FROM emp;
+­SELECT ename, sal FROM emp WHERE sal between 100 and 1500; 
+­SELECT empno, ename, job, sal, hiredate FROM emp WHERE empno IN (7902,7788,7566); 
+
+#ORDER BY 절
+ASC 오름차순. Default
+DESC 내림차순
+
+
+
+
