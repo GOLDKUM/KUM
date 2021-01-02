@@ -1,0 +1,176 @@
+--[IV]
+--함수 = 단일행함수 + 그룹함수
+SELECT ENAME,HIREDATE, TO_CHAR(HIREDATE, 'YY"년"MM"월"DD"일"DY"요일"')
+    FROM EMP;--단일행 함수
+SELECT ENAME, INITCAP(ENAME) FROM EMP; --단일행함수 
+SELECT SUM(SAL) FROM EMP;--다중행 함수!그룹함수! 
+SELECT DEPTNO, SUM(SAL) FROM EMP GROUP BY DEPTNO;--그룹함수
+
+--EX.숫자함수, 문자함수, 날짜함수, 형변환함수, NVL(), ETC....
+--(1)숫자함수 
+DESC DUAL; --오라클에서 제공하는 1행1열짜리 DUMMY TABLE
+SELECT ABS(-9) FROM DUAL;--절대값
+SELECT FLOOR(34.5678) FROM DUAL;--소수점에서 내림
+SELECT FLOOR(34.5678*10)/10 FROM DUAL;--소수점 한자리에서 내림
+SELECT TRUNC (34.5678) FROM DUAL; --소수점에서 내림 
+SELECT TRUNC (34.5678,1) FROM DUAL; --소수점 한자리에서 내림 
+SELECT TRUNC (34.5678,-1) FROM DUAL; --일의 자리에서 내림
+
+--EMP 테이블에서 이름, 급여(일의 자리에서 내림)출력
+SELECT ENAME, TRUNC(SAL,-2)FROM EMP;
+
+--EMP 테이블에서 이름, 급여(십의 자리에서 내림)출력
+SELECT ENAME, TRUNC(SAL,-1)FROM EMP;
+SELECT CEIL(34.5678) FROM DUAL; --소수점에서 올림
+SELECT ROUND(34.5678) FROM DUAL; --소수점에서반올림
+SELECT ROUND(34.5678,1) FROM DUAL; --소수점 한자리에서 반올림
+SELECT ROUND(34.5678,-1) FROM DUAL;--일의 자리에서 반올림
+
+SELECT FLOOR(10/4) FROM DUAL;
+SELECT MOD(9,2)FROM DUAL; --나머지연산 9나누기2는 1
+SELECT MOD('9',2)FROM DUAL;--9/2의 나머지 
+
+--홀수달에 입사한 직원들의 모든 필드를 출력! 
+SELECT * FROM EMP
+    WHERE MOD(TO_CHAR(HIREDATE,'MM'),2)=1;
+SELECT HIREDATE FROM EMP ;
+    
+--(2) 문자관련함수 
+SELECT UPPER ('abcABC')FROM DUAL;
+SELECT LOWER ('abcABC')FROM DUAL;
+SELECT INITCAP('abcABC')FROM DUAL; --첫글자만 대문자 그뒤로는 소문자로 출력! 
+--JOB이 MANAGER인 직원의 모든 필드 
+SELECT * FROM EMP WHERE UPPER(JOB) ='MANAGER';
+SELECT EMPNO, INITCAP(ENAME) FROM EMP;
+SELECT 'AB'||'CD'||'EF'||'GH' FROM DUAL;
+SELECT CONCAT(CONCAT('AB','CD'),CONCAT('EF','GH'))FROM DUAL;-- CONCAT은 무조건 2개밖에 안됨! 
+
+--XXX는 XX다(이름은 JOB이다)
+SELECT ENAME||'은'||JOB||'이다' FROM EMP;
+--SELECT CONCAT(CONCAT(ENAME,'은'),CONCAT(JOB,'이다'))FROM DUAL;
+
+--SUBSTR(STR, 시작위치, 문자갯수) 첫번째 위치가 1 
+--SUSSTRB(STR, 시작위치, 문자바이트수) 
+SELECT SUBSTR('WELCOM TO ORACLE', 3,2)FROM DUAL; --3번째 숫자부터 2개출력 L이 3번째이고 그것을 포함해서 출력 LC! 
+SELECT SUBSTRB('WELCOM TO ORACLE', 3,2)FROM DUAL;--3번쟤 숫자부터 2BYTE출력 
+
+SELECT SUBSTR('데이터베이스',4,3)FROM DUAL;--4번쨰부터 문자 3개 출력! 
+SELECT SUBSTRB('데이터베이스',4,3)FROM DUAL;--4번쨰BYTE부터  3BYTE 출력! 
+--영어가 한문자가 1BYTE, 한글 한문자가 3BYTE 
+
+--9월에 입사한 사원의 모든 필드 81/01/01
+SELECT * FROM EMP WHERE SUBSTR(HIREDATE,4,2)='09';--TO_CHAR, LIKE, SUBSTR 종류는 3가지
+SELECT SUBSTR('010-99-9999',-4,4)FROM DUAL;-- 전화번호 뒤에 끝자리! 
+--글자가있으면 
+--    1  2  3  4  5  6 
+--   -6 -5 -4 -3 -2 -1
+-- 9일에 입사한 사원의 모든 필드 
+SELECT * FROM EMP 
+    WHERE SUBSTR(HIREDATE,-2,2)='09'; 
+SELECT LENGTH('ABCD') FROM DUAL; --문자 갯수  -4
+SELECT LENGTHB('ABCD') FROM DUAL;--문자 BYTE수-4
+
+SELECT LENGTH('안녕하세요') FROM DUAL; --문자 갯수   -5
+SELECT LENGTHB('안녕하세요') FROM DUAL;--문자 BYTE수-15
+DESC DEPT;
+
+--INSTR(str,찾을글자) ; STR에서 찾을 글자의 위치 (첫번째1임) 없으면 0
+--INSTR(str,찾을글자,시작위치) ; STR에서 시작위치부터 찾을글자의 위치 (첫번째1임) 없으면 0
+SELECT INSTR('ABCABC','B') FROM DUAL;     --2
+SELECT INSTR('ABCABC','B',3) FROM DUAL;   --5
+
+--9월에 입사한 사원( INSTR 이용)
+SELECT * FROM EMP WHERE INSTR(HIREDATE, '09')=4;
+
+--9일에 입사한 사원 (INSTR 이용) 81/12/09
+SELECT * FROM EMP WHERE INSTR(HIREDATE, '09')=7;
+
+--LPAD(문자, 자리수, '#')-문자를 자리수만큼 확보하고 왼쪽 빈자리엔 #
+SELECT LPAD('ORACLE',20,'#') FROM DUAL;--이건 LEFT왼쪽에 붙이는것
+SELECT RPAD('ORACLE',20,'*') FROM DUAL;--이건 RIGHT오른쪽에 붙이는것 
+SELECT ENAME, LPAD(SAL,6,'*') FROM EMP;
+
+--사번,S****(이름은 앞한문자만 출력하고 나머지는 *)
+SELECT EMPNO, RPAD(SUBSTR(ENAME,1,1),LENGTH(ENAME),'*') NAME FROM EMP;
+
+--7369(사번),S****(이름) 80/12/**(입사일)출력
+SELECT EMPNO, RPAD(SUBSTR(ENAME,1,1),LENGTH(ENAME),'*') NAME,
+       RPAD(SUBSTR(HIREDATE,1,6),LENGTH(HIREDATE),'*') HIRE 
+       FROM EMP;
+
+--7369(사번),****H(이름) 80/12/**(입사일)출력
+SELECT EMPNO, LPAD(SUBSTR(ENAME,-1,1),LENGTH(ENAME),'*') NAME,
+       RPAD(SUBSTR(HIREDATE,1,6),LENGTH(HIREDATE),'*') HIRE 
+       FROM EMP;
+
+--이름의 세번쨰 자리가 R인 사원 출력(INSTR, SUBSTR,LIKE)
+SELECT * FROM EMP WHERE ENAME LIKE '__R%';
+SELECT * FROM EMP WHERE INSTR(ENAME,'R')=3;
+SELECT * FROM EMP WHERE SUBSTR(ENAME, 3, 1) = 'R';
+
+SELECT TRIM  ('         ORCALE DB       ')FROM DUAL;
+SELECT LTRIM ('         ORCALE DB       ')FROM DUAL;
+SELECT RTRIM ('         ORCALE DB       ')FROM DUAL;
+
+SELECT REPLACE (ENAME, 'A', 'XX') FROM EMP;-- A를 XX로 변환하기! 
+SELECT ENAME FROM EMP;
+
+-- 3)날짜 관련 예약어, 함수 
+SELECT SYSDATE FROM DUAL;--SYSDATE에는 오늘 날짜만 들어가있는게아니라 실제로는 실제로 모두 표현해줌!
+SELECT TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS') FROM DUAL;
+SELECT SYSDATE-1,SYSDATE 지금, SYSDATE+1 FROM DUAL;--날짜는 연산이 가능  +1 -1하면 날짜에 더하고 뺴준다 
+
+--14일 후 
+SELECT SYSDATE+14 FROM DUAL;
+
+--이름,입사일, 근무일자 출력
+SELECT ENAME, HIREDATE, FLOOR(SYSDATE-HIREDATE) "근무일자" FROM EMP;
+SELECT ENAME, HIREDATE, TRUNC(SYSDATE-HIREDATE) "근무일자" FROM EMP;
+
+--이름,입사일, 근무주수,근무년수
+SELECT ENAME, HIREDATE, TRUNC((SYSDATE-HIREDATE)/7) "근무주수" ,TRUNC((SYSDATE-HIREDATE)/365) "근무년수"FROM EMP;
+
+--이름, 입사일, 근무월수 ●MONTHS_BETWEEN 두 날짜 사이가 몇 개월인지를 반환한다
+SELECT ENAME, HIREDATE, TRUNC(MONTHS_BETWEEN(SYSDATE,HIREDATE)) FROM EMP; --ABS로 해서 절대값을 더해준다.
+
+--ADD_MONTHS(특정날짜, 개월 수 )특정한 날짜로부터 몇개월 후의 시점 
+--이름, 입사일, 수습기간만료일(수습기간은 6개월)
+SELECT ENAME, HIREDATE, ADD_MONTHS(HIREDATE,6) "수습기간개월수" FROM EMP;
+
+--NEXT_DAY(특정날짜, '수') 특정날짜로부터 처음 도래하는 수요일
+SELECT NEXT_DAY(SYSDATE, '星期三') FROM DUAL;
+
+--LAST_DAY(특정날짜); 특정날짜인 달의말일
+--이름, 입사일, 월급날(월급은 말일)
+SELECT ENAME,HIREDATE, LAST_DAY(HIREDATE) 월급날 FROM EMP;  
+
+--ROUND; 날짜반올림, TRUNC;날짜버림
+SELECT ROUND(SYSDATE-30,'YEAR')FROM DUAL; -- 결과는**년도 1월1일
+SELECT ROUND(SYSDATE-30,'MONTH')FROM DUAL; --결과는**년도 ##월1일
+SELECT ROUND(SYSDATE,'DAY')FROM DUAL;-- 결과는 가까운 일요일 월화수는 일요일로 목금토는 일요일로 
+SELECT ROUND(SYSDATE)FROM DUAL;--결과는 가까운 0시로
+
+--ROUND; 날짜반올림, TRUNC;날짜버림
+SELECT TRUNC(SYSDATE-30,'YEAR')FROM DUAL; -- 결과는**년도 1월1일
+SELECT TRUNC(SYSDATE-30,'MONTH')FROM DUAL; --결과는**년도 ##월1일
+SELECT TRUNC(SYSDATE,'DAY')FROM DUAL;-- 결과는 가까운 일요일 월화수는 일요일로 목금토는 일요일로
+SELECT TRUNC(SYSDATE)FROM DUAL;      -- 결과는 지난 0시
+
+--EX1.이름, 입사일, 입사일달의 1일
+SELECT ENAME, HIREDATE, TRUNC(HIREDATE,'MONTH') FROM EMP;
+
+--EX2.이름, 입사일, 월급날(25일)
+SELECT ENAME, HIREDATE, SAL, ROUND(HIREDATE-9,'MONTH')+24   FROM EMP;
+
+--EX3 이름, 입사일, SAL(월급), 이떄까지 받은 월급합
+SELECT ENAME 이름, HIREDATE 입사일 ,SAL 월급, TRUNC(MONTHS_BETWEEN(SYSDATE,HIREDATE))*SAL 월급합 FROM EMP;
+
+--EX4 이름, 입사일, SAL, COMM, 이떄까지 받은 연봉(SAL*12+COMM)
+SELECT ENAME 이름, HIREDATE 입사일, SAL 월급, COMM 상여금, TRUNC((SYSDATE-HIREDATE)/365)*(SAL*12+NVL(COMM,0)) FROM EMP;
+
+
+
+
+
+
+

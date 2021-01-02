@@ -1,0 +1,63 @@
+2020-12-24
+ⓚ금경용
+
+[ IV ]단일행함수
+
+단일행함수(INPUT1 -> OUTPUT 1)
+	오직 단일 행에서만 적용가능하고 행 별로 하나의 결과를 리턴
+	문자, 숫자, 날짜 형 변환 함수 등
+	ex. SELECT ENAME, TO_CHAR(HIREDATE, 'YY"년"') 입사년 FROM EMP; --단일행
+	SELECT ename, replace(ename, 'A','B') FROM emp;   -- input1행 output1행
+
+1.숫자 함수
+	FLOOR(x) : 소수점 아래를 버림
+	ROUND(x) : 특정 자릿수에서 반올림
+	ROUND(데이터, 반올림할 소수점 자리수) ; 반올림할 자리수가 음수인 경우 -1은 십단위. -2는 백단위
+	TRUNC(x, n):n으로 지정한 자리수 이하를 버림
+	MOD(x, n) : x를 n으로 나눈 나머지값
+
+2.문자처리함수
+	LOWER(str) : 소문자로
+	UPPER(str) : 대문자로
+	INITCAP(str) : 첫 글자만 대문자로 나머지 글자는 소문자로
+	CONCAT(str1, str2) : 문자 연결
+	SUBSTR(str, 시작할위치, 추출할갯수) : 문자를 잘라 추출 (한글은 1byte), 시작할위치는 인덱스 아님
+                    시작할 위치가 음수이면 끝에서부터 자리수를 센다
+	SUBSTRB(str, 시작할위치,추출할갯수) : 문자를 잘라 추출 (한글은 2byte)
+	LENGTH(str) : 문자길이 (한글은 1byte)
+	LENGTHB(str) : 문자길이 (한글은 2~3byte)
+	INSTR(str, 찾을글자, 시작위치, 몇번째발견 검색된 횟수) str에서 찾을글자를 몇번째 발견하는지
+	LPAD, RPAD : 입력 받은 문자열과 기호를 정렬하여 특정 길이의 문자열로 반환한다
+	TRIM : 잘라내고 남은 문자를 표시한다
+	CONVERT : CHAR SET을 변환 SELECT CONVERT(ENAME,'US7ASCII','UTF8') FROM EMP;
+	CHR : ASCII코드 값으로 SELECT CHR(65) FROM DUAL;
+	ASCII : ASCII코드값을 문자로
+	REPLACE : 문자열에서 특정문자를 변경
+
+3.날짜함수
+	SYSDATE 시스템 저장된 현재 날짜를 반환한다.
+	MONTHS_BETWEEN 두 날짜 사이가 몇 개월인지를 반환한다
+	ADD_MONTHS 특정 날짜에 개월 수를 더한다
+	NEXT_DAY 특정 날짜에서 최초로 도래하는 인자로 받은 요일의 날짜를 반환한다
+	LAST_DAY 해당 달의 마지막 날짜를 반환한다
+	ROUND 인자로 받은 날짜를 특정 기준으로 반올림한다
+	TRUNC 인자로 받은 날짜를 특정 기준으로 버린다
+
+★4.형변환함수 ; 오라클을 사용하다 보면 숫자, 문자, 날짜의 데이터 형을 다른 데이터형으로 변환해야 하는 경우가 생신다. 이럴때 사용하는 함수가 형변환 함수이다
+	TO_CHAR(날짜데이터, ‘출력형식’)
+		SELECT SYSDATE, TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL;
+	
+	TO_CHAT(숫자데이터, ‘출력형식’)
+		SELECT ENAME, SAL, TO_CHAR (SAL, 'L999,999') FROM EMP;
+
+	TO_DATE : 문자형을 날짜형으로 변환
+		SELECT ENAME, HIREDATE FROM EMP 
+		WHERE HIREDATE=TO_DATE('19810220','YYYYMMDD');
+	
+	TO_NUMBER : 문자형을 숫자형으로 변환
+	SELECT TO_NUMBER('10,000', '99,999') FROM DUAL;
+
+5.NULL을 다른 값으로 변환하는 NVL 함수
+	SELECT ENAME, SAL, COMM, SAL*12+COMM, NVL(COMM, 0), SAL*12+NVL(COMM, 0) FROM EMP ORDER BY JOB; 
+
+

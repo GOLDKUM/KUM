@@ -1,0 +1,55 @@
+2020-12-23 
+ⓚ금경용
+
+[ II ] Select문
+
+
+SELECT : 원하는 컬럼 선택
+*	: 테이블의 모든 column 출력
+alias	: 해당 column에 대한 다른 이름 부여
+DISTINCT: 중복 행 제거 옵션
+FROM  : 원하는 데이터가 저장된 테이블 명을 기술
+WHERE : 조회되는 행을 제한하기 위한 조건 추가
+condition : column, 표현식, 상수 및 비교연산자
+ORDER BY:정렬을 위한 옵션 (ASC :오름차순이며 default, DECS 내림차순)
+
+1.SQL 문장 실행
+	SELECT * FROM TAB; --scott이 소유하고 있는 table을 전부 보여줌
+	SELECT * FROM dept; -- dept테이블 데이터 전체 보기
+	DESC dept;          -- dept테이블의 구조보기
+
+2.WHERE 조건과 비교연산자 : 같다(=), 크거나같다(>=) 작거나같다(<=) 다르다(<> ^= !=)
+	SELECT EMPNO, ENAME, SAL FROM EMP WHERE SAL = 3000
+	SELECT * FROM emp WHERE hiredate <= ‘82/01/01’;
+	­emp테이블에서 82년1월1일이전에 입사한 사원에 대한 모든 정보를 출력
+
+3.논리연산자
+	SELECT * FROM emp WHERE sal>=2000 AND sal<=3000;
+	­2000이상3000이하인 사원정보 출력
+
+4.산술표현식
+	SELECT ename, sal, sal+300 AS “올릴월급” FROM emp;
+	­emp 테이블의 sal을 300 증가 시키기 위해 덧셈연산자를 사용하여 sal+300을 출력
+
+5.연결연산자 (||) ; 열이나 문자를 다른 열에 연결하는 연산
+	SELECT ENAME ||'은'||JOB||'이다'FRPM EMP;
+
+6.SQL 연산자
+	DISTINCT 필드; 필드 중복제거
+	BETWEEN a AND b : a부터 b (a,b값 포함. a가 작은 값)
+	IS NULL : null값을 가졌다
+	
+7.정렬을 위한 ORDER BY 절
+	ASC 오름차순. Default
+	DESC 내림차순
+	SELECT ename, hiredate FROM emp ORDER BY hiredate DESC; -- 내림차순
+	SELECT ename, hiredate FROM emp ORDER BY hiredate; -- 오름차순
+	SELECT ename from emp where ename like ‘K%’; -- 이름이 K로 시작하는 이름
+	SELECT ename from emp WHERE ename LIKE ‘%S’; -- 이름이 S로 끝나는 이름
+	SELECT ename from emp WHERE ename LIKE ‘%A%’; -- 이름에 A가 들어간 이름
+           
+
+
+
+
+

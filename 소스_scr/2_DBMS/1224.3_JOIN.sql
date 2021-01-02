@@ -1,0 +1,88 @@
+-- [III] JOIN:테이블을 2개이상, 연결하여 검색
+SELECT * FROM EMP WHERE ENAME='SCOTT';--부서번호 (DEPNO):20
+SELECT * FROM DEPT;
+
+--CROSS JOIN (FROEM절에 테이블 2개 이상)
+SELECT * FROM EMP,DEPT WHERE ENAME='SCOTT';
+
+--EQUI JOIN(공통 필드인 DEPTNO값이 일치되는 조건만 JOIN)
+SELECT * FROM EMP,DEPT 
+    WHERE ENAME='SCOTT' AND EMP.DEPTNO=DEPT.DEPTNO;
+SELECT * FROM EMP , DEPT WHERE EMP.DEPTNO=DEPT.DEPTNO;
+
+--모든 사원의 이름, 부서명, 부서번호를 출력한다.
+SELECT * FROM DEPT;
+--SELECT ENAME "NAME", DNAME, EMP.DEPTNO FROM EMP E, DEPT D 
+    --WHERE EMP.DEPTNO=DEPT.DEPTNO;       필드 에일러스는 그거해도되고 필드이름해도되고    테이블 에일러스는 무조건 에일러스!
+    
+SELECT ENAME , DNAME, E.DEPTNO FROM EMP E, DEPT D 
+    WHERE E.DEPTNO=D.DEPTNO;
+SELECT E.*,DNAME,LOC 
+    FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO;
+
+--사번, 이름, 부서번호, 부서이름, 근무지
+SELECT EMPNO, ENAME, E.DEPTNO, DNAME, LOC
+    FROM EMP E, DEPT D 
+    WHERE E.DEPTNO=D.DEPTNO;
+    
+--급여 2000이상인 직원만 이름, 업무, 급여 ,부서명 ,근무지 필드 출력
+SELECT ENAME, JOB, SAL, DNAME, LOC 
+    FROM EMP E, DEPT D
+    WHERE E.DEPTNO=D.DEPTNO AND SAL>=2000;
+
+--LOC이 CHICAHO인 사람의 이름, 업무, 부서명, 근무지 출력 
+SELECT ENAME, JOB, DNAME, LOC FROM EMP E, DEPT D 
+    WHERE E.DEPTNO=D.DEPTNO AND D.LOC='CHICAGO';
+
+
+--부서번호가 10 또는 20인 사원의 이름, 업무, 근무지 출력(급여순 정렬)
+SELECT ENAME,JOB,LOC FROM EMP E, DEPT D
+    WHERE E.DEPTNO=D.DEPTNO AND E.DEPTNO IN(10,20)
+    ORDER BY SAL;
+
+--이름, 급여, 상여금(COMM), 연봉(SAL +COMM)*12, 부서명,근무지
+SELECT ENAME, COMM, (SAL+NVL(COMM,0))*12 "연봉" , DNAME, LOC 
+    FROM EMP E, DEPT D 
+    WHERE E.DEPTNO=D.DEPTNO;
+
+--이름, 급여, 상여금(COMM), 연봉(SAL +COMM)*12, 부서명,근무지
+-- JOB이 SALESMAN 또는 MANAGER인 사원만 (연봉이 큰순 정렬)
+SELECT ENAME, COMM, (SAL+NVL(COMM,0))*12 "연봉" , DNAME, LOC 
+    FROM EMP E, DEPT D 
+    WHERE E.DEPTNO=D.DEPTNO 
+    --JOB IN (UPPER('SALESMAN'), UPPER('MANAGER')) --UPPER은 대소문자 쉽게해조! 
+    AND UPPER(JOB) IN ('SALESMAN', 'MANAGER')
+    ORDER BY 연봉 DESC;
+SELECT * FROM DEPT;
+
+--COMM이 NULL이고 급여가 1200이상인 사원의 이름,급여,입사일, 부서번호, 
+--부서명(부서명순, 급여큰순 정렬)
+SELECT ENAME 이름, SAL 급여, HIREDATE 입사일, E.DEPTNO 부서번호,DNAME 부서명 
+    FROM EMP E, DEPT D 
+    WHERE E.DEPTNO=D.DEPTNO
+    AND COMM IS NULL AND SAL>=1200
+    ORDER BY DNAME, SAL DESC;
+
+--EQUI JOIN예제 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

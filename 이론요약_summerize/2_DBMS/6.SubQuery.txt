@@ -1,0 +1,66 @@
+2020.12.29/ ⓚ금경용
+★Sub Query
+
+※서브 쿼리의 개념
+SCOTT의 부서명을 알아내기 위한 서브 쿼리문부터 살펴보자
+--SELECT dname FROM dept WHERE deptno=(SELECT deptno
+                                         FROM emp
+					WHERE ename=’SCOTT’); 
+-- ( )부분 : 서브쿼리
+서브 쿼리를 포함하고 있는 쿼리문을 메인 쿼리, 
+포함된 또 하나의 쿼리를 서브쿼리 
+
+
+●단일행 서브쿼리
+(오직 하나의 로우(행, row))
+WHERE 절에서는 단일 행 비교 연산자인 =, >, >=, <, <=, <>를 사용
+
+※ex)SELECT ENAME, DNAME 	
+	FROM EMP E, DEPT D 
+	WHERE E.DEPTNO=D.DEPTNO 
+	AND E.DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT');
+ 
+※ex)SELECT EMPNO, ENAME, SAL 
+	FROM EMP 
+	WHERE SAL<=(SELECT AVG(SAL) FROM EMP);
+
+●다중행 서브쿼리
+서브쿼리에서 반환되는 결과가 하나 이상의 행일 때 사용하는 서브 쿼리입니다. 
+다중 행 서브 쿼리는 반드시 다중 행 연산자와 함께 사용.
+	IN : 메인 쿼리의 비교 조건(‘=’연산자로 비교할 경우)이 서브 쿼리의 
+		결과 중에서 하나라도 일치하면 참
+
+	ANY, SOME : 메인 쿼리의 비교 조건이 서브 쿼리의 
+		검색 결과와 하나 이상이 일치하면 참
+
+	ALL : 메인 쿼리의 비교 조건이 서브 쿼리의 검색 결과와 모든 값이 일치하면 참
+
+	EXISTS : 메인 쿼리의 비교 조건이 서브 쿼리의 결과 중에서 만족하는 값이 하나라도 존재하면 참
+		
+		
+		IN-부서별로 입사일이 가장 늦은 사람이 부서번호, 이름, 입사일을 출력하시오
+		※ex)SELECT ENAME, HIREDATE 
+			FROM EMP 
+			WHERE (DEPTNO, HIREDATE) 	
+			IN (SELECT DEPTNO, MAX(HIREDATE) FROM EMP GROUP BY DEPTNO);
+
+
+		ANY-부서번호가 30번인 사원들의 급여 중 가장 작은 값보다 많은 급여를 받는 사원의 이름, 급여를 출력하시오
+		※ex)SELECT ENAME, SAL 
+			FROM EMP 
+			WHERE SAL > ANY(SELECT SAL FROM EMP WHERE DEPTNO=30);
+
+		ALL-30번 소속 사원들 중에서 급여를 가장 많이 받는 사원보다 더 많은 급여를 받는 사람의 이름, 급여를 출력하시오
+		※ex)SELECT ENAME, SAL 
+			FROM EMP 
+			WHERE SAL > ALL(SELECT SAL FROM EMP WHERE DEPTNO=30);  
+
+		EXISTS-직속부하가 있는 사원의 사원번호, 이름, 급여를 출력
+		※ex)SELECT EMPNO,ENAME,SAL
+  			 FROM EMP M
+   			 WHERE EXISTS(SELECT * FROM EMP W WHERE M.EMPNO=W.MGR);
+
+
+
+
+
