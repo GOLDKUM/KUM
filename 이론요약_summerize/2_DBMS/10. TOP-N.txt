@@ -1,0 +1,46 @@
+2020.01.04/ 
+ⓚ금경용
+
+[XⅠ]
+TOP-N구문
+TOP-N질의는 컬럼의 값 중 N개의 가장 큰 값 또는 작은 값을 기준으로 질의하는 것 
+
+	SELECT [column_list] ROWNUM  -- ROWNUM은 테이블에서 읽어오는 순서
+	FROM
+		(SELECT [column_list] FROM table 
+		ORDER BY TOP-N_column)
+		WHERE ROWNUM <= N;
+	
+	※필수요소
+	1.Rownum (row 순서를 나타내는 가상컬럼)
+	2.FROM 절상의 SUB QUERY(Inline view)
+	3.Sub Query내의 Order By 절
+	4.사용가능한 비교연산자
+
+EX1)급여 TOP-3위 출력
+	SELECT ROWNUM, ENAME, SAL 
+	FROM
+		(SELECT ENAME, SAL FROM EMP 
+		ORDER BY SAL DESC)
+		WHERE ROWNUM<=3;
+
+       --또는
+ 
+       SELECT * FROM 
+		(SELECT EMPNO, ENAME, SAL, RANK() OVER(ORDER BY SAL DESC) 
+		AS RANK FROM EMP) WHERE RANK<=3;
+	
+
+EX2)사원 테이블에서 사번, 사원명, 입사일을 입사일이 6번째로 늦은 사원부터 10번째 사원까지 출력
+	SELECT RN, EMPNO, ENAME, HIREDATE
+	FROM 
+		(SELECT ROWNUM RN, A.* FROM 
+				(SELECT * FROM EMP ORDER BY HIREDATE DESC) A)
+   	 	WHERE RN BETWEEN 6 AND 10;
+	
+	--또는
+
+	SELECT RANK, EMPNO, ENAME, HIREDATE
+	FROM (SELECT EMPNO, ENAME, HIREDATE, ROW_NUMBER() OVER(ORDER BY HIREDATE DESC) RANK FROM EMP) 
+						WHERE RANK BETWEEN 6 AND 10;
+

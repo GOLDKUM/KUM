@@ -1,0 +1,50 @@
+2020.01.04/ 
+ⓚ금경용
+
+[X]View, In-Line View
+1.View
+ - 행과 컬럼으로 구성된 가상 테이블로써 
+   테이블에 제한적으로 접근하도록 하기 위함이다.
+   ★뷰를 이용한 기본 테이블의 엑세스 제한을 통해 데이터 보안 기능 제공
+     복잡한 형태의 질의부를 정의하여 간단하게 표현 가능
+
+CREATE [OR REPLACE] VIEW view_name
+	AS subquery
+	[WITH CHECK OPTION] : 뷰의 조건에 해당되는 데이터만 삽입,삭제,수정가능
+	[WITH READ ONLY] : 설정한 뷰는 갱신 불가
+	WITH CHECK OPTION : INSERT나 UPDATE시 서브쿼리의 
+				조건을 만족할 경우에 처리, DELETE가능
+	WITH READ ONLY : 읽기 전용 뷰 생성
+
+
+부서별로 부서명, 최소급여, 최대급여, 부서의 평균 급여(소수점 한자리까지만)를 포함하는 DEPTv1을 생성하여라(※함수 사용시 컬럼 별명을 지정)
+
+CREATE OR REPLACE VIEW DEPTv1 (NAME, MINSAL, MAXSAL, AVGSAL)
+  	AS SELECT D.DNAME, MIN(E.SAL), MAX(E.SAL), ROUND(AVG(E.SAL),1)
+     	 FROM DEPT D, EMP E
+      		WHERE D.DEPTNO=E.DEPTNO
+      		GROUP BY D.DNAME;
+
+2.INLINE VIEW
+ - SQL문장 내의 서브쿼리는 SELECT 절에도, FROM절에도 WHERE절에도 어디든 사용 가능.
+   FROM 절 상의 서브쿼리를 inline view라 하며, FROM 절에 오는 서브쿼리는 VIEW 처럼 작용한다.
+	
+	
+	문법 : SELECT column_list
+ 	   FROM (Sub Query) alias
+	   WHERE condition
+	 
+
+  각 부서에서 부서급여평균보다 높은 사원의 이름, 급여, 부서번호, 부서급여평균을 보여주는 SQL문
+SELECT ename, sal, deptno
+	 FROM emp e 
+	WHERE sal > (SELECT AVG(sal) FROM emp
+			WHERE deptno=e.deptno);
+
+SELECT A.ENAME, A.SAL, A.DEPTNO, B.SALAVG
+	FROM EMP A, (SELECT DEPTNO, AVG(SAL) SALAVG FROM EMP
+					 GROUP BY DEPTNO) B
+        WHERE A.DEPTNO=B.DEPTNO AND A.SAL>B.SALAVG;
+
+
+

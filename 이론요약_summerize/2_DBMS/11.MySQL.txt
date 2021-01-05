@@ -1,0 +1,54 @@
+2020.01.05/ 
+ⓚ금경용
+
+[MySQL]
+	SQL에 기반을 둔 관계형 DMBS 중 하나이며
+	처리 속도가 상당히 빠르고 대용량의 데이터 처리 용이
+
+
+Oracle(오라클)과 MySQL 다른점
+
+	★
+	show databases; =select * from tab;(oracle)
+	use 데이터베이스명; -- 데이터베이스로 들어가기!
+	select database();  -- 현재 데이터베이스를 알고 싶을 떄
+
+	연산자는 && 또는 AND
+		 || 또는 OR 
+
+
+	★
+	컬럼함수
+	select pname, pay, bonus, pay+ifnull(bonus, 0) 
+				from personal; --오라클의 NVL()역할
+	
+	select year(startdate) from personal;  --년도추출
+	select month(startdate) from personal; --월 추출	
+	select monthname(startdate) from personal; --월 이름 추출
+	select now();
+	select sysdate(); -- 현재 날짜 시간
+	select current_date() – 현재 날짜만
+	select curdate();
+	select current_time(); -- 현재 시간만
+	select curtime();
+	select date_format(now(), '%y년%m월%e일 %a %p %h시 %i분');
+	select date_format(now(), '%Y년%m월%e일 %a %H시 %i분');
+	select date_format(startdata, '%y년%m월%e일') from personal;
+	
+		%Y 4자리 연도			%y 2자리 연도
+		%M 긴월 이름(January, )		%m 숫자의 월(01,02,03..12)
+		%b 짧은 월 이름(Jan, )		%c 숫자의 월(1,2,3…12)
+		%e 월 내의 일(1,2,3..31)		%d 월 내의 일자(01,02,…31)
+	
+	select pname, pay, if(pay>3000, 'Good', 'Bad') from personal; -- 논리함수 존재
+
+	
+
+
+	★
+	Top-n 역할
+	-- limit n 
+	(4 ~ 6 등 까지)
+	select pname, pay from personal 
+		order by pay desc limit 3,3; -- 순서가 0부터시작  2번째부터 3건
+
