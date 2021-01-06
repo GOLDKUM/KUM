@@ -1,0 +1,59 @@
+2021-01-06/
+ⓚ금경용
+
+[XXI] JDBC 프로그래밍 
+
+
+JDBC(Java Database Connectivity)
+자바 패키지의 일부로 자바 프로그램이 데이터 베이스와 연결되어 데이터를 주고
+ 받을 수 있게 해 주는 프로그래밍 인터페이스이다.
+
+JDBC 드라이버 : 오라클 드라이버또는 MySQL 드라이버를 자바가 설치되어 있는 두 파일을 복사한다.
+
+ 		ojdbc6.JAR (C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib)
+		mysql-connector-java-8.0.22.jar (C:\Program Files (x86)\MySQL\Connector J 8.0)
+					MySQL버전에 따라 드라이버 파일은 다를 수 있다.
+
+
+
+●DriverManager-JDBC 드라이버를 관리하는 클래스
+
+●Driver -데이터베이스를 연결할 수 있는 JDBC 드라이버 클래스를 만들기 위한 인터페이스
+
+●Connect-데이터베이스와 연결을 가지고 있는 인터페이스
+	개체를 반환 받아 데이터베이스와 연결 
+
+●Statement-SQL문을 실행하기 위해 Connection으로 부터 생성하는 객체
+	SQL문을 저장하기 위한 인터페이스
+
+●ResultSet-Statement를 통해 SQL SELECT문을 실행한 결과 데이터를 갖게 하는 인터페이스.
+
+
+JDBC프로그래밍 단계와 사용(구현하기)
+※순서가 매우중요! 
+1)JDBC 드라이버 로드 -(JDBC 드라이버를 로드)
+	★사용 API : Class.ForName()
+
+2)데이터베이스 연결 -(DB에 연결)
+	★사용 API : java.sql.Connection
+
+3)Statement 생성 -(SQL문을 수행할 객체 생성)
+	★사용 API : java.sql.Statement	java.sql.preparedStatement
+
+4)SQL문 전송 -(SQL문 수행전송하고 결과 받는다.)
+	★사용 API : ※SELECT를※ java.sql.Statement.executeQuery()   
+		     ※INSERT를※ java.sql.Statement.executeUpdate()
+
+5)결과받기-(결과를 ResultSet객체로 반환받음) 
+	★사용 API : java.sql.ResultSet
+
+6)결과 받아 원하는 로직 수행-(수행한 결과를 읽어 원하는 로직 수행/단! 필요할때 까지 반복)
+
+7)연결 해제 -(DB 연결을 끊는다);
+	※해제시 주의사항은 역순으로 해야한다! 
+	★사용 API : java.sql.Connection.close()
+	
+
+
+
+
