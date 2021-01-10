@@ -1,4 +1,4 @@
-//2021.01.07 금경용
+//2020.01.07 .목. 금경용
 package com.lec.ex3insert;
 
 import java.sql.Connection;
