@@ -1,0 +1,38 @@
+2021-01-13 
+ⓚ금경용
+
+[Ⅰ]
+☆Web(웹)
+=1개 이상의 사이트가 연결되어 있는 인터넷 서비스형태
+
+인터넷
+=네크워크가 연결되어 있는 형태
+즉! 전 세계의 컴퓨터들을 연결하여 정보 공유를 하는데 주 목적! 
+*네트워크상에서 www서비스로 정보를 공유
+	
+http://www.tjoeunit.co.kr:80/front/jobstory/jobstory.asp
+	→http : 프로토콜
+	→www.tjoeunit.co.kr : 컴퓨터주소(DNS를 통한 IP주소로변경)
+	→80 : 기본적인 포트번호-(보통 생략하면 80번으로 들어감) 
+	→front/jobstory/jobstory.asp : information path-파일의 주소
+
+
+(1)HTML 웹 문서의 구조, 정보
+(2)CSS : 표현(디자인) 담당
+(3)Java Script : 동작을 담당
+
+☆HTML
+Hyper Text Markup Language의 약자로서 웹문서를 기술하는 언어
+	웹문서를 표현하기 위해 태그들로 구성되어 있습니다.
+
+☆CSS
+Cascading Style Sheets의 약자로, HTML문서를 디자인적으로 예쁘게 만들어 
+정보 전달을 좀더 효율적으로 하기 위해 만들어진 문서 입니다.
+HTML은 정보를 가지고 있고, CSS는 화면상의 레이아웃등을 컨트롤하는 문서라고 생각 하면 됩니다.
+
+☆JavaScript (동적인 내용) -> jQuery
+2,3,4는 client단 / 서버단 PG은 java (DB에 연결하거나 상황에 따라 달리 작동)
+Ajax는 웹 페이지의 특정 부분(특정 태그 부분)를 업데이트하고 서버와 데이터를 교환하는 기술
+
+
+
