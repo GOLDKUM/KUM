@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #header{
+            width:350px; margin:0 auto; 
+            text-align:center;/*글씨 및 이미지 가운데 정렬*/
+            color:orange;/*글씨 색상*/
+        }
+        #section {
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            border-bottom: 1px solid lightgray;
+            border-top: 1px solid lightgray;
+        }
+        #section h4[title^='남자']{
+            background:url('0115/man.png')no-repeat;
+            padding:0px 30px;
+        }
+        #section h4[title^='여자']{
+            background:url('0115/woman.png')no-repeat;
+            padding:0px 30px;
+        }
+        #section a[href$='docx']{
+            background:url('0115/word.png')no-repeat center right;
+            padding:0px 30px 0 0; /*오른쪽 안여백만 30px*/
+            padding-right:30px;    /*오른쪽 안여백만 30px*/
+        }
+        #section a[href$='xlsx']{
+            background:url('0115/excel.png')no-repeat center right;
+            padding:0px 30px 0 0; /*오른쪽 안여백만 30px*/
+            padding-right:30px;    /*오른쪽 안여백만 30px*/
+        }
+        #section a{color:black; text-decoration:none;}
+        #footer {
+            width: 350px;
+            margin: 0 auto;
+            text-align:center;
+            color:#ff0000;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>객실 안내</h1>
+    </div>
+
+    <div id="section">
+        <h4 title="남자 도미토리">남자 도미토리</h4>
+        <ul>
+            <li>공동취사실 및 욕실(화장실) 사용</li>
+            <li>1인 20,000원</li>
+        </ul>
+
+        <h4 title="여자 도미토리">여자 도미토리 </h4>
+        <ul>
+            <li>취사 기구 완비 실내 욕실 사용</li>
+            <li>1인 30,000원</li>
+        </ul>
+        <p><a href="0115/intro.docx">유의사항 다운로드</a></p>
+        <p><a href="0115/intro.xlsx">객실자료 다운로드</a></p>
+    </div>
+    <div id="footer">
+        <p>서울시 마포구 노고산동 그랜드빌딩 704호</p>
+    </div>
+</body>
+</html>

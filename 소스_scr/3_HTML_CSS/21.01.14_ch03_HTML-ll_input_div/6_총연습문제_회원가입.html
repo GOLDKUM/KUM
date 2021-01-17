@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function chk() {
+            if (frm.name.value.length < 2) {
+                alert("2글자 이상 입력하세요")
+                frm.name.value = '';
+                return false;
+            } else if (frm.id.value.length < 4) {
+                alert("4글자 이상 입력하시오")
+                frm.id.value = '';
+                return false;
+            } else if (frm.pw.value != frm.pw2.value) {
+                alert('비밀번호를 확인하세요')
+                frm.pw.value = '';
+                frm.pw2.value = '';
+                frm.pw.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style>
+        b{color:#ff0000;}
+    </style>
+</head>
+<body>
+    <form name="frm" onsubmit="return chk()" action="" method="get">
+        <h1>회원가입</h1>
+        <fieldset>
+            <legend>고객 정보 중 필수 입력 사항</legend>
+            <ol type="A">
+                <li>
+                    이름<b>*</b>
+                    <input type="text" name="name" id="name" required="required" autofocus="autofocus"
+                           placeholder="2글자 이상 입력하시오" />
+                </li>
+                <li>
+                    아이디<b>*</b>
+                    <input type="text"name="id" id="id" required="required"
+                           placeholder="4글자 이상 입력하시오" />
+                </li>
+                <li>
+                    비밀번호<b>*</b>
+                    <input type="password" name="pw" id="pw" required="required"/>
+                </li>
+                <li>
+                    비밀번호 확인<b>*</b>
+                    <input type="password" name="pw2" required="required"/>
+                </li>
+                <li>
+                    이메일<b>*</b>
+                    <input type="email" name="email"
+                           pattern="[a-zA-Z가-힣0-9]+@\w+\.\w+"
+                           title="이메일 형식을 맞춰주세요"
+                           required="required"/>
+                </li> 
+                <li>
+                    전화<b>*</b>
+                    <input type="text" name="tel"
+                           pattern="\d{2,3}.\d{3,4}.\d{4}"
+                           title="전화번호 형식을 맞춰주세요"
+                           required="required">
+                </li>
+            </ol>
+        </fieldset>
+        <fieldset>
+            <legend>고객 정보 중 필수 입력 사항 외 추가 입력 사항</legend>
+            <ol type="A">
+                <li>
+                    출신지역
+                    <select name="area">
+                        <option></option>
+                        <option value="경기도">경기도</option>
+                        <option value="서울">서울</option>
+                        <option value="부산">부산</option>
+
+                    </select>
+                </li>
+                <li>
+                    결혼유무
+                    <input type="radio" name="merry" value="유" checked="checked"/>有
+                    <input type="radio" name="merry" value="무" />无
+                </li>
+                <li>
+                    자식유무
+                    <input type="radio" name="son" value="자식있다" checked="checked" />有
+                    <input type="radio" name="son" value="자식이없다" />无
+                </li>
+            </ol>
+        </fieldset>
+        <p>
+            <input type="submit" value="전송하겠습니다"/>
+            <input type="reset" value="리셋"/>
+        </p>
+    </form>
+</body>
+</html>

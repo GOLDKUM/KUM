@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function chk() {
+        /* frm.name.value가 유효성 검증 */
+             if (!frm.name.value.length<2) {
+                alert("작성자명은 2글자 이상 입력하세요")
+                frm.name.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+  
+</head>
+<body>
+    <!--유효성 검사 
+        즉 타입에 맞게 작성하도록 하는 것!
+        ex이메일 안에 아메일 형식으로 작성하지 않으면 에러 발생하도록 하는 기능 -->
+    <!--name이름을 안쓰면 파일 이름 받을때 받을수 없을 경우가 있음-->
+        <form action="http://www.baidu.com" method="get" name="frm" onsubmit="return chk()">
+            <table border="1">
+                <caption><h2>게시판</h2></caption>
+                <tr>
+                    <td>제목</td>
+                    <td><input type="text" name="title" size="29"
+                               required="required"/></td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td><input type="text" name="name" size="29" /></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea name="content" rows="5" cols="31"></textarea></td>
+                </tr>
+                <tr>
+                    <td>첨부파일</td>
+                    <td><input type="file" name="file" /></td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" value="입력완료" />
+                        <input type="reset"  value="입력취소" />
+                    </th>
+                </tr>
+            </table>
+
+        </form>
+    
+</body>
+</html>

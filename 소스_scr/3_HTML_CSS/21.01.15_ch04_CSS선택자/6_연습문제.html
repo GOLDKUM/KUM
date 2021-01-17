@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        
+        div#nev{width:850px; margin:0 auto; 
+        }
+        #nev ul {
+            overflow: hidden;
+        }
+        #nev ul li {
+            float: left;
+            list-style: none;
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 2px;
+            text-align: center;
+        }
+        ul li a{color:black; text-decoration:none; font-weight:bold; font-size:20px;}
+        ul li:nth-child(2n+1){
+            background-color:aqua;
+        }
+        ul li:nth-child(2n) {
+            background-color: aquamarine;
+        }
+        ul li:first-child{/*첫번쨰 li*/
+            border-radius:20px 0 0 20px;/*좌상 우상 우하 좌하 시계방향*/
+            background-color:gray;
+        }
+
+        ul li:last-child {
+            border-radius: 0 20px 20px 0;
+            background-color: gray;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="nev">
+        <ul>
+            <li><a href="#">meun1</a></li>
+            <li><a href="#">meun2</a></li>
+            <li><a href="#">meun3</a></li>
+            <li><a href="#">meun4</a></li>
+            <li><a href="#">meun5</a></li>
+            <li><a href="#">meun6</a></li>
+            <li><a href="#">meun7</a></li>
+            <li><a href="#">meun8</a></li>
+        </ul>
+    </div>
+</body>
+</html>

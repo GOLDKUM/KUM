@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table#top{background-color:lightgray;}
+        td{background-color:white;}
+        table{border:1px solid red;}
+    </style>
+</head>
+<body>
+    <form action="" method="get">
+        <table id="top">
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" name="id" size="5" />
+                    <input type="button" value="중복확인" />
+                </td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="pw" /></td>
+            </tr>
+            <tr>
+                <!-- 스마트 폰에서 자판이 번호로 바꿀수있다.-->
+                <td>手机号码</td>
+                <td><input type="tel" name="phone1" size="3" />-
+                    <input type="tel" name="phone2" size="3" />-
+                    <input type="tel" name="phone3" size="3" />
+                </td>
+            </tr>
+            <tr>
+                <!--숫자의 장점 최소값 최대값을  설정할수있다-->
+                <td>经历</td>
+                <td><input type="number" name="career" min="0" max="40" /></td>
+            </tr>
+            <tr>
+                <!--이메일에서 @가 없으면 에러가 나오기 떄문에 email좋음-->
+                <td>邮件</td>
+                <td><input type="email" name="email" /></td>
+            </tr>
+            <tr>
+                <td>照片</td>
+                <td><input type="file" name="filename" /></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <!--파라미터 이름을 꼭 같아야 하는 유의사항이 있습니다-->
+                <!--파라미터 이름이 똑같지 않으면 두개 체크가 가능함-->
+                <td><input type="radio" name="gender" value="m" 
+                           checked="checked"/>男<!--Check은 처음에 생기는 것-->
+                    <input type="radio" name="gender" value="w" />女
+                    <input type="radio" name="gender" value="mw" />联系
+                </td>
+            </tr>
+            <tr>
+                <td>使用语言</td>
+                <td>
+                    <input type="checkbox" name="lang" value="kor" checked="checked" />韩语
+                    <input type="checkbox" name="lang" value="eng" />英语
+                    <input type="checkbox" name="lang" value="chi" />汉语
+                </td>
+            </tr>
+            <tr>
+                <td>国籍</td>
+                <td>
+                    <select name="nation">
+                        <option></option>
+                        <option value="kor">大韩民国</option>
+                        <option value="usa">美国</option>
+                        <option>中国</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>喜欢的食物</td>
+                <td>
+                    <select name="food" multiple="multiple">
+                        <option>泡菜汤</option><option>部队火锅</option>
+                        <option>大酱汤</option><option>混汤</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>自我介绍</td>
+                <td>
+                    <textarea name="intro" cols="25" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>生日</td>
+                <td><input type="date" name="birth" /></td>
+            </tr>
+            <!--现在开始 平时不用方式的标签-->
+            <tr>
+                <td>sns URL</td>
+                <td><input type="url" name="sns" /></td>
+            </tr>
+            <tr>
+                <td>喜欢的颜色 <br />喜欢的浓度</td>
+                <td><input type="color" name="color" /><br />
+                0<input type="range" name="range" min="0" max="100" step="10" />100
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="发送"/>
+                    <input type="reset" value="初始化"
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
