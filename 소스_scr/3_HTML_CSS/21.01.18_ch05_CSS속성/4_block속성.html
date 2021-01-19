@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0; 
+            /*전체 페이지 초기화*/
+        }
+        div{
+            width:100px; 
+            height:100px; 
+            border:1px solid black;
+        }
+        div:nth-child(1){display:block; /*디폴트 값*/
+            background-color:red;
+        }
+        div:nth-child(2){
+            background-color:green;
+        }
+        div:nth-child(3){
+            background-color:blue;
+            display:inline;
+            margin:10px;/*블럭속성에서 인라인속성으로 바꿀경우에 width&height와 margin윗아래상단은 먹히지 않음*/
+        }
+        div:nth-child(4){
+            background-color:yellow;
+            display:inline;
+        }
+        div:nth-child(5){
+            background-color:aqua;
+            display:inline-block;/*한라인에 나오는 inline속성이면서 height,width,margin-bottom,margin-top속성도 갖음*/
+        }
+        div:nth-child(6) {
+            display: none; /*안보이게(content6 공간이 없어짐*/
+        }
+        div:nth-child(7){
+            display:inline-block;
+        }
+        div:nth-child(8){
+            
+        }
+    </style>
+</head>
+<body>
+    <div>content1</div>
+    <div>content2</div>
+    <div>content3</div>
+    <div>content4</div>
+    <div>content5</div>
+    <div>content6</div>
+    <div>content7</div>
+    <div>content8</div>
+
+</body>
+</html>

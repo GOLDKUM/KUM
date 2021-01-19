@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #contain{
+            width:700px; margin:0 auto; border:1px solid lightgray;
+        }
+        #header{
+            height:50px; background-color:gray;
+        }
+        #wrap{
+            height:200px;
+            position:relative;/*absolute가 들어가 있으면 부모단에*/
+        }
+        #wrap #content1{
+            height:180px; width:420px;
+            background-color:red;
+            position:absolute;
+            top:10px; left:10px;
+            z-index:99999;/*z-index가 큰값이 위로!*/
+        }
+        #wrap #content2{
+            height:180px; width:300px;
+            background-color:yellow;
+            position:absolute;
+            top:12px; right:10px;
+            z-index:10;
+        }
+
+
+        #footer {
+            height: 50px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="contain">
+        <div id="header"><h2>header</h2></div>
+        <div id="wrap">
+            <div id="content1">CONTENT1(빨간색 왼쪽 부분)</div>
+            <div id="content2">CONTENT2(노란색 오른쪽 부분)</div>
+        </div>
+        <div id="footer"><h2>footer</h2></div>
+
+    </div>
+</body>
+</html>

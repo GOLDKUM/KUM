@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{margin:0; padding:0;}
+        div{
+            width:1000px; margin:0 auto;
+            border:1px solid gray;  
+        }
+        #header{
+            width:960px;
+            background-color:yellow;
+            text-align:center;
+            border:1px solid gray;
+            margin:5px; padding:10px;
+        }
+        #nev {
+            text-align: center;
+            width: 960px;
+            margin:5px;
+            padding:10px;
+        }
+        #nev ul {
+            overflow:hidden;
+            text-align:center;
+            width:820px;
+            margin:0 auto;
+        }
+        #nev ul li {
+            float:left;
+            list-style:none;
+            background-color:pink;
+            padding:10px;
+            margin: 2px;
+            text-align:center;
+        }
+        #nev ul li a{
+            text-decoration:none;
+            color:purple;
+            font-weight:bold;
+            display:block;
+            width:140px;
+            height:50px;
+            line-height:50px;
+        }
+        #nev ul li:first-child{
+             border-radius:20px 0 0 20px;
+        }
+        #nev ul li:last-child{
+            border-radius: 0 20px 20px 0;
+        }
+
+        #section{
+            width:990px;
+            height:300px;
+            margin:5px;
+            position:relative;
+        }
+        #content{
+            height:280px; width:550px;
+            position:absolute;
+            top:10px;left:10px;       
+        }
+        #banner{
+            height:280px; width:400px;
+            position:absolute;
+            top:10px;right:10px;
+        }
+         #footer{
+            width:960px;
+            background-color:yellow;
+            text-align:center;
+            border:1px solid gray;
+            margin:5px; padding:10px;
+        }
+        #contain{
+            position:relative;
+        }
+        #background_image {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            opacity: 0.2;
+            background: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDExMjhfMzAw%2FMDAxNjA2NTUxNDcyMjI5._-lg4gVV4YiL4vrYyjN9OXrK_ETm_1y4TvD_ZrJ95BMg.xuAfYhBSNgJPO9wqZu_tr3qNp3q8xG0BsL45NOV_Fiwg.JPEG.son_kkeut%2Fsosan_blog2_img6.jpg&type=a340);
+            background-size:100%
+        }
+
+    </style>
+</head>
+<body>
+    
+        <div id="contain">
+            <div id="header"><h1>HEADER</h1></div>
+            <div id="nev">
+                <p>NAVIGATION</p>
+                <ul>
+                    <li><a href="#">menu1</a></li>
+                    <li><a href="#">menu2</a></li>
+                    <li><a href="#">menu3</a></li>
+                    <li><a href="#">menu4</a></li>
+                    <li><a href="#">menu5</a></li>
+                </ul>
+            </div>
+            <div id="section">
+                <div id="content">CONTENT</div>
+                <div id="banner">BANNER</div>
+            </div>
+            <div id="footer"><h1>FOOTER</h1></div>
+            <div id="background_image"></div>
+        </div>
+    
+</body>
+</html>

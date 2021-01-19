@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+       div{width:100px; height:100px;}
+       div:nth-child(1){background-color:red;
+                        position:static;/*기본값*/
+                        left:50px; top:50px;/*top과 left가 소용없음*/
+       }
+       div:nth-child(2){background-color:green;
+                        position:relative;/*절대좌표값*/
+                        left:50px; top:50px;
+       }
+       div:nth-child(3){background-color:blue;
+                        position:relative;
+                        left:21px; top:21px;
+       }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

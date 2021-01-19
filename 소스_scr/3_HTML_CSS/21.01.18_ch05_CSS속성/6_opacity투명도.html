@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{margin:0; padding:0;}
+        ul { /*overflow:hidden;*/
+             width:550px;margin:0 auto;
+        }
+        ul li{
+            width:150px;
+            height:100px;
+            text-align:center;
+            list-style:none;
+            /*float:left;*/
+            display:inline-block;
+            background-color:red;
+            margin:10px;
+        }
+        ul li:nth-child(1){opacity:1; /*1:불투명(디폴트), 0:투명*/}
+        ul li:nth-child(2){opacity:0.5;}
+        ul li:nth-child(3){opacity:0.1;}
+    </style>
+</head>
+<body>
+    <ul>
+        <li>우리 나라 만세</li>
+        <li>대한 민국 만세</li>
+        <li>KOREA FIGHT</li>
+    </ul>
+</body>
+</html>

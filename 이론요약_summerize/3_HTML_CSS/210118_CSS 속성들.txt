@@ -1,0 +1,110 @@
+2021-01-18 
+ⓚ금경용
+<소스에 가시면 상세하게 보실 수 있습니다>
+
+[v] CSS속성들
+
+1.CSS3 단위들: em, %, px
+참조:pxtoem.com
+ex)
+8px  = 0.500em =  50% =  6pt
+16px = 1.000em = 100% = 12pt
+24px = 1.500em = 150% = 18pt
+
+2.url() : 백그라운드 이미지
+Background-img 경우 배경이미지의 경로!
+ex)background-image:url('sulhyun.jpg')
+
+3.background-image:
+배경을 지정하는 속성
+ex)
+	background-image:url('sulhyun.jpg')
+	background-position: left top; /* 배경 이미지를 어디에 위치시킬 것인지 조정*/
+	background-position:right top; /*left(왼쪽정렬x축) right(오른쪽정렬x축)*/
+	background-position:left center; /* top(위쪽정렬y축) bottom(아래쪽정렬y축)*/
+	background-position:center; 
+	background-position:50%; 
+	background-size:50%; /* 길이가반이니 면적은 1/4 */
+	background-repeat:repeat-x; /* x축만 반복 . no-repeat는 반복 안 됨*/
+		
+
+4.display : 화면에 어떻게 보이는지를 설명하는 속성
+	○block:div태그 p태그 li태그 -높이의 속성이 있다.
+	○inline: span태그 - 높이의 속성이 없다.
+	○inline-block: block의 속성을 갖고 옆으로 붙여 나가는 것-높이속성이 존재
+	
+5.visibility : display:none과 차이 중요
+	○visibility:hidden-공간 확보, 화면에 보이지 않습니다.
+	○display:none-공간도 확보하지 않고, 화면에도 보이지 않습니다.
+	
+6.opacity:투명도를 조절하는 속성
+	○opacity 범위 값 0~1(0에 가까울수록 투명도가 높아진다) 
+	
+7.margin과 padding
+	○margin은 border의 기준으로 밖여백(외부여백)
+	○padding은 border의 기준으로 안여백(내부여백)
+	ex)margin: 10px 10px 10px 10px; 상 우 하 좌 
+	   margin: 0 auto;
+	   padding: 10px 10px 10px 10px;
+
+8.boxing-sizing ; 박스의 크기를 화면에 표시하는 방식
+border를 box안으로 즉! 테두이와 안쪽 여백의 크기도 요소의 크기를 고려해준다
+ 
+9.border:테두리를 만드는 속성, 위,오른쪽, 아래, 선을 정의할수있다
+	ex)
+	○border-width:10px
+	○border-style:solid;
+	○border-color:red;
+	○border-left-color:black;
+	○border-top-style:dotted;
+	○border-bottom-left-radius:50px;
+	종합○border: 10px solid pink;
+	    ○border-radius:10px 10px 20px 20px;	
+	
+10.글자관련 속성; 
+	ont-family(글꼴), font-size(크기), 
+	font-style(이텔릭체), font-weight(진하게),
+	line-height(행간격 조정용도나 세로축에 대한 정렬 용도),
+	text-align(글자에 대한 정렬), text-decoration(간단한 글꼴 모양의 속성) 
+
+11.position
+	①absolute 속성값:원래위치와 상관없이 위치를 지정할 수 있습니다.
+			하지만 가장 가까운 상위 요소를 기준으로하여 위치가 결정됩니다. 
+			만약 상위 요소가 없으면 html를 기준으로 설정합니다.
+
+	②fixed 속성값:상위 요소에 영향을 받지 않고 화면이 바뀌더라도 고정된 위치를 설정 할 수 있습니다.
+	③static 속성값 :초기값으로 위치입니다.
+	④relative 속성값 :static의 원래 위치로부터 계산합니다.
+
+12.float:
+	float는 css에서 정렬하기 위해 사용되는 속성입니다.
+	ex)문서나 그림을 왼쪽이나 오른쪽으롤 정렬할때 사용합니다.
+	float:left; 왼쪽으로 정렬
+	float:right;오른쪽으로 정렬
+	float:inherit;부모 요소로부터 상속
+	※사용하기전에 부모요소로 가서 
+	overflow:hidden;을 해야합니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

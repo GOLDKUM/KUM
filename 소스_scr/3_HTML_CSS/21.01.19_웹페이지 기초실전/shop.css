@@ -1,0 +1,178 @@
+﻿*{margin:0px; padding:0px;}
+        header {}
+        header .gnb {
+             height: 30px; line-height:30px;
+             background-color: black;
+        }
+        header .gnb ul {
+             width: 1000px;
+             margin: 0 auto;
+             overflow: hidden;
+        }
+        header .gnb ul li {
+            float:left;
+            list-style:none;
+            text-align:center;
+            font-weight:bold;
+            width:100px;
+        }
+        header .gnb ul li a{
+            text-decoration:none;
+            color:white;
+            margin:10px auto;
+        }      
+
+        header .logo{       
+            height:100px;
+            width:200px;
+            margin:30px auto 20px;
+            line-height:100px;
+            top:1px;
+            left:400px;
+        }
+
+
+        header .hitmenu ul{
+            overflow:hidden;
+            width:1000px;
+            margin:0 auto;
+            
+        }
+        header .hitmenu ul li{
+            float:right;
+            list-style:none;
+            text-align:center;
+            border:1px solid black;
+            padding:10px 20px;
+        }
+        header .hitmenu ul li a{
+            text-decoration:none;
+            color:black;
+        }        
+        header .hitmenu ul li:first-child{
+            border-radius:0 20px 20px 0;
+        }
+        header .hitmenu ul li:last-child{
+            border-radius:20px 0 0 20px;
+        }
+        header .lnb{
+            border-top:1px dashed black;
+            border-bottom:1px dashed black;
+            height:30px;
+            line-height:30px;
+        }
+        header .lnb > ul{
+            width:1000px;
+            overflow:hidden;
+            margin: 0 auto;
+        } 
+        header .lnb > ul > li{
+            float:left;
+            list-style:none;
+            font-weight:bold;
+            width:125px;
+            text-align:center;
+        }
+        header .lnb ul li a{
+            text-decoration:none;
+            color:black;
+        }
+
+        .lnb .subMenu {
+            display: none;
+            background-color: white;
+        }
+        .lnb ul li ul li  {
+            list-style:none;
+            
+        }
+        .lnb>ul>li:hover .subMenu{
+            display:block;
+        }
+        #content{
+            width:1000px;
+            margin:0 auto;
+        }
+        
+
+        #content .section1 .slide_banner{
+            width:698px;
+            height:400px;
+            border:1px solid black;
+            position:absolute;
+            text-align:center;
+            line-height:400px;
+            
+        }
+        #content .section1 .side_banner{
+            width:298px;
+            height:400px;
+            border:1px solid black;
+            position:relative;
+            left:698px;
+            text-align:center;
+            line-height:400px;
+        }
+
+        #content .section2 {
+            border:1px solid black;
+            width:996px;
+            
+        }
+        #content .section2 ul{
+            overflow:hidden;
+            margin:0 auto;
+        }
+        #content .section2 ul li{
+            list-style:none;
+            float:left;
+            width:240px;
+            height:400px;
+            margin:4px 3.5px;
+            border:1px solid black;
+            text-align:center;
+            line-height:400px;
+            
+        }
+        #content .section2 ul li a{
+            color:blue;
+            font-weight:bold;
+            text-decoration:none;
+        }
+        
+        footer{
+            margin:0 auto;
+            width:1000px;    
+            overflow:hidden;
+        }
+        footer div{
+            float:left;
+        }
+        footer .office_logo{
+            border:1px solid black;
+            width:200px;
+            height:60px;       
+        }
+        footer .office_address{    
+            border:1px solid black;
+            width:594px;
+            height:60px;          
+        }
+        footer .shopping_info{
+            border:1px solid black;
+            width:200px;
+            height:60px;
+        }
+        footer .copyright{
+            color:white;
+            background-color:black;
+            text-align:center;
+            width:1000px;
+            height:30px;
+            line-height:30px;
+            clear:left;
+        }
+        
+
+
+        
