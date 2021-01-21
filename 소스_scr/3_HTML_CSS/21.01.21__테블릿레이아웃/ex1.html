@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width,initial-scale=1.0"/>
+    <title></title>
+    <style>
+        /*페이지 초기화*/
+        *{
+          padding:0; 
+          margin:0;
+          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        body{
+            min-width:980px;
+        }
+        a{text-decoration:none;}
+        li{
+            list-style:none;
+        }
+        /***#header***/
+        #header{
+            height:100px; line-height:100px; padding-left:10px;
+            background-color:purple;
+            color:white;
+            font-weight:bold;
+            font-size:2em;
+            text-align:center;
+        }
+        /***#gnb:Gnb1~5까지 좌측으로 Gnb6,7 우측으로 float합***/
+        #gnb{
+            overflow:hidden;
+            background-color:#2b2b2b;
+            height:80px; line-height:80px;
+        }
+        #gnb ul:first-child{float:left;}
+        #gnb ul:last-child{float:right;}
+        #gnb ul{
+            overflow:hidden;
+        }
+        #gnb ul li{
+            float:left;
+            width:140px;
+            border-right:1px solid gray;    
+            box-sizing:border-box;
+            text-align:center;
+
+        }
+        #gnb ul li a{
+            color:white;
+            font-size:1.5em;
+            display:block;/*a태그의 공간 확장*/
+        }
+        #gnb ul:last-child li:first-child{
+            border-left:1px solid gray;
+        }
+        /***#section***/
+        #section{
+            overflow:hidden;
+            background-color:#e1e262;
+        }
+        #section #lnb{
+            float:left;
+            width:200px;
+        }
+        #section #lnb ul li a{
+            display:block;/*a 태그 공간 확보*/
+            padding:20px;
+            border-bottom:1px dashed brown;
+            text-align:center;
+        }
+        #section #content_wrap{
+            float:left;
+            width:100%;
+            margin-right:-200px;
+            background-color:#fcffce;
+        }
+        #section #content_wrap #content{
+            padding:20px 220px 20px 20px;
+        }
+        #section #content_wrap #content div{
+            margin-bottom:30px;
+            overflow:hidden;
+        }
+        #section #content_wrap #content div img{
+            border-radius:20px;
+            margin:10px;
+        }
+        #section #content_wrap #content div:nth-child(1) img{
+            float:left;
+            margin-right:20px;
+        }
+        #section #content_wrap #content div:nth-child(2) img{
+            float:right;
+            margin-left:20px;
+        }
+        #section #content_wrap #content div p::first-line{
+            color:#f15715;
+            font-size:150%;
+        }
+        #section #content_wrap #content div p::first-letter{
+            font-size:150%;
+            font-weight:bold;
+        }
+        #section #content_wrap #content div:nth-child(4){
+            border-top: 1px dashed gray;
+            padding-top:10px;
+        }
+        #section #content_wrap #content div:nth-child(4) img{
+            float:left;
+        }
+        #section #content_wrap #content div:nth-child(4) img:nth-child(3){
+            margin-right:20px;
+        }
+        /***#footer***/
+        #footer{
+            background-color:lightgray;
+            height:100px;
+            text-align:center;
+        }
+        #footer p:nth-child(1){
+            font-weight:bold;
+            font-size:1.5em;
+            padding:20px 0 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <p>Web site for Table-PC</p>
+    </div>
+    <div id="gnb">
+        <ul>
+            <li><a href="#">Gnb1</a></li>
+            <li><a href="#">Gnb2</a></li>
+            <li><a href="#">Gnb3</a></li>
+            <li><a href="#">Gnb4</a></li>
+            <li><a href="#">Gnb5</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Gnb6</a></li>
+            <li><a href="#">Gnb7</a></li>
+        </ul>
+    </div>
+    <div id="section">
+        <div id="lnb">
+            <ul>
+                <li><a href="#">Btn1</a></li>
+                <li><a href="#">Btn2</a></li>
+                <li><a href="#">Btn3</a></li>
+                <li><a href="#">Btn4</a></li>
+                <li><a href="#">Btn5</a></li>
+                <li><a href="#">Btn6</a></li>
+                <li><a href="#">Btn7</a></li>
+                <li><a href="#">Btn8</a></li>
+                <li><a href="#">Btn9</a></li>
+            </ul>
+        </div>
+        <div id="content_wrap">
+            <div id="content">
+                <div>
+                    <h1>
+                        我们为何用它？
+                    </h1>
+                    <img src="0121_imgTab/img.jpg" alt="삽화" />
+                    <p>
+                        Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
+                        无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+                        无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+                    </p>
+                </div>
+                <div>
+                    <h1>
+                        我们为何用它？
+                    </h1>
+                    <img src="0121_imgTab/img.jpg" alt="삽화" />
+                    <p>
+                        Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
+                        无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+                        无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+                    </p>
+                </div>
+                <div>
+                    <h1>
+                        我们为何用它？
+                    </h1>
+                    <img src="0121_imgTab/img.jpg" alt="삽화" />
+                    <p>
+                        Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。
+                        无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+                        无可否认，当读者在浏览一个页面的排版时，难免会被可阅读的内容所分散注意力。Lorem Ipsum的目的就是为了保持字母多多少少标准及平均的分配，而不是“此处有文本，此处有文本”，从而让内容更像可读的英语。如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。
+                    </p>
+                </div>
+                <div>
+                    <img src="0121_imgTab/100.jpg" alt="부를 부르는 이미지" />
+                    <img src="0121_imgTab/150.jpg" alt="더미이미지" />
+                    <img src="0121_imgTab/150.jpg" alt="부를 부르는 이미지" />
+                    <p>Lorem Ipsum，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>홍길동 주식회사</p>
+        <p>copyright ⓒ tjoeun Co., All righs reserved</p>
+    </div>
+</body>
+</html>

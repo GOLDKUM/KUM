@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width,
+          initial-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style>
+        /***페이지 초기화***/
+        *{
+            padding:0px; margin:0px;
+        }
+        li{
+            list-style:none;
+        }
+        a{
+            text-decoration:none;
+        }
+
+        /****Header****/
+        header {
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            background: url('0120_imgEx1/bg_header.png');
+            position:relative;
+        }
+        header .left{
+            position:absolute; left:10px; top:7px;
+        }
+        header .right{
+            position:absolute; right:10px; top:7px;
+        }
+
+        /****gnb****/
+        #gnb ul{
+            overflow:hidden;
+            border:5px solid gray;
+        }
+        #gnb ul li{
+            float:left;
+            width:10%;
+            margin:1.25%;
+            border:1px solid gray;
+            box-sizing:border-box;
+            text-align:center;
+        }
+
+        /*****checkbox chkeced일 경우만 gnb가 display:block****/
+        #gnb{display:none;}
+        #toggle:checked~#gnb{
+            display:block;
+        }
+        #toggle{
+            display:none;
+        }
+        /* * *  * * * *#lnb * * * *  * */
+        #lnb ul{
+            overflow:hidden;
+        }
+        #lnb ul li{
+            float:left;
+            width:20%;
+            border:1px solid #ffffff;
+            box-sizing:border-box;
+            background-color:#137163;
+            height:60px;
+            line-height:60px;
+            text-align:center;
+            font-weight:bold;
+        }
+        #lnb ul li a{
+            color:white;
+        }
+        /* * *  * * * *#content * * * *  * */
+        #content{
+            padding:10px;
+            color:#333333;
+        }
+        #content #content_header{
+            padding:10px;
+            border-bottom:1px solid gray;
+        }
+        #content #content_body p:first-child{
+            color:deepskyblue;
+            font-weight:bold;
+            padding:10px 0;
+            /* 말줄임 태그 */
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+        }
+        #content #content_body p:last-child{
+            background:url('0120_imgEx1/bg_image.jpg') -500px 0px;
+            padding:10px;
+            font-weight:bold;
+
+        }
+        footer .logo{
+            text-align:center;/*글씨나 이미지를 가운데로~*/
+            border-top:1px solid lightgray;
+            border-bottom:1px solid lightgray;
+            margin-top:10px 0px;
+        }
+        footer .logo img{
+            width:200px;
+        }
+        footer .info{
+            text-align:center;
+            font-weight:bold;
+            font-size:1.5em;
+        }
+        footer .address{
+            text-align:center;
+            font-size:0.8em;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="toggle" />
+    <header>
+        <a href="#" class="left">
+            <img src="0120_imgEx1/category.png" />
+        </a>
+        <h1>Mobile</h1>
+        <label for="toggle" class="right">
+            <img src="0120_imgEx1/menu.png" />
+        </label>
+    </header>
+    <div id="gnb">
+        <ul>
+            <li><a href="#">gnb1</a></li>
+            <li><a href="#">gnb2</a></li>
+            <li><a href="#">gnb3</a></li>
+            <li><a href="#">gnb4</a></li>
+            <li><a href="#">gnb5</a></li>
+            <li><a href="#">gnb6</a></li>
+            <li><a href="#">gnb7</a></li>
+            <li><a href="#">gnb8</a></li>
+        </ul>
+    </div>
+    <div id="lnb">
+        <ul>
+            <li><a href="#">lnb1</a></li>
+            <li><a href="#">lnb2</a></li>
+            <li><a href="#">lnb3</a></li>
+            <li><a href="#">lnb4</a></li>
+            <li><a href="#">lnb5</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="content_header">
+            <h1>홍길동</h1>
+        </div>
+        <div id="content_body">
+            <p>
+                두루 알려진 설화 속의 인물과 관계가 있는 지방자치제에서 그들을 주인공으로 뮤지컬을 만드는 일이 최근 들어 잦다. 인천에서는 심청이 몸을 던진 인당수가 서해안 백령도 옹진반도라는 점에 착안해서 <왕후 심청>
+                    이 만들어지기도 했다.
+                    [네이버 지식백과] 홍길동 (더뮤지컬, 더뮤지컬)
+
+            </p>
+            <p>
+                창작뮤지컬 <홍길동>
+                    역시 홍길동의 출생지로 알려진 장성군에서 제작되는 작품이다. 셔우드 숲의 로빈후드가 그랬던 것처럼, 홍길동 역시 실존 인물인지 여부에 대해 갑론을박이 계속되고 있다. 그들이 역사에 실재했던 인물이라고 주장하는 사람들도 있고, 억압받는 민중의 강렬한 소망이 만들어낸 가상의 영웅이라고 주장하는 이들도 많다. 실상이 어느 쪽이든 이들의 모험담이 오래도록 대중들의 사랑을 받아왔고, 앞으로도 그럴 것이라는 점은 분명하다.
+                    [네이버 지식백과] 홍길동 (더뮤지컬, 더뮤지컬)
+            </p>
+        </div>
+    </div>
+    <footer>
+        <div class="logo">
+            <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="로고" />
+        </div>
+        <div class="info">XX 주식회사</div>
+        <div class="address">서울시 마포구 노고산동 xx빌딩 704호</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+﻿@font-face {
+    font-family: 'Amarante'; 
+    src: url('../font/Amarante-Regular.ttf');
+}
+* {
+    font-family: 'Times New Roman','Amarante',Times,; /*전체페이지 초기화*/
+}
+*{
+    margin:0;
+    padding:0;
+}
+@font-face {
+    font-family: 'Amarante-Regular';
+    src: url(font/Amarante-Regular.ttf);
+}
+*{
+    font-family:Amarante-Regular;
+}
+header #header_nav{
+    width:100%;
+    min-width:1000px;
+    height:30px;
+    line-height:30px;
+    background-color:#2d1152;
+    overflow:hidden;
+}
+header #section1{
+    float:left;
+}
+
+header #section2{
+    float:right;
+}
+header #section2 span{
+    color:white;
+}
+header #header_nav ul li{
+    width:80px;
+    list-style:none;
+    font-weight:bold;
+    float:left;
+    margin:1px;
+    color:white;
+}
+
+header #header_nav ul li a{
+    text-decoration:none;
+    color:white;
+}
+header #header_nav #section2 span{
+    color:white;
+}
+header #header_info{
+    height:100px;
+    width:1100px;
+    margin:10px auto;
+    overflow:hidden;
+}
+header #header_info #logo{
+     height:100px;
+     width:200px;
+     line-height:100px;
+     top:1px; 
+}
+
+header #header_info #search #text{
+    width:400px;
+    height:35px;
+    margin:30px 15px 15px 30px;
+}
+header #header_info #search #submit{
+    height:40px;
+    width:100px;
+    background-color:#3372e0;
+    color:white;
+}
+header #header_info #service{
+    overflow:hidden;
+    margin-top:20px;
+    margin-left:20px;
+}
+header #header_info #service li{
+    list-style:none;
+    font-weight:bold;
+    float:left;
+    width:100px;
+    margin:15px auto;
+    text-align:center;
+}
+header #header_info #service li a{
+   text-decoration:none;
+   color:black;
+}
+
+header #header_info #logo, #search, #service{
+    float:left;
+}
+
+#content{
+    width:1050px;
+    margin:0 auto;
+}
+#content #main_menu ul li {
+    font-weight:bold;
+    height:100px;
+    width:155px;
+    line-height:50px;
+    padding:0 0 0 20px;
+    list-style:none;
+}
+#content #main_menu ul li a{
+    text-decoration:none;
+    color:black;
+}
+#content #main ul #main_big_banner,#mulu, #main_slide_banner, .main_topic {
+    list-style:none;
+    width:600px;
+    border:1px solid black;
+    margin-top:10px;
+}
+#content #main ul #main_big_banner{
+    margin:0px;
+}
+#content #main #main_big_banner{
+    height:600px;
+}
+#content #main #main_slide_banner{
+    height:150px;
+}
+#content #main #mulu{
+    height:50px;
+    background-color:#500095;
+}
+#content #main .main_topic{
+    height:100px;
+}
+#content #main #mulu1-1{
+    overflow:hidden;
+    width:600px;
+    height:50px;
+}
+#content #main #mulu1-1 li{
+    list-style:none;
+    float:left;
+    width:90px;
+    height:30px;
+    line-height:30px;
+    margin:2px;
+    margin-top:10px;
+    margin-left:5px;
+    text-align:center;
+}
+#content #main #mulu1-1 li a{
+    text-decoration:none;
+    text-align:center;  
+    color:white;
+}
+#main_banner_list li{
+    list-style:none;
+    width:230px;
+    border:1px solid black;
+    margin:3px;
+}
+#ad0, #ad1 {
+    height: 100px;
+}
+#ad2, #ad3{
+    height:150px;
+}
+#ad4{
+    height:200px;
+}
+#content{
+    overflow:hidden;
+}
+#main_menu, #main, #main_banner{
+    float:left;
+}
+footer{
+    width:1050px;
+    height:100px;
+    line-height:100px;
+    margin:0 auto;
+    border:1px solid black;
+}
+footer #img{
+    margin-left:100px
+}
+

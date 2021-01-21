@@ -1,0 +1,54 @@
+2021-01-21 
+ⓚ금경용
+<소스에 가시면 상세하게 보실 수 있습니다>
+
+1.CSS3 규칙
+	(1)CSS파일 분리:CSS를 HTML 문서에서 분리하여 별도로 관리할 수 있습니다.
+	ex)<link href="파일이름.css" rel="stylesheet" type="text/css" />
+	
+	(2)@import 규칙 : CSS#에서 '@' 시작하는 키워드들을 규칙이라합니다.
+	link를 대신할 수 있습니다.
+	※주의사항
+	<style>태그 상단에 위치 해야하며 <style>태그 내부에 위치해야합니다.
+
+	(3)media 규칙: link태그에 media속성을 이용하여 상황에 따른 CSS를 적용할 수 있습니다.
+	종류)
+	○all: 모든 미디어 타입
+	○aural: 음성 합성 장치
+	○braille: 점자 표시 장치
+	○handheld: 손으로 들고 다니면서 볼 수 있는 작은 스크린에 대응하는 용도
+	○print: 인쇄 용도
+	○projection: 프로젝터 표현 용도
+	○screen: 컴퓨터 스크린을 위한 용도
+	○tv: 음성과 영상이 동시 출력되는 tv와 같은 장치
+	○embossed: 페이지에 인쇄된 점자 표지 장치
+
+2.반응형 웹 ; 태블릿 pc 스마트폰 등 모바일 기기 이용자들에게 동등한 서비스를 제공하기 위해 디바이스 종류에 따라 웹페이지의
+	크기가 자동적으로 재조정되는 것입니다. 즉 어떠한 환경에서도 그에 맞게 사이즈가 변화되는 것입니다.
+          ex)
+          @media screen and (max-width:767px){/*스마트폰 화면*/
+          #wrap{width:100%; background-color:lightpink;}
+          #nav ul li{
+              width:33.333%;
+          }                 
+          #nav ul li:nth-child(3),
+          #nav ul li:nth-child(5){
+              display:none;
+          }
+
+        }
+        @media screen and (min-width:768px) and (max-width:999px){/*탭화면*/
+           #wrap{width:100%; background-color:aquamarine;}
+           #wrap ul li{width:25%;}
+           #wrap ul li:nth-child(5){
+               display:none;
+           }
+                            
+        }
+        @media screen and (min-width:1000px){/*PC 화면*/
+           #wrap{width:1000px; margin:3px auto; background:#35a452;}
+           #wrap ul li{
+               width:20%;
+           }
+
+        }

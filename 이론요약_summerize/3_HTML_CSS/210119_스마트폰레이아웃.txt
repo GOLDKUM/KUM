@@ -1,0 +1,32 @@
+2021-01-19 
+ⓚ금경용
+<소스에 가시면 상세하게 보실 수 있습니다>
+
+0.스마트폰과 태블릿 레이아웃
+
+※주의사항 
+1)overflow속성을 사용해 스크롤을 넣을 수 없습니다
+2)상대 선택자 사용시 주의):hover :active 사용시 주의해야합니다
+3)대부분의 스마트폰 웹 브라우저는 ~선택자를 지원하지 않습니다.
+
+
+과정
+(1)viewport(모바일 화면 최적화 화면): 웹브라우저의 HTML문서에 특정한 정보를 나타내기 위한 태그로 meta 태그가
+	있습니다.  스마트폰 단말기의 화면이 작던 크던 항상 꼭 차게 보여집니다. 그래서 pc와 같이 width을 임이의 숫자값으로 정하지 않고 %로합니다
+	그리고 디바이스의 특정정보를 나타내기 위해,  모바일 웹브라우저에서는 브라우저의 화면 설정과 관련된 정보를 제공하기 위해
+	뷰포트 meta태그를 사용합니다.
+	뷰포트 속성들
+	○width : 화면의 너비
+	○height : 화면의 높이
+	○initial-scale : 초기 확대 비율
+	○user-scalable : 확대 및 축소 가능 여부
+	○minimum-scale : 최소 비율
+	○maximum-scale : 최대 비율
+(2)CSS초기화코드(ex: *{margin: 0; padding:0;}
+		img{border:0;}
+		li{list-style:none}
+		a{text-decoreation:none;
+(3)header 제작 <header id=' '> </header>
+(4)네비 제작    <div id='nav'> </div>
+(5)본문 제작    <div id='content'> </div>
+(6)Footer의 레이아웃<div id='Footer'></div>

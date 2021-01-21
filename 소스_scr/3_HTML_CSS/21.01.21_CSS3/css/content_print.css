@@ -1,0 +1,7 @@
+﻿/*content부분(프린트용) content_print.css*/
+#wrap .content {
+    background-color: white;
+    color: red;
+    font-size: 16px;
+    padding: 30px 10px;
+}

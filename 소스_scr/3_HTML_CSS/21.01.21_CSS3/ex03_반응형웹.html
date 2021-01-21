@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width, initial-scale=1.0,
+          maximum-scale=2.0,minimum-scale=0.7"/>
+    <title></title>
+    <style>
+        @media screen and (max-width:767px){/*스마트폰 화면*/
+          #wrap{width:100%; background-color:lightpink;}
+          #nav ul li{
+              width:33.333%;
+          }                 
+          #nav ul li:nth-child(3),
+          #nav ul li:nth-child(5){
+              display:none;
+          }
+
+        }
+        @media screen and (min-width:768px) and (max-width:999px){/*탭화면*/
+           #wrap{width:100%; background-color:aquamarine;}
+           #wrap ul li{width:25%;}
+           #wrap ul li:nth-child(5){
+               display:none;
+           }
+                            
+        }
+        @media screen and (min-width:1000px){/*PC 화면*/
+           #wrap{width:1000px; margin:3px auto; background:#35a452;}
+           #wrap ul li{
+               width:20%;
+           }
+
+        }
+        /*공통부분 */
+     *{margin:0; padding:0;}
+    li{
+        list-style:none;
+    }
+    a{
+        text-decoration:none;
+        color:black;
+        text-align:center;
+        display:block;
+    }
+    #wrap{
+        border:1px solid gray;
+    }
+    #wrap #header{
+        height:100px; line-height:100px;
+        text-align:center; 
+    }
+    #wrap ul{overflow:hidden;}
+    #wrap ul li{
+        float:left; height:60px; line-height:60px;
+        text-align:center;
+        border:1px solid gray;
+        box-sizing:border-box;
+    }
+    #wrap #content{padding:10px;}
+    #wrap #footer{
+        height:100px; line-height:100px; text-align:center;
+        font-size:1.2em; font-weight:bold; background-color:lightgray;
+    }
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>반응형 웹</h1>
+        </div>
+        <div id="nav">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+                <li><a href="#">menu5</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <h2>할리데이비슨, 크루저·투어링으로 재구성된 신형 라인업 20종 공개</h2>
+            <p>
+                         할리데이비슨이 지난 20일 개최된 브랜드 최초의 가상 공개 행사 ‘올 뉴 2021 할리데이비슨 버추얼 론칭’을 통해 2021년을 수 놓을 새로운 모터사이클 라인업을 공개했다. 전세계 동시 진행된 이번 론칭 행사를 통해 할리데이비슨의 새로운 모터사이클은 물론, 브랜드의 철학과 비전을 전했다. 한국에서는 총 20종의 모델이 출시된다.
+                         이번 2021년 신모델 공개에서 가장 주목할 부분은 재편된 라인업이다. 기존 5개 라인업(스트리트, 스포스터, 소프테일, 투어링, CVO)의 구분이, 크루저와 투어링 이상 2개의 라인업으로 재편된다. 이는 국내에서 출시되지 않는 스트리트, 일렉트릭, 트라이트를 제외한 국내 적용 기준이다. 크루저 라인업은 혁신과 스타일리시한 외관으로 도심과 외곽 라이딩에 적합한 모델들로 구성, 투어링 라인업은 장거리 라이딩에 최적화된 편의성과 혁신을 기반한 퍼포먼스 모델들로 구성된다.
+            </p>
+
+        </div>
+        <div id="footer">
+                    금경용 주식회사
+        </div>
+    </div>
+
+
+</body>
+</html>
