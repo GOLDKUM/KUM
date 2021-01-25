@@ -1,0 +1,57 @@
+﻿﻿
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function chk() {
+            if (!frm.su1.value) {
+                alert("첫번째수를 입력하세요");
+                frm.su1.focus();
+                return false;
+            } else if (!frm.su2.value) {
+                alert("두번째수를 입력하세요");
+                frm.su2.focus();
+                return false;
+            }
+            var i1 = Number(frm.su1.value);
+            var i2 = Number(frm.su2.value);
+            var cha = (i1 > i2) ? (i1 - i2) : (i2 - i1);//큰수-작은수
+            if (i1 == i2) {
+                var result = "<p>두 수가 같다</p>";
+            } else if (i1 > i2) {
+                var result = "<p>첫번째 수가 " + cha + "만큼 더 크다</p>";
+            } else {
+                var result = "<p>두번째 수가 " + cha + "만큼 더 크다</p>";
+            }
+            document.body.innerHTML += result;
+            newResult = result.substring(0, result.indexOf('</p>'));
+            newResult = newResult.substring(3);
+            frm.su1.value = i1;
+            frm.su2.value = i2;
+            alert(newResult);
+            return false;
+        } 
+    </script>
+    <style>
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form name="frm" onsubmit="return chk()">
+        <fieldset>
+            <p>
+                <label for="su1">첫번째 수 : </label>
+                <input type="number" name="su1" id="su1" />
+            </p>
+            <p>
+                <label for="su2">두번째 수 : </label>
+                <input type="number" name="su2" id="su2" />
+            </p>
+            <p><input type="submit" value="두 수 비교" /></p>
+        </fieldset>
+    </form>
+</body>
+</html>

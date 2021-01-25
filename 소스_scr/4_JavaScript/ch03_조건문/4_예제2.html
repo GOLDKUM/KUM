@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var korScore = Number(prompt('국어점수를 입력하시오','0~100점사이'));
+        var engScore = Number(prompt('수학점수를 입력하시오', '0~100점사이'));
+        while (isNaN(korScore) ||  korScore > 100 || korScore < 0) {
+            korScore = Number(prompt('국어점수를 0~100점사이에 입력하세요'))
+
+        }
+        while (isNaN(engScore) || engScore > 100 || engScore < 0) {
+            engScore = Number(prompt('영어점수를 0~100점사이에 입력하세요'))
+        }
+        var sum = (korScore + engScore)/2;
+        switch (Math.trunc((sum) / 10)) {   
+            case 10:
+            case 9: alert('수'); break;
+            case 8: alert('우'); break;
+            case 7: alert('미'); break;
+            case 6: alert('양'); break;
+            default: alert('가'); break;
+        }
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

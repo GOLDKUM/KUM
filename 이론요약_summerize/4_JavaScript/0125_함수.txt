@@ -1,0 +1,122 @@
+2021-01-25
+ⓚ금경용
+
+함수(익명함수, 선언함수, 매개변수와 리턴값, 가변인자함수, 콜백함수, 클로저함수, 내장함수)
+
+○익명함수:
+	var functionVar = function() { };
+	출력방법! 지정된 이름이 없으므로 변수를 넣어 출력
+	ex alert(functionVar);
+
+○선언적 함수
+	※ function 함수명 ( ) {
+  	 }
+	<script>
+		 function fun() { alert('함수  A'); }
+        	 	fun();//출력    
+	</script>
+	※특이사항: 함수를 재정의 하면 기본의 함수는 없어지고, 재정의한 함수를 따른다
+
+
+○매개변수와 리턴값
+	function 함수이름(매개변수, 매개변수, 매개변수) {
+		//함수 코드
+		return 리턴값;
+	}
+	리턴값이 없는 경우
+	<script>
+   	   var fun = function (i) {
+    	   alert('리턴값이 없는 함수 '+i);
+ 	   };
+ 	   var result = fun(20);
+ 	   alert('함수결과 : '+result);
+	</script>
+
+※ Array()함수 ; 빈 배열을 만든다.
+	Array(number) ; 매개변수만큼의 크기를 가지는 배열을 만든다.
+	Array(any, …, any); 매개변수를 배열로 만든다.
+
+○가변 인자 함수 ; 매개변수를 선언된 형태와 다르게 사용했을 때, 매개변수를 모두 활용할 수 있는 함수. 
+	매개변수의 개수가 변할 수 있는 함수 ex. Array()함수
+  <script>
+    function arrayFun() {
+      if (arguments.length == 0) {
+        // 매개변수가 없을 때 할 명령어들
+        alert('매개변수 없이 호출');
+      } else if (arguments.length == 1) {
+        // 매개변수가 1개일 때 할 명령어들
+        alert('매개변수 하나 ' + arguments[0] + '입력했구만');
+      } else if (arguments.length >= 2) {
+        // 매개변수가 2개 이상일 대 할 명령어들
+        var output = '매개변수를 2개 이상 ';
+        for (var idx = 0; idx < arguments.length; idx++) {
+          output += arguments[idx] + '  ';
+        }
+        output += ' 입력했구만';
+        alert(output);
+      }
+    }
+    arrayFun();
+    arrayFun(2, 3, 4);
+    arrayFun(9999);
+  </script>
+
+○내부 함수 ; 함수 내부에 선언하는 함수
+<script>
+    function phthagoras(w, h) {
+      function square(x) { // x의 제곱을 리턴하는 함수(내부함수)
+        return x * x;
+      }
+      return Math.sqrt(square(w) + square(h));
+    }
+  </script>
+
+○자기호출함수:다른 개발자에게 영향을 주지 않게  생성하자마자 호출
+ <script>
+        (function () {
+            alert('This is self call function');
+        })();
+    </script>
+
+
+○콜백함수:자바스크립트에서는 함수도 하나의 자료형이므로 매개변수에 넣을 수 있다. 
+ <script>
+        function callTenTimes(callback) {
+            for(let i = 0; i < 10; i++) {
+                callback();
+            }
+        }
+
+        var callback = function() {
+            alert('call function');
+        };
+
+        callTenTimes(callback);
+    </script>
+
+○함수를 리턴하는 함수
+<script>
+        function returnFunc() {
+            return function () { alert('Hello Function..!') };
+        }
+        returnFunc()();
+    </script>
+
+○클로저 ; 리턴된 함수
+<script>
+        function test(name) {
+            var output = 'Hello' + name + '님';
+            return function () {
+                alert(output);
+            }
+        }
+        test('홍길동')(); //140p.
+  </script>
+
+○타이머 함수
+setTimeout(function, millisecond) ; 일정시간 후 함수를 한번 실행
+setInterval(function, millisecond) ; 일정시간마다 함수를 반복해서 실행
+clearTimeout(id) ; setTimeout 중지
+clearInterval(id); setInterval 중지
+
+

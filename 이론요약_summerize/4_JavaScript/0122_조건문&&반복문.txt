@@ -1,0 +1,84 @@
+2021-01-22
+ⓚ금경용
+조건문&&반복문
+
+
+○조건문-if / switch / 내장객체(document,date)
+
+○if문
+	if ( condition1 ) {
+  		statement1
+	} else if ( condition2 ) {
+		  statement2
+	} else {
+ 		 statement3
+	}
+
+○switch 조건문
+	switch(비교할 값) {
+	case 값: 
+		문장; break;
+	case 값: 
+		문장; break;
+	Default:
+		문장; break;
+	}
+
+○삼항연산자
+	(불 표현식)? (참일 때 실행하는 문장) : (거짓일 때 실행하는 문장);
+
+○배열 
+	선언방법 3가지
+	★var arr = new Array();
+	arr[0]='금경용';
+	arr[1]='true';
+	arr[2]='function(){}';
+	arr[3]='String';
+
+	★var arr=['금경용','true','function(){}','String'];
+	
+	★var arr=new Array('금경용','true','function(){}','String');
+
+○while문
+	var i = 0;
+	while ( value < 10 ) {
+ 		 alert(i)// do something 
+  		i++;
+	}
+
+○do while문
+	var i = 0;
+	do {
+ 		alert(i) // do something
+ 		 i++;
+	} while ( i < 10 )
+
+○for문
+	for ( var i = 0; i < 10; i++ ) {
+  		alert(i)// do something
+	}
+
+
+var arr = [273, 's', true, function () { alert(1); }];
+       
+○ 1. 일반 for문
+        for (var idx = 0; idx < arr.length; idx++) {
+            document.write(idx + '번째 값은 ' + arr[idx]+'<br>');
+        }
+        document.write('<hr color="blue">');
+
+○ 2. for in문
+        for (var idx in arr) {
+            document.write(idx + '번째 값은 ' + arr[idx] + '<br>');
+        }
+        document.write('<hr color="red">');
+
+○ 3. forEach()함수
+        arr.forEach(function (data, i) {
+            document.write(i + '번째 값은 ' + data + ' &nbsp; &nbsp; ');
+            document.write(i + '번째 값은 ' + arr[i] + '<br>');
+        });
+        document.write('<hr>');
+        arr.forEach(function (data) {
+            document.write(data + '<br>');
+        });

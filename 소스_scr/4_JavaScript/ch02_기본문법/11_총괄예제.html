@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div{
+            width:350px;
+            border:1px solid blue;
+            margin:0 auto;
+            text-align:center;
+        }
+        table{
+            text-align:center;
+            margin:3px auto;
+        }
+    </style>
+    <script>
+        function chk() {
+            if (!frm.id.value.length<2) {
+                alert('2글자 이상 입력하세요');
+                frm.id.value = '';
+                frm.id.focus();
+                return false;
+            }
+
+            var ageStr = frm.age.value;
+            var age = Number(ageStr);
+            if (ageStr == '' && isNaN(age) && value >= 0 && value <= 120) {
+                alert('나이를 입력하세요')
+                frm.age.value = '';
+                frm.age.focus();
+                return false;
+            }
+            //false로 인식되는 값들  boolean이 아닌데 false로 출력하는 값들
+            //: '', 0 , null ,NaN , undefined 
+            if (!frm.address.value) {
+                alert('주소를 입력하세요')
+                frm.address.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form name="frm" onsubmit="return chk()" method="get">
+        <div>
+            <table>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="id" placeholder="이름은 2글자 이상"/></td>
+                </tr>
+                <tr>
+                    <td>나이</td>
+                    <td><input type="text" name="age" placeholder="나이는 0~120까지"/></td>
+                </tr>
+                <tr>
+                    <td>주소</td>
+                    <td><input type="text" name="address" placeholder="주소는 입력만"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="입력" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

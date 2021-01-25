@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //자바스크립트에서 나타낼 수 없는 숫자를 의미: NaN
+        i = Number('a');
+        document.write(i);
+        i = Number('a');
+        document.write('<br>');
+        document.write('i가 NaN인가:' + isNaN(i));
+        i = 10 / 3;
+        document.write('<br>');
+        document.write(i);
+        document.write('<br>');
+        document.write('i가 유한한수인가:' + isFinite(i));
+        i = 10 / 0;
+        document.write('<br>');
+        document.write(i);
+        document.write('<br>');
+        document.write('i가 유한한수인가:' + isFinite(i));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
