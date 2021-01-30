@@ -1,0 +1,71 @@
+2021-01-27 ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+문서객체만들기
+createElement():새 요소 생성 메소드
+appendChild(): 노드 연결 메소드
+<script>
+        window.onload = function () {
+            //노드 생성
+            var header = document.createElement('h1');
+            var textNode = document.createTextNode('Hello DOM');
+            //노드 연결
+            header.appendChild(textNode);
+            document.body.appendChild(header);
+        }        
+    </script>
+
+ 문서 객체 만들기(2) ; 텍스트 노드를 갖지 않는 문서 객체 만들기
+setAttribute(attribute,value):객체의 속성 지정
+getAttribute(attribute):개체의 속성 접근
+<script>
+        window.onload = function () {
+            //변수 선언
+            var img = document.createElement('img');
+            //img.src = 'img/orange.jpg';
+            //img.alt = '오렌지';
+            //img.width = 300;
+            img.setAttribute('src', 'img/orange.jpg');
+            img.setAttribute('alt', '오렌지');
+            img.setAttribute('width', 300);            
+            document.body.appendChild(img);
+        }
+    </script>
+
+
+문서 객체 만들기(3)
+innerHTML:태그의 내부를 의미하는 속성 
+<script>
+        window.onload = function () {
+            var output = '';
+            output += '<ul>';
+            output += '<li> Java</li>';
+            output += '<li> JavaScript</li>';
+            output += '</ul>';
+            //innerHTML 속성에 문자열을 할당
+            document.body.innerHTML = output;
+            document.body.innerHTML += '<h1>Document Object Model</h1>';
+        }
+    </script>
+
+문서 객체 가져오기 ; 
+	getElementsByName(name); 태그의 name 속성이 name과 일치하는 문서 객체를 배열로 가져온다.
+	document.querySelector(선택자) ; 선택자로 가장 처음 선택되는 문서 객체를 가져온다
+	document.querySelectorAll(선택자); 선택자로 선택되는 문서 객체를 배열로 가져옵니다
+
+<script>
+ 	function practice() {
+		var objectVal = document.getElementsByName("object")[0].value;		
+		alert(objectVall);
+	}
+</script>
+
+문서 객체 제거 
+	removeChild(child)
+	<script>
+      	      function remove() { // h1태그들 싹 없애기
+      	      var header = document.getElementById('header');
+                  document.body.removeChild(header);
+        	}
+   	 </script>
+	

@@ -1,0 +1,88 @@
+2021-01-28 ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+이벤트(event)란
+미리 사용자의 행위를 예측하여 미리 사용할 수 있도록 이벤트 준비
+(ex) onclick, onmouseover, onmouseout, onkeyup
+(키보드의 특정키를 클릭했다가 손가락을 벗어났을 때, event.keyCode 해당키를 눌렀을 때 고유 코드값..)
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            var header = document.getElementById('header');
+            function whenClick() { alert('Click'); }
+            header.onclick = whenClick;
+        }
+    </script>
+</head>
+<body>
+    <h1 id="header">Click</h1>
+</body>
+header 객체의 이벤트 이름은 click, 이벤트 속성은 onclick, 이벤트리스너는 whenClick()함수
+
+
+이벤트 발생 객체와 이벤트 객체
+이벤트 리스너 안에 this 키워드를 사용하면 이벤트가 발생한 객체 즉 '누가'를 찾을 수 있다.
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script>
+        window.onload = function () {
+            document.getElementById('header').onclick = function () {
+                alert(this.innerHTML);
+                this.style.color = 'orange';
+                this.style.backgroundColor = 'red';
+            };
+        };
+  </script>
+</head>
+<body>
+  <h1 id="header">Click</h1>
+</body>
+
+event.keyCode(입력된 키 아스키코드)
+Javascript 로 사용자의 키입력을 감지하여 함수를 처리할 수 있습니다.
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script>
+    window.onkeyup = function () {
+      var p = document.getElementsByTagName('p')[0];
+      if (event.keyCode >= 48 && event.keyCode <= 57) {
+        p.innerHTML += '아스키코드' + event.keyCode +
+          ' - ' + (event.keyCode - 48) + '<br>';
+      } else if (event.keyCode >= 96 && event.keyCode <= 105) {
+        p.innerHTML += '아스키코드:' + event.keyCode +
+          ' - ' + (event.keyCode - 96) + '<br>';
+      } else {
+        p.innerHTML += '아스키코드:' + event.keyCode+'<br>';
+      }
+    };
+  </script>
+</head>
+<body>
+  <p></p>
+</body>
+</html>
+
+
+
+예외처리
+프로그램에 문제가 발생하면 프로그램이 중단됩니다. 
+중단하지 않고처리하는 것을 예외처리라 합니다.
+<script>
+ try{
+            var array = new Array(9999999999);
+            // 배열의 크기는 최대 4,294,967,295(2^32 - 1)개까지 가능
+        } catch (exception) {
+            alert('예외 발생하였습니다');
+            alert(exception);
+        } finally {
+            alert('예외 발생 가능 부분을 통과했습니다');
+        }
+</script>
+
+

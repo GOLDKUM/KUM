@@ -1,0 +1,80 @@
+2021-01-27 ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+브라우저 객체 모델
+window 객체
+<script>
+        var output = '';
+	var i = 0;
+        for (var key in window) {
+            output += (++i)+' ★ ' + key + ':' + window[key] + '<br>';
+        }
+        document.write(output);
+</script>
+window 객체는 브라우저 기반 자바 스크립트의 최상위 객체. 
+지금까지 함수처럼 사용한 alert(), prompt()함수 모두 window객체의 메서드이다. 
+Var 키워드로 선언한 일반 변수도 모두 window 객체의 속성이 된다.
+
+★window 객체의 open()메서드의 매개변수는 모두 옵션이다.
+⦁	URL : 열고자 하는 HTML 페이지의 URL
+⦁	name : 윈도우 간 통신하는데 사용하는 윈도우 이름 또는 target속성
+⦁	features : 윈도우 출력 모양을 지정하는 옵션
+
+ex)
+          window.open(속성1, 속성2, 속성3)
+          속성1 : 새창의 url (내부자원, 외부 url)
+          속성2 : 윈도우 이름 지정(윈도우 간에 통신하는데 사용)
+          속성3 : 새창옵션 - width(300), height, location(1yes,0no)
+                  menubar(1yes,0no), resiable(창크기변경-1yes,0no)
+                  left, top(창의 왼쪽위치, 윗쪽위치),
+         	      scollbar(1yes,0no)
+
+★screen 객체
+	- screen 객체는 웹 브라우저의 화면이 아니라 운영체제 화면이 속성을 가지는 객체
+	Screen 객체는 new 연산자를 사용해서 객체를 정의하지 않습니다.
+<script>
+    var child = window.open('', '','width=300, height=300');
+    var i = 0;
+    var w = screen.width/2;
+    var h = screen.height/2;
+    child.resizeTo(w, h);
+    child.moveTo(screen.width/4, screen.height/4);
+    setInterval(function () {
+      if (i) {
+        child.moveBy(100, 100); i = 0;
+      } else {
+        child.moveBy(-100, -100); i = 1;
+      }
+    }, 1000);
+    var output = '';
+    for (var key in screen) {
+      output += key + ' : ' + screen[key] + '<br>';
+    }
+    child.document.write(output);
+  </script>
+
+★location 객체
+location 객체는 현재 브라우저에 표시된 HTML 문서의 주소를 얻거나, 브라우저에 새 문서를 불러올 때 사용할 수 있습니다.
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	  	<meta charset="utf-8" />
+		  <title></title>
+		  <script>
+ 		   setTimeout(function () {
+  		    location.href = 'http://hanb.co.kr';
+ 		   }, 3000);
+ 	 </script>
+	</head>
+	<body>
+  	잠시후 페이지 이동이 있겠습니다
+	</body>
+	</html>
+
+
+
+
+         
+
+
+
