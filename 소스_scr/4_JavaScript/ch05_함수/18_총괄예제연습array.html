@@ -1,0 +1,40 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var s = 0;
+        var col = ['yellow', 'black', 'red'];
+        /*var img = ['url("0125_img/img01.png")',
+                   'url("0125_img/img02.png")',
+                   'url("0125_img/img03.png")'];*/
+        document.write(new Date() + '<br>');
+        document.body.style.fontWeight = 'bold';
+        document.body.style.backgroundSize = '100%';
+        //document.body.style.backgroundImage = img[s % 3];
+        document.body.style.backgroundImage
+            = 'url(0125_img/img0' + (s % 3 + 1) + '.png)'
+        document.body.style.color = col[s % 3];
+        s++;
+        var id = setInterval(function () {
+            document.write(new Date() + '<br>');
+            document.body.style.fontWeight = 'bold';
+            document.body.style.backgroundSize = '100%';
+            //document.body.style.backgroundImage = img[s % 3];
+            document.body.style.backgroundImage
+                = 'url(0125_img/img0' + (s % 3 + 1) + '.png)'
+            document.body.style.color = col[s % 3];
+            s++;
+        }, 1000);
+        setTimeout(function () {
+            clearInterval(id);
+        }, 10000)
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

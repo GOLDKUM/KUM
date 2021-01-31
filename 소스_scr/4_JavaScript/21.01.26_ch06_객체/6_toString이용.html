@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        /*
+         class Person{
+         private String name;
+         public String toString(){
+            return this.name+'은'+kor;
+         }
+         }
+         Person person = new Person('홍길동',90);
+         System.out.println(person.toString());
+         System.out.print(person);
+         */
+        //외부함수에서 익명함수 
+        var student = {
+            'name': '홍길동',
+            kor: 90,
+            mat: 100,
+            eng: 98,
+            sci: 97,
+            toString: function () {
+                var output = '';
+                for (var key in this) {
+                    if (key != 'toString') {
+                        output += key + ':' + this[key] + '<br>';
+                    }
+                }
+                return output;
+            },
+        }
+        document.write(student.toString());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

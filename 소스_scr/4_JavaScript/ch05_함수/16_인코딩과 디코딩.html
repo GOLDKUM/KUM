@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //외래어는무조건 한번 감싸줘야한다.
+        //인코딩 해서 전송
+        //받는 측에서는 받은 데이터를 인코딩해서 원본으로 해석함 
+        var str = '신촌';
+        document.write('str:'+str+'<br>');
+        var encodeStr = encodeURIComponent(str);
+        document.write('인코딩된 str:' + encodeStr + '<br>');
+        var decodeStr = decodeURIComponent(encodeStr);
+        document.write('디코딩된 str:' + decodeStr + '<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

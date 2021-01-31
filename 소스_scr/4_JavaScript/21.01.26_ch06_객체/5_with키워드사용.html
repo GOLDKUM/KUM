@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var student = {
+            name: '홍길동',
+            kor: 82,
+            mat: 93,
+            eng: 100,
+            sci: 98,
+            output:'객체안에 output',
+        }
+        var output = '';//선언된 변수는 window객체 안의 변수로 됨 
+        with (student){
+            window.output += '이름은' + name + '<br>';
+            window.output += '국어점수' + kor + '<br>';
+            window.output += '수학점수' + mat + '<br>';
+            window.output += '영어점수' + eng + '<br>';
+            window.output += '과학점수' + sci + '<br>';
+        }
+        document.write(output);
+        document.write('name in student:' + ('name' in student) + '<br>');
+
+      //  for (var key in student) {
+       //     document.write(student[key]+'<br>');
+       // }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{margin:0 auto;}
+        table td{width:100px; height:100px; margin:0 auto;
+                 border:1px solid red;
+                 background-color:#18bf8c
+        }
+        .tdRed{background-color:red;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $('td').click(function () {
+                $('td').removeClass('tdRed');//모든 td들 원상복구
+                $(this).addClass('tdRed');//클릭한 td .tdRed class 추가(빨간바탕)
+            });
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+    </table>
+</body>
+</html>

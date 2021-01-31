@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   <script>
+       var str = 'abc#abcrㄱ가';
+       var patterNum = /[0-9]/; //정규표현식으로 나타낸 숫자패턴
+       var patterEng = /[a-zA-Z]/;//정규표현식ㅇ로 나타낸 영문패턴
+       var patterKor = /[가-힣ㄱ-ㅎㅏ-ㅣ]/; //한글패턴 
+       var patterSpe = /[~!@#$%^&8()-_=|\[\\\]?]/;//특수문자패턴들 
+       document.write('숫자포함여부:' + patterNum.test(str) + '<br>');
+       document.write('영문포함여부:' + patterEng.test(str) + '<br>');
+       document.write('한글포함여부:' + patterKor.test(str) + '<br>');
+       document.write('특수문자포함여부:' + patterSpe.test(str) + '<br>');
+   </script>
+</head>
+<body>
+
+</body>
+</html>

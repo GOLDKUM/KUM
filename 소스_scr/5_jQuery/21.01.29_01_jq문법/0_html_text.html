@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        //jQuery를 사용하기전에 해야할일
+        $(document).ready(function () {
+            //jQuery 문법 사용 가능 ! 
+            $('#p1').click(function () {
+                $('#p1').html('<b>내용바꿔</b>'); 
+                //$('#p1').text('<b>내용바꿔<b>'); //text를 사용하게 되면 <b>모두 나 나오게 되서 html을 꼭 써야합니다! 
+            });
+        });
+
+        //jQuery를 사용하기전에 해야할일
+        $(function () {
+
+        });
+
+    </script>
+</head>
+<body>
+    <p id="p1">p 태그 하나</p>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function append() {
+           /* var h1 = document.createElement('h1');
+            var textNode = document.createTextNode('HEADER');
+            h1.appendChild(textNode);
+            document.body.appendChild(h1);*/
+            document.body.innerHTML += '<h1>HEADER</h1>';
+        }
+        function remove() {
+           /* var h1 = document.querySelectorAll('h1');
+            for (var idx = 0; idx < h1.length; idx++) {
+                document.body.removeChild(h1[idx]);
+                
+            }*/
+            var h1 = document.getElementsByTagName('h1');
+            //var wrap = document.getElementById('wrap');
+            for (var idx = h1.length-1; idx >=0; idx--) {
+                document.body.removeChild(h1[idx]);
+                //wrap.removeChild(h1[idx]);
+
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <!--<div id="wrap">-->
+    <button onclick="remove()">h1 태그 싹 없애기</button>
+    <button onclick="append()">h1 태그 하나 추가하기</button>
+    <h1>HEADER</h1>
+    <!--</div>-->
+</body>
+    </html>

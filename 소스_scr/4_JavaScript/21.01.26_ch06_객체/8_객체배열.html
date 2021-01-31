@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var students = [{ name: '용경금', kor: 99, mat: 99, eng: 99, sci: 99 }];
+        students.push({ name: '금경용', kor: 99, mat: 99, eng: 99, sci: 99 });
+        students.push({ name: '홍길동', kor: 90, mat: 89, eng: 88, sci: 95 });
+        students.push({ name: '신길동', kor: 60, mat: 70, eng: 90, sci: 80 });
+        students.push({ name: '김가현', kor: 70, mat: 60, eng: 90, sci: 90 });
+        students.push({ name: '김민규', kor: 95, mat: 95, eng: 95, sci: 90 });
+        for (var idx in students) {
+            students[idx].getSum = function () {
+                return this.kor + this.kor + this.eng + this.sci;
+            };
+            students[idx].getAvg = function () {
+                return this.getSum() / 4;
+            };
+            students[idx].toString = function () {
+                var output = '';
+                for (var key in this) {
+                    if (key != 'toString' && key != 'getSum' && key != 'getAvg') {
+                        output += key + ':' + this[key] + '\n';
+
+                    } else if (key == 'getSum' || key == 'getAvg') {
+                        output += key.substring(3) + ':' + this[key]()+'\n';
+                    }
+                }
+                return output;
+            };
+        }
+        //1.일반 for문
+        var output = '';
+        for (var idx = 0; idx < students.length; idx++) {
+            output += idx + '번째 \n';
+            output += students[idx]+'<br>';
+        }
+        alert(output);
+        //document.write(output.replace('\n','<br>'));
+        document.write(replaceAll(output, '\n', '<br>'));
+
+        //2.for -in 문
+        document.write('<h2>2.for-in문 이용 </h2>');
+        for (var idx in students) {
+            document.write(students[idx] + '<br>');
+        }
+
+        //3.forEach()
+        document.write('<h2>3.forEach문 이용 </h2>');
+        students.forEach(function (data, idx) {
+            document.write(idx + '번쨰 : ');
+            document.write(data + '<br>');
+        });
+
+
+
+        //replaceAll : output에서 oldStr을 newStr로 모두 교체
+        function replaceAll(output, oldStr, newStr) {
+            //join , split
+            return output.split(oldStr).join(newStr);
+
+        }
+
+        document.write(students[0].getSum()+'<br>');
+        document.write(students[0].getAvg() +'<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

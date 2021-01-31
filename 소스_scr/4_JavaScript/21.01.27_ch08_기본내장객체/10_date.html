@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="dateInterval.js"></script>
+    <script>
+        var today = new Date();//21-01-27 15:37
+        var limitday = new Date(2021, 3, 30, 18, 20, 0); //수료시점
+        document.write('오늘:' + today + '<br>');
+        document.write('날짜시간:' + today.toLocaleString() + '<br>');
+        document.write('날짜:' + today.toLocaleDateString() + '<br>');
+        document.write('시간:' + today.toLocaleTimeString() + '<br>');
+        document.write('수료시점:' + limitday.toLocaleString() + '<br>');
+
+        //this.getInterval(that); this날과 that날 사이의 날짜 계산
+        //var intervalMili = limitday.getTime() - today.getTime();
+        //var intervalDay = intervalMili / (1000 * 60 * 60 * 24);
+
+
+        var intervalDay = today.getInterval(limitday);
+        document.write('남은날짜' + intervalDay);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

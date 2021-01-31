@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('tr:even').css('backgroundColor', '#cccccc');//0번쨰부터시작 짝수번째의
+            $('tr:odd').css('backgroundColor', '#FFFFAA');//홀수번쨰 위치한 문서 객체선택
+            $('tr:nth-child(3n').css('color', 'red');//1번쨰부터
+            $('tr:nth-child(3n+1').css('color', 'green');
+            $('tr:nth-child(3n+2').css('color', 'blue');
+            $('tr:eq(0)').css('background-color', 'black').css('color', 'white');
+            //nth-child로 써도 되지만 좀더 편하게 작성할 수 있도록 
+        });
+
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>지역</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>AB</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>신길동</td>
+            <td>B</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>박길동</td>
+            <td>A</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>이길동</td>
+            <td>AB</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>금길동</td>
+            <td>AB</td>
+            <td>서울</td>
+        </tr>
+    </table>
+</body>
+</html>

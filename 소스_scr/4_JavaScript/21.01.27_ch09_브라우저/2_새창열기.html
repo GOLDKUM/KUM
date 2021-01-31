@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var child = open('', '', 'width=450,height=500');
+        /*open(속성1, 속성2, 속성3,)
+         *속성1:열린 새창의 url
+         *속성2:윈도우의 이름 
+         *속성3:width,height,left,top,location(주소창유무1,0)
+         * 
+         */
+        if (child) {
+            child.document.write('<h1>새창</h1>');
+        } else {
+            alert('판업차단을 해제하셔야 새창이 열립니다.');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

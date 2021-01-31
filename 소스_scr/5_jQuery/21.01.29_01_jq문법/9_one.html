@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $('h2').click(function () {
+                $(this).append('♥').prepend('♡');
+                $(this).off();
+            });
+            $('h2').one('click', function () {//이벤트 한번 수행 후 제거
+                $(this).append('♥').prepend('♡');
+
+            });
+            $('h2').click(function () {
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>방탄 좋아요. 클릭은 한번만</h2>
+    <h2>기생충도 클릭은 한번만</h2>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function callTenTime(calback) {
+            for (var i = 0; i < 10; i++) {
+                calback();//콜백함수; 매개변수에 들어온 함수;
+            }
+        }
+        var funVar = function () {
+            document.write(new Date() + '<br>');
+
+        }
+        callTenTime(funVar);
+        callTenTime(function () {
+            document.write('<h2>' + new Date+'</h2>')
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

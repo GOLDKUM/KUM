@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('img').mousedown(function () {
+                $(this).attr('src', 'img/but2.gif');
+                $(this).attr('alt','마우스 눌렀을떄');
+            });
+
+            $('img').mouseup(function () {
+                $(this).attr('src', 'img/but1.gif');
+                $(this).attr('alt', '클리전');
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <img src="img/but1.gif" alt="클릭전"/>
+</body>
+</html>

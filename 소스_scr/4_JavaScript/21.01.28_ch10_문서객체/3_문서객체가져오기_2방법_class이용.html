@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            //getElementByClassName의 return은 배열
+            var clock = document.getElementsByClassName('clock');
+            clock[0].innerHTML = '날짜:' + new Date().toLocaleString();
+            var clock = document.getElementsByClassName('clock');
+            clock[1].value = "시간:" + new Date().toLocaleTimeString();
+        };
+
+    </script>
+</head>
+<body>
+    <h1 class="clock"></h1>
+    <input type="text" class="clock" />
+</body>
+</html>

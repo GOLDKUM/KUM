@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        num = 0.000000000000273; //2.73E-13
+        var num = 273.5990332; //지수형 :2.735210332*10의 2승 =2.735210332E+2 //var num = new Number(273.559~);
+        document.write(num + '<br>');
+        document.write('지수형표현' + num.toExponential(5) + '<br>');
+        document.write('소수점1자리' + num.toFixed(1) + '<br>');
+        document.write('소수점1자리' + Math.round(num * 10) / 10 + '<br>');
+        document.write('숫자5개만:' + num.toPrecision(5));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

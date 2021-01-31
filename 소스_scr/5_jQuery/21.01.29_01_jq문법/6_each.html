@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var array = [{ name: '가메출판사', link:'http://www.kame.co.kr' },
+                { name: '네이버', link: 'http://www.naver.com' },
+                { name: '다음', link: 'http://www.daum.net' },
+                { name: '구글', link: 'http://www.google.com' },];
+
+            $.each(array, function (idx, item) {
+                $('body').html($('body').html()+
+                    '<h2><a href="' + item.link + '">' + item.name + '</a></h2>');
+            });
+
+            $(array).each(function (idx, item) {
+                $('body').apppend('<h2><a href="' + item.link + '">'
+                    + item.name + '</a></h2>');
+            });
+
+            array.forEach(function (item, idx) {
+            });
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

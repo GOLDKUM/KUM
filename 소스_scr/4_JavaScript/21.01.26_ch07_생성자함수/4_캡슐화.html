@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function Rectangle(w, h) {
+            var width = w;
+            var height = h;
+            this.getWidth = function () { return width; }
+            this.getHeight = function () { return height; }
+            this.setWidth = function (w) { width = w; }
+            this.setHeight = function (h) { height = h; }
+        }
+        Rectangle.prototype.getArea = function () {
+            return this.getWidth() * this.getHeight();
+        };
+        var rect = new Rectangle(5, 7);
+        document.write('rect의 가로:' + rect.getWidth() + '<br>');
+        document.write('rect의 세로:' + rect.getHeight() + '<br>');
+        document.write('rect의 넓이:' + rect.getArea() + '<br>');
+        rect.setWidth(1); rect.setHeight(-7);
+        document.write('rect의 가로:' + rect.getWidth() + '<br>');
+        document.write('rect의 세로:' + rect.getHeight() + '<br>');
+        document.write('rect의 넓이:' + rect.getArea() + '<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

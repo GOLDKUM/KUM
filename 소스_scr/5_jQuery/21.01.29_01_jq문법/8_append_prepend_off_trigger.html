@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .red{color:red;}
+        .blue{color:blue;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var h1Cnt = 0, h2Cnt = 0;
+            $('#h1').click(function () {
+                h1Cnt++;
+                if (h1Cnt < 6) {
+                    $(this).prepend('<span class="red">♥</span>');
+                    $(this).append('<span class="blue">♥</span>');
+                } else {
+                    $('#h1').off();//클릭한 횟수가 6회가 되면 이벤트 제거
+                }
+            });
+            $('#h2').click(function () {
+                $(this).prepend('<span class="red">♡</span>');
+                $(this).append('<span class="blue">♡</span>');
+
+            });
+            setInterval(function () {
+                $('#h1').first().trigger('click');//강제이벤트 발생
+            }, 500);
+
+        });
+    </script>
+</head>
+<body>
+    <h1 id="h1">start1:</h1>
+    <h2 id="h2">start2:</h2>
+
+</body>
+</html>

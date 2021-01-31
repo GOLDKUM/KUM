@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var arr1 = array();//[]
+        var arr2 = array(3);//[,,,]
+        var arr3 = array(273, 2, 'hello');//[273,2,'hello'];
+        document.write(arr1 + '의 방의갯수' + arr1.length+ '<br> ');
+        document.write(arr2 + '의 방의갯수' + arr2.length + '<br> ');
+        document.write(arr3 + '의 방의갯수' + arr3.length + '<br> ');
+        //array의 가변인자함수가 될것입니다.
+        //인자가0개: 빈배열 
+        // 인자가1개: 방의 갯수가 인자인 배열 
+        // 인자가 2개이상: 인자 자체가 배열 
+        //array(); //->arguments:[]
+        //array(273,2')//->arguments:[273, 2, 'hello'] 내부적으로 이렇게 전달을 해준다.
+        function array() {//arguments: 함수내 매개변수 배열 (예약어)
+            var result = [];
+            if (arguments.length == 1) {
+                //인자를 1개일 떄 명령어
+                for (var cnt = 1; cnt <= arguments[0]; cnt++) {//arguments의 0번쨰 값은 3이였음  
+                    result.push('');
+                }
+            } else if (arguments.length >= 2) {
+                //인자가 2개 이상일 떄 명령어
+                /*for (var idx = 0; idx<arguments.length; idx++) {//java스크립에서도 배열은 0번쨰 부터시작 
+                    result.push(arguments[idx]);
+
+                }*/
+                for (var idx in arguments) {
+                    result.push(arguments[idx]);//
+                }
+                /*arguments.forEach(function (date, idx) {
+                    result.push(arguments[idx]);
+                });*/
+
+                /*arguments.forEach(function (date) {
+                    result.push(date);
+                });*///argument은 forEach을 사용 할 수 없습니다.
+             
+            }
+            return result;
+
+        }
+        array();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

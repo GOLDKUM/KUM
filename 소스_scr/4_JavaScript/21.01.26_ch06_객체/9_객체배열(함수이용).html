@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        
+        /*
+         makeStudent('홍길동',100,90,100,95)의 결과:
+            {name:'홍길동', kor:100, mat:90, eng:100, sci:95};*/
+        function makeStudent(name,kor,mat,eng,sci) {
+            var resultObj = {
+                'name': name,
+                'kor': kor,
+                'mat': mat,
+                'eng': eng,
+                'sci': sci,
+                getSum: function () {
+                    return this.kor + this.mat + this.eng + this.sci;
+                },
+                getAvg: function () {
+                    return this.getSum() / 4;
+                },
+                toString: function () {
+                    var output = '';
+                    for (var key in this) {
+                        if (key != 'toString' && key != 'getSum' && key != 'getAvg') {
+                            output += key + ':' + this[key] + '\t';
+                        } else if (key == 'getSum' || key == 'getAvg') {
+                            output += key.substring(3) + ':' + this[key]() + '\t';
+                        }
+                    }
+                    return output;
+                },
+            };//resultObj
+            return resultObj;
+        }//makeStudent 함수끝
+
+        var students = [];
+        students.push(makeStudent('홍길동', 100, 90, 100, 95));
+        students.push(makeStudent('김길동', 90, 90, 90, 80));
+        students.push(makeStudent('홍청동', 90, 90, 90, 80));
+        students.push(makeStudent('박철희', 100, 90, 70, 80));
+        students.push(makeStudent('이순희', 90, 89, 97, 80));
+        students.forEach(function (value, idx) {
+            document.write(idx + '번쨰:<br>' + value + '<hr>');
+        });
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        form {
+            width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[name="reset"],input[name="score"]{
+            margin:10px 30px;
+            font-size:larger;
+        }
+        input[type="text"]{
+            width:70px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        
+        $(function () {
+            var ddukIdx1 = parseInt(Math.random() * 9);
+            var ddukIdx2 = parseInt(Math.random() * 9);
+            $('input[name="n1"]').val(ddukIdx1);
+            $('input[name="n2"]').val(ddukIdx2);
+            var idx1 = Number($('input[name="n1"]').val());
+            var idx2 = Number($('input[name="n2"]').val());
+
+            $('input[name="score"]').click(function () {
+                var idx3 = Number($('input[name="n3"]').val());
+                if (idx1 + idx2 == idx3) {
+                    $('.result').html('맞추었습니다');
+                    $('.result').css('color','blue');
+                } else {
+                    $('.result').html('틀렸습니다 정답은' + (idx1 + idx2) + '입니다');
+                    $('.result').css('color','red');
+                }
+            });
+
+            $('input[name="reset"]').click(function () {
+                $('input[name="n1"]').val(parseInt(Math.random() * 9));
+                $('input[name="n2"]').val(parseInt(Math.random() * 9));
+                $('input[name="n3"]').val('');
+            });
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <form>
+        <p>1단계:<input type="text" name="n1" />+<input type="text" name="n2" />=<input type="text" name="n3"/> </p>
+        <p><input type="button" name="reset" value="다시해봐" /><input type="button" name="score" value="채점해봐" /></p>
+        <p><hr /></p>
+        <p class="result"></p>
+    </form>
+</body>
+</html>

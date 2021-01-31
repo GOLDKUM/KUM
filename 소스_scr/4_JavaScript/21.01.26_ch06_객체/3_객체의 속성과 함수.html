@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        var f = function () { };
+        var arr = [273, 3, 'hello'];
+        var i = 10;
+        var person = {
+            name: '홍길동',
+            age: 35,
+            eat: function (food) {
+                alert(this.age + '살 ' + this.name + '은 ' + food + '를 먹는다 ');
+            },
+        }
+        person.eat('햄버거');
+        document.write('person: '+person+'<br>');
+        document.write('arr: '+arr+'<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

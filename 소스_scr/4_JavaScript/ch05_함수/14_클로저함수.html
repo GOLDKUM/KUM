@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function text(name) {
+            var msg = 'Hello,' + name + '님 방가방가';
+            return function () { alert(msg) };
+        }
+        var fun = text('홍길동');
+        document.write(fun);
+        fun();
+
+        text('김길자')();//리턴받은 클러저함수 바로 실행 
+    </script>
+</head>
+<body>
+
+</body>
+</html>

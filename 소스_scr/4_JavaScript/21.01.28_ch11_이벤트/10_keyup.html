@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onkeyup = function () {
+            var p = document.getElementsByTagName('p')[0];//0번쨰01
+            var r = document.getElementsByTagName('p')[1];//0번쨰01
+            if (event.keyCode >= 48 && event.keyCode <= 57) {
+                p.innerHTML += '상단키보드수:' + (event.keyCode - 48) + '의 아스키코드:' + event.keyCode + '<br>';
+            } else if (event.keyCode >= 96 && event.keyCode <= 105) {
+                r.innerHTML += '하단키보드수:' + (event.keyCode - 96) + '의 아스키코드:' + event.keyCode + '<br>';
+            }
+          
+
+        };//눌렀다가 떗을때 발생하는것 
+    </script>
+</head>
+<body>
+    <p>
+       상단<br />
+    </p>
+    <p>
+        하단<br />
+    </p>
+</body>
+</html>

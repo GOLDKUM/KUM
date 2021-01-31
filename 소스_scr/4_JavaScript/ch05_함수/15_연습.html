@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>//tip,자기호출함수,배열forEach등을 이용하여 0->1>->2
+        // 현재 경고창 순서 3 -> 3 -> 3
+       // for (var i = 0; i < 3; i++) {
+       //    setTimeout(function () { alert(i); }, 0);
+       // }
+        // 자기호출함수를 이용하여 수정
+        // 바꿀 경고창 순서 0 -> 1 -> 2
+        for (var i = 0; i < 3; i++) {
+            (function (j) {
+                setTimeout(function () { alert(j); }, 0);
+            })(i);
+        }
+        // 배열 forEach()함수를 이용하여 수정
+        // 바꿀 경고창 순서 : 0->1->2
+        [0, 1, 2].forEach(function (data, idx) {
+            setTimeout(function () { alert(data); }, 0);
+        });
+
+        //자기호출함수 
+        (function () {
+            for (var i = 1; i < 4; i++) {
+                setTimeout(alert(i), 0);
+            }
+        })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

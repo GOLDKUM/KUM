@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            document.querySelector('form').onsubmit = function () {
+                var pw = document.getElementById('pw').value;
+                var pw1 = document.getElementById('pw1').value;
+                if (pw != pw1) {
+                    return false; //이벤트 제한(디폴트 이벤트 제한)
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <form>
+        pw : <input type="password" name="pw" id="pw" /><br />
+        pw : <input type="password" name="pw1" id="pw1" /></br>
+        <input type="submit" />
+    </form>
+</body>
+</html>

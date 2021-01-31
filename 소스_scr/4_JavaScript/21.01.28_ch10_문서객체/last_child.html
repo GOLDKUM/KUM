@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var name = opener.document.getElementById('name').value;
+            var parentData = document.getElementById('parentDate');
+            parentData.innerHTML = name;
+
+            var modifyName = document.getElementById('modifyName').value;
+            modifyName.value = name;
+
+        };
+        function sendDate() {
+            opener.value = name.value;
+            close();
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <span>ID<input type="text" id="modifyName" /></span>
+        <button>체크</button>
+        <h2 onclick="sendData()">아이디 사용</h2>
+    </div>
+</body>
+</html>

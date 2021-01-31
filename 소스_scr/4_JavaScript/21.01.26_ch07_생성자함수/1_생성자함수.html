@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function Student(name, kor, mat, eng, sci) {
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+            this.eng = eng;
+            this.sci = sci;
+            this.getSum = function () {
+                return this.kor + this.mat + this.eng + this.sci;
+            };
+            this.getAvg = function () {
+                return this.getSum() / 4;
+            };
+            this.toString = function () {
+                var output = '';
+                for (var key in this) {
+                    if (key != 'toString' && key != 'getSum' && key != 'getAvg') {
+                        output += key + ':' + this[key] + '<br>';
+                    } else if (key == 'getSum') {
+                        output += '총점 :' + this.getSum() + '<br>';
+                    } else if (key == 'getAvg') {
+                        output += '평균:' + this[key]() + '<br>';
+                    }//if
+                }//for
+                return output;
+            }//toString
+
+
+        }//생성자 함수Studnet)
+        students = [new Student('홍길동', 99, 88, 77, 66),
+        new Student('신길동', 99, 83, 77, 66),
+        new Student('홍길동', 89, 68, 82, 66),
+            new Student('지울것', 99, 88, 77, 66)];
+        students.pop();
+        students.forEach(function (data, idx) {
+            document.write(idx + '번쨰<br>' + data );
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

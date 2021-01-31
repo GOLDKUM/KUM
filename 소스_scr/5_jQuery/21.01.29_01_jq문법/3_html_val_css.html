@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#msg').html('<b>Hello,jQuery<b>');
+            //$('#msg').text('Hello,jQuery');
+            $('input[name="msg"]').val('Hello,jQuery@');
+            //var msg = $('#msg').html();//
+            //var msg = $('#msg').text();
+            var msg = $('input[type="text"]').val();
+            alert(msg);
+            $('input[type=text],input[type=password]').focus(function () {
+                $(this).css('background-color', 'black').css('color', 'red');
+            });
+            $('input[type=text],input[type=password]').blur(function () {
+                //focus를 잃었을때 
+                $(this).css('background-color', 'white').css('color', 'black');
+            });
+        });
+        //html은 그냥위에다가 val은 매개변수안에다가 작성하는것! 
+    </script>
+
+</head>
+<body>
+    <p id="msg"></p>
+    <p>메세지<input type="text" name="msg" /></p>
+    <p>비밀번호<input type="password" name="pw" /></p>
+    <p>선택1<input type="radio" /></p>
+    <p>선택2<input type="checkbox" /></p>
+</body>
+</html>

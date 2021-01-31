@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+	var willEval = '';
+        willEval += 'var number = 10;';
+        willEval += 'alert(number);';
+        eval(willEval);
+        alert(number);
+        var h = 10 / 0; //10.0000000000000000000000000000000000
+        var g = 10;
+        alert(isFinite(h)); //isFinite(); 유한한 값인지 여부 
+        alert(isFinite(g));
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

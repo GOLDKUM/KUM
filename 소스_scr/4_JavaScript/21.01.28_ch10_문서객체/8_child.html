@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+    #wrap {width:450px; margin: 0 auto;}
+    #wrap h1{color:red; margin-top:50px; text-align:center;}
+    #wrap h3{
+      padding:20px; margin:10px; border:1px solid red;
+      text-align:center; border-radius: 10px;
+      font-size: .9em;
+      cursor:pointer;/*커서를 명령버튼에서 처럼*/
+    }
+
+    </style>
+    <script>
+        window.onload = function () {
+            //parent와 child간의 데이터 통신 
+            //parent할 일 : child창 open()하기
+            //child 할 일 : opener(parent)의 데이터 받아 내창 뿌리기 
+            var name = opener.document.getElementById('name').value;
+            var date = opener.document.getElementById('date').value;
+            var parentData = document.getElementById('parentData');
+            if (date == '') {
+                parentData.innerHTML = name + '날짜선택 안 함';
+            } else {
+                parentData.innerHTML = name + ',날짜:' + date;
+            }
+
+            var modifyName = document.getElementById('modifyName');
+            modifyName.value = name;
+        };
+        function sendData(part) {
+            var modifyName = document.getElementById('modifyName').value;
+            opener.document.getElementById('name').value = modifyName;
+            opener.document.getElementById('part').innerHTML = part;
+            close();
+
+        }
+    </script>
+
+</head>
+<body>
+    <div id="wrap">
+        <h1>인사 정보 시스템</h1>
+        <hr />
+        <h2 id="parentData"></h2>
+        <h2>이름 수정 가능<input type="text" id="modifyName" /></h2>
+        <hr />
+        <h3 onclick="sendData('인사')">인사선택후 닫기</h3>
+        <h3 onclick="sendData('재무')">재무선택후 닫기</h3>
+        <h3 onclick="sendData('총무')">총무선택후 닫기</h3>
+        <h3 onclick="sendData('개발')">개발선택후 닫기</h3>
+    </div>
+</body>
+</html>

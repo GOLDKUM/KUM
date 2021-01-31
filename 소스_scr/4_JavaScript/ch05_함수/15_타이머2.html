@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //function f() {
+         //   document.write(new Date()+'<br>')
+        //};
+        var id =setInterval(function () {
+            document.write(new Date() + '<br>');
+        }, 1000);
+        setTimeout(function () {
+            clearInterval(id);//setTimeout():일정시간 후 한번 콜백함수 실행! 
+            document.write('DONE');
+        },10000)
+       // setInterval(f, 1000);
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

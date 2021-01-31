@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function Rectangle(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+        Rectangle.prototype.getArea = function () {
+            return this.width * this.height;
+        };
+        var rect = new Rectangle(5, 7);
+        document.write('가로' + rect.width + ',세로' + rect.height+'<br>');
+        document.write('넓이:' + rect.getArea());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

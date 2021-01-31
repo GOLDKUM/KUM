@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="10_sumAll.js"></script>
+    <script>
+
+     /*   //익명함수
+        function sumAll() {
+            var result = 0;
+            if (arguments.length == 0) {
+                return -999;
+            }else {
+                for (var cnt = 0; cnt < arguments.length; cnt++) {
+                    result = result + arguments[cnt];
+                }
+                return result;
+            }
+        }*/
+        var sum = sumAll(); //-999
+        document.write('sumAll()='+sum+'<br>');
+        var sum = sumAll(1); //1 (매개변수가 1개 이상이면 누적값 리턴 )
+        document.write('sumAll()=' +sum + '<br>');
+        var sum = sumAll(1, 2, 3, 4, 5);//15
+        document.write('sumAll()=' +sum + '<br>');
+
+
+        //선언적함수
+        var sumAll2 = function () {
+            var result = 0;
+            if (arguments.length >= 1) {
+                for (var cnt = 0; cnt < arguments.length; cnt++) {
+                    result = result + arguments[cnt];
+                }
+                return result;
+            }
+        }
+        var sum1 = sumAll2(1, 2, 3);
+        document.write('sum1='+sum1);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

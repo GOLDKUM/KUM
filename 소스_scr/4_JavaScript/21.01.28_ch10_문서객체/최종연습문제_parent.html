@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width:300px; margin:50px auto;
+        }
+    </style>
+    <script>
+        function childOpen() {
+            var child = open('8_child.html', '', 'width=600,height=700,left=100');
+            if (!child) {
+                alert('팝업차단 해제해주세요');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <span>아이디<input type="text" id="name" /></span>
+        <span id="insa" onclick="childOpen()">중복확인</span>
+    </div>
+</body>
+</html>

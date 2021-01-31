@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var student = { name: '홍길동' };
+        student['name'] = '김길동';
+        student.name = '신길동';//기존 객체의 속성값 변경
+        student.kor = 100; //객체의 속성 추가 
+        student.mat = 90;
+        student.hobby = '프로그래밍';
+        student.toString = function () {
+            var output = '';
+            for (var key in this) {
+                if (key != 'toString') {
+                    output += key + ':' + this[key] + '<br>';
+                }
+            }
+            return output;
+        };
+
+        document.write(student);
+        document.write('----------------------------------------------' + '<br>');
+
+        for (var key in student) {
+            document.write(student[key] + '<br>');
+        }
+        document.write('----------------------------------------------' + '<br>');
+        //student 객체 안에 name , kor ,mat , hobby, toString 
+        delete (student.hobby); //객체안의 hobby 속성 제거 
+        document.write(student.hobby + '<br>');
+        document.write('<h2>속성제거 후</h2> ');
+        document.write(student);
+
+
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

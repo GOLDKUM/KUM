@@ -1,0 +1,49 @@
+﻿﻿
+<!DOCTYPE html><!--어떤건 배열로 받고 어떤건 그냥 받고를 확인할것 그리고 전체적으로 눈으로 보면서 복습할껏-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table {
+            width: 500px;
+            margin: 50px auto;
+            background-color: darkgreen;
+        }
+
+        td {
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onkeyup = function () {
+            var tds = document.getElementsByTagName('td');
+            if (event.keyCode >= 96 && event.keyCode <= 104) {
+                // 우측 키보드 숫자
+                for (var i = 0; i < tds.length; i++) { // 일반 for문
+                    tds[i].style.backgroundColor = 'white';
+                }
+                tds[event.keyCode - 96].style.backgroundColor = 'yellow';
+            }
+
+            if (event.keyCode >= 48 && event.keyCode <= 56) {
+                // ex2. 윗 키보드 숫자-red바탕색
+                for (var i = 0; i < tds.length; i++) {
+                    tds[i].style.backgroundColor = 'white';
+                }
+                //tds[event.keyCode - 48].style.backgroundColor = 'yellow'; ex1
+                tds[event.keyCode - 48].style.backgroundColor = 'red'; // ex2
+            }
+        };
+    </script>
+</head>
+<body>
+    <table>
+        <tr><td>0</td><td>1</td><td>2</td></tr>
+        <tr><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>6</td><td>7</td><td>8</td></tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function Student(name, kor, mat) {
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+        }
+        Student.prototype.getSum = function () {
+            return this.kor + this.mat;
+        }
+        Student.prototype.getAvg = function () {
+            return this.getSum() / 2;
+        }
+        Student.prototype.toString = function () {
+            return this.name + '(' + this.kor + ',' + this.mat + ',' + ',총점:' + this.getSum() + ',평균' + this.getAvg() + ')';
+        }
+        var students = [new Student('홍', 70, 1000),
+            new Student('홍', 100, 90),
+            new Student('홍', 77, 88),
+            new Student('홍', 100, 40),
+            new Student('홍', 60,55),
+        ]
+        //원데이터 출력
+        //document.write('원데이터' + students);
+        students.forEach(function (data) {
+            document.write(data + '<br>');
+        }
+            );
+        //정렬된 데이터(총점 기준으로 내림차순 정렬)
+        students.sort(function (left, right) {
+            return left.getSum - right.getSum;
+        });
+        students.forEach(
+            function (data) {
+                document.write(data + '<br>');
+            }
+        );
+        //1등부터 3등까지만 출력
+        students.slice(0.3).forEach(
+            function (data) {
+                document.write(data + '<br>');
+            }
+        );
+
+        // 원데이터 출력
+        document.write('<h2>원데이터</h2>');
+        students.forEach(function (data, idx) {
+            document.write(idx + ':' + data + '<br>');
+        });
+        // 총점 기준으로 내림차순 정렬
+        students.sort(function (left, right) {
+            return left.getSum() - right.getSum();
+        });
+        // 정렬된 데이터 출력
+        document.write('<h2>총점기준으로 내림차순 정렬</h2>');
+        students.forEach(function (data, idx) {
+            document.write(idx + ':' + data + '<br>');
+        });
+        // 1등부터 3등까지만 출력
+        document.write('<h2>1~3등</h2>');
+        students.slice(0, 3).forEach(function (data, idx) {
+            document.write(idx + 1 + '등:' + data + '<br>');
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #show{width:100px; height:100px; background-color:lightyellow;
+              border-radius:20px;
+        }
+        *{margin:0 auto; text-align:center;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('button').click(function () {
+                $('#show').toggle('slow');
+            });
+            $('#goShow').click(function () {
+                $('#show').show('fast');
+            });
+            $('#goHide').click(function () {
+                $('#show').hide();
+            })
+
+        });
+    </script>
+</head>
+<body>
+    <button>토글링</button>
+    <h1 id="goShow">보이게</h1>
+    <h1 id="goHide">사라져</h1>
+    <h1 id="show"></h1>
+</body>
+</html>

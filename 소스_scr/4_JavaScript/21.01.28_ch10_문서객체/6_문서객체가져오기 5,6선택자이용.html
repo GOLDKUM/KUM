@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            //.header(선택자)를 첫번쨰 하나 - 5번쨰 방법 
+            var header1 = document.querySelector('.header');
+            header1.innerHTML='교환'
+            //.header(선택자)다 가져오기 - 6번쨰 방법 
+            var head = document.querySelectorAll('.header'); //배열로 받습니다.
+            for (var idx in head) {
+                //head[idx].style.color = 'red';
+                //head[idx].style.backgroundColor = 'yellow';
+                head[idx].style.cssText
+                    ='color:red;background-color:yellow';
+                //document.body.style.backgroundColor
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1 class="header">HEADER1</h1>
+    <h1 class="header">HEADER2</h1>
+</body>
+</html>

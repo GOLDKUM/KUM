@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        setTimeout(function () {
+            alert('실행후 3초 지났습니다.')
+        }, 3000);
+        var cnt = 0;
+        nowTime = new Date().getTime();//현대 밀리세컨
+        while (new Date().getTime() < nowTime + 1000) {
+            cnt++;
+        }
+        document.write('1초 동안' + cnt + '번 while문 반복수행');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

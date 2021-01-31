@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>index</title>
+    <script>
+        window.onload = function () {
+            //특정한 이벤트를 할때 이것을 자주 사용합니다.
+            //h1태그생성 - nextNode 생성 - 생성된 textNode h1 추가 -
+            var h1 = document.createElement('h1');
+            var textNode = document.createTextNode('추가한 테스트');
+
+            //생성된 textNode를 h1에 연결
+            h1.appendChild(textNode);
+
+            //h1을 body(document)에 연결
+            document.body.appendChild(h1);
+
+            //img 태그 생성 - src속성 지정 - body에 연결 
+            //img 태그 생성
+            var img = document.createElement('img');
+            img.setAttribute('src', 'ch10_img/orange.jpg');
+            //src속성
+            img.setAttribute('alt', '추가한 오렌지');
+            //body에 연결
+            document.body.appendChild(img);
+
+
+            document.body.innerHTML += '<h1>추가</h1>';
+        };
+
+    
+
+    </script>
+</head>
+<body>
+    <h1>Text Node</h1>
+    <img src="ch10_img/orange.jpg" />
+
+</body>
+</html>

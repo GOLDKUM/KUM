@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var arr = [1, 2, 3]; //출력 일반for,for-in문,for-each문
+        for (var idx in arr) {
+            document.write(idx +'번쨰:'+arr[idx]+'<br>');
+        }
+
+        var object = { name: '홍길동', age: 32 }; //출력 반드시 for in문만 사용가능
+        for (var key in object) {
+            document.write(key + ':' + object[key] + '<br>');
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
