@@ -1,0 +1,96 @@
+2021-02-04
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+1.getwd()
+=현재 작업중인 디렉토리를 불러오는 함수
+
+2.setwd()
+=작업중인 디렉토리를 ()안의 위치로 변경
+
+3.txt,csv타입으로 저장
+write.csv 
+write.table(data,file="파일명",append=F,quote=T,sep=",",
+, na = "NA", dec = ".", row.names = TRUE,
+col.names = TRUE, fileEncoding = "")
+append : TRUE기존 파일 내용 뒤에 내용추가. FALSE일 경우 새롭개 내용추가
+quote : 변수 이름과 문자열에 쌍따옴표를 표시 여부
+sep :  데이터와 데이터 사이를 무엇으로 구분할지를 입력합니다. 
+na : 결측치를 어떻게 표시할지 입력합니다. 
+dec : 기본값은 "." 입니다. 소수점을 어떤 기호로 표시할지 입력합니다. 
+row.names : 기본값은 TRUE 입니다. 행의 이름
+col.names : 기본값은 TRUE 입니다. 열의 이름
+fileEncoding : 파일 인코딩 방식을 결정합니다. 
+
+4.txt,csv타입으로 불러드림
+read.csv()
+read.table()
+data<-read.table("v파일명",header=T,sep=",",stringAsFactors=F,comment.char='#',
+		fileEncoding="UTF-8",enconding="")
+header=T txt에 있는 변수명을 그대로 가져온다
+stringsAsFactors 문자열 컬럼을 팩터화 할 것인지
+fileEncoding : 파일 인코딩 방식을 결정합니다. 
+encoding:R의 인코딩을 지정합니다.
+
+
+5.apply()함수
+apply 계열 함수는 주어진 함수 연산을 특정 단위로 쉽게 할 수 있도록 지원하는 함수
+apply 계열 함수 중 가장 기본이 되는 함수으로, 행(Row) 또는 열(Column) 단위의 연산
+1-행단위 /2-열단위 연산
+ex)apply(date,Margin,fun)
+apply(data, 2, FUN=mean)  # 열별 평균
+apply(data, 2, FUN=sd)    # 열별 표준편차
+apply(data, 2, FUN=sum)   # 열별 합계
+apply(data, 2, FUN=median)# 열별 중앙값
+apply(data, 2, FUN=min)   # 열별 최소값
+apply(data, 2, FUN=max)   # 열별 최대값
+
+lapply()
+list + apply  실행결과가 list형태로 출력! 
+vector 또는 list 를 받아 list 를 반환한다.
+ex)lapply(date,FUN,...)
+lapply(data, mean)
+lapply(data, quantile)
+lapply(data, quantile, 1:3/4)
+
+sapply()
+simplification apply 행렬과 벡터등으로 결과를 반환 
+sapply(date,FUN,...,SIMPLIFY=T,USE.NAMES=T)
+SIMPLIFY=T(기본값) 벡터나,행렬로 반환/F-리스트로반환
+USE.NAMES:T이름속성 반환 /F 이름 속성없이 반환
+
+vapply()
+value simplification apply/ sapply()함수와 비슷하지만
+FUN.VALUE와 호환하는지 확인합니다. 
+vapply(date,FUN,FUN.VALUE,USE.NAMES=T)
+vapply(irisList, mean, FUN.VALUE=numeric(1))
+
+mapply()
+sapply()와 유사하지만 다수의 인자를 함수에 넘긴다는 차이가 있습니다
+ex)
+m1<-list(a=c(1:5),b=c(6:10))
+m2<-list(c=c(11:15),d=c(16:20))
+mapply(sum,m1,m2)
+
+tapply()
+tapply() 벡터등 저장된 데이터를 주어진 기준에 따라 그룹으로 처리하는 함수입니
+tapply(
+  data,      # 벡터 데이터
+  INDEX,  # 데이터를 그룹으로 묶을 색인. 팩터를 지정해야 하며 팩터가 아닌 타입이 지정되면
+          # 팩터로 형 변환된다.
+  FUN,    # 각 그룹마다 적용할 함수 
+  ...,    # 추가 인자. 이 인자들은 FUN에 전달된다.
+  deafult:기본값은 NA이며 결측값일 경우 출력될 값 입니다.
+)
+ex)
+tapply : 그룹화 처리를 위한 apply
+tapply(iris$Sepal.Length, iris$Species, mean)
+tapply(iris$Sepal.Length, iris$Species, sd)
+
+by()
+그룹화 처리를 위한 tapply 
+by(iris[,1:2], iris[,5], min)
+by(iris[,1:4], iris$Species, summary
+
+by() 와 tapply()차이
+by()함수는 여러열에 함수를 적용할수있습니다
+tapply()여러열에 집계연산을 수행할 수 없습니다.

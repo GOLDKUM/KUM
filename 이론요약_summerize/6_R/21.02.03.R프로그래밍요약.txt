@@ -1,0 +1,109 @@
+2021-02-03
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+★R프로그래밍 기본문
+
+★조건문
+	○if~else문
+		if(조건문:T/F){
+		조건을 만족할 떄 수행 할 코드}
+		else if(조건문:T/F){
+		조건을 만족할떄 수행 할 코드
+		}else{
+		조건문들이 만족하지 않을때 수행 할 코드 
+		}
+	○ifelse문 (자바의 3항연산자와 비슷) 		
+		if(조건문,T일떄 반환값,F일떄 반환값)
+		ex)
+		number<-3
+		ifelse((number%%2==0),"짝","홀)
+		[1]"홀"
+
+		
+★switch()함수
+	○switch(비교구문,실행구문1,2,3)	
+	ex)switch(1,"我"，"爱"，"你")
+	[1] "我"
+	ex)switch("one",one="我",two="爱",three="你")
+	[1] "我"
+
+★for-반복문
+	for(인자in반복index){
+	반복수행 할 코드}
+	ex)x<-c(2,5,4,8)
+	for(val in x){
+ 		 cat(val, '\t')
+	}
+
+★while()-반복문
+	while(조건식){
+	반복 수행 할 코드 
+	}
+
+★repeat{}-반복문
+	repeat{탈출조건}
+	cnt<-1
+	repeat{
+		cat("숫자",cnt)
+		cnt<-cnt+1
+		if(cnt>10)break; ※탈출
+		}
+
+★next{}
+	next는 다음 반복문을 건너뛰고 다음반복문을 수행합니다
+	ex)for(i in 1:5){
+		if(i==3)
+		next
+		print(i)
+	}
+
+
+★중위연산자
+	○%% 나머지
+	○%/% 목
+	○%*% (행렬의 곱)또는 벡터의 내적
+	○%o% (외적)
+	○%x% 크로네커 곱
+	○%in% 매칭연산자
+
+★R function 함수선언
+	name<-function(){
+	return(value)
+	}
+	ex)인수 값이 있는 함수 
+	sum <-function(x,y){
+	x+y
+	}
+	sum(3,4)
+	[1] 7
+	
+
+★가변인자
+	함수를 정의할때 인자목록에 ... 넣어주면 가변인자 사용
+	a<-function(...){
+  		args<-list(...)
+  		for(i in args){
+   		 cat(i)
+  		}
+	}
+	a(1,2)          12
+	a(1,2,3,4)     1234
+
+
+★재귀함수
+	자기 자신을 호출하는 함수
+	countdown <- function(i) {
+	  cat(i, "\n")
+	  if (i <= 1) {
+	    cat("Start Run")
+	  } else {
+	    countdown(i-1)
+	  }
+	}
+	countdown(3)	
+
+
+
+
+
+	
