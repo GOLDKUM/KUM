@@ -1,0 +1,82 @@
+2021-02-05
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+데이터파악
+-head()는 데이터의 앞부분을 6행까지만 출력한다..
+-tail() 함수는 데이터의 뒤부분에서 6행을 출력한다.
+- View()는 엑셀과 유사하게 보여주는 기능
+-dim()은 데이터 프레임이 몇 행, 몇 열
+-str()는 데이터의 속성
+- summary()요약 통계량 출력
+-table() #빈도표 출력
+
+dplyr을 이용한 전처리
+★패키지 설치 
+install.packages("dplyr")
+library(dplyr)
+# dplyr 패키는 %>% 기호를 이용해서 함수들을 나열하는 방식 코딩
+
+★데이터 전처리(Preprocessing)-dplyr 패키지
+○filter()          행 추출
+ex)exam %>% 
+  filter(class==1 | class==2 | class==3)
+# class가 1이거나 2이거나 3인 데이터 추출
+사용법은 subset()과 동일
+
+○select()         열(변수) 추출
+ex)exam %>% 
+  select(class, english, math) # 추출하고자 하는 변수만 select함수안에
+
+○arrange()       정렬
+ex)exam %>% arrange(class, desc(math) ) # class오름차순, class가 같은 경우 math내림차순(desc,-)
+
+○mutate()       변수 추가(새필드)
+ex)exam %>%  # 파생변수를 한꺼번에 두개 이상 추가해서 분석하기
+  mutate(total = math + english +science,
+         avg = round((math + english +science)/3)) %>% 
+  head
+
+○summarise()  통계치 산출
+ # summarise안에 들어갈 수 있는 요약함수들 : mean, sd, sum, min, max, median, n
+exam %>% 
+  summarise(mean_math = mean(math),
+            mean_eng  = mean(english),
+            sd_math = sd(math),
+            sd_eng = sd(english))
+
+○group_by()    집단별로 나누기
+ 보통은 group_by() + summarise() 이렇게 같이 쓴다.
+exam %>% 
+  group_by(class) %>% 
+  summarise(mean_math = mean(math),
+            mean_eng  = mean(english),
+            mean_sci  = mean(science))
+
+# mpg 회사별(manufacturer)로 "suv 자동차의 도시 및 고속도로 통합 연비 평균을 구해 내림차순으로 정렬하고,
+ 1~5위 까지 출력하기
+mpg <- as.data.frame(ggplot2::mpg)
+mpg %>% 
+  filter(class=='suv') %>% 
+  group_by(manufacturer) %>% 
+  mutate(total = (cty+hwy)/2) %>% 
+  summarise(tot_mean = mean(total)) %>% 
+  arrange(desc(tot_mean)) %>% 
+  head(5)
+
+○left_join()      데이터 합치기(열)
+#left_join(data1, data2, by="기준 삼은 컬럼명")
+
+
+○bind_row()    데이터 합치기(행)
+#bind_rows(data1,data2)
+#자동으로 동일한 컬럼 name끼리 합쳐진다. 
+
+자주사용하는 요약통계량 
+mean()    평균
+sd()        표준편차
+sum()     합계
+median() 중앙값
+min()      최소값
+max()      최댓값
+n()         빈도
