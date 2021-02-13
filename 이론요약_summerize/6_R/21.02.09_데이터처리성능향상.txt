@@ -1,0 +1,58 @@
+2021-02-09
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+데이터처리 향상 
+1. plyr패키지 : 데이터 분할, 함수적용 등을 사용하는 함수 포함.
+즉! 분석하기 쉬운 형태로 나누어서 다시 새로운 형태로 만들어주는 패키지
+apply(), lapply(), sapply() 함수를 대체할 수 있습니다.
+install.packages("plyr")
+library(plyr)
+
+xyply(.데이터, 적용방향,적용함수.....) ex. adply, ddply
+x:입력 데이터 타입
+y:출력 데이터 타입
+타입(a:array,l:list,d:data.frame,m:multiple inputs, r:repeat multiple times)
+
+ddply(.data=iris, .(Species), function(group){
+  data.frame(SLmean = mean(group$Sepal.Length),
+             SWmean = mean(group$Sepal.Width))
+})
+
+summarise : 뒤에 나오는 변수들만 출력
+ddply(iris, .(Species), summarise, SLmean=mean(Sepal.Length), SWmean = mean(Sepal.Width))
+
+데이터 재구조화
+install.packages("reshape2")
+library(reshape2)
+
+5,6번쨰 칼럼을 고정하고, 나머지 칼럼을 variable과 value로 변환
+-data<- melt(airquality,id=c("Month","Day"),na.rm=TURE)
+melt(데이터,함수에 전달할 인수,na.rm=F(기본값),value.name="저장할 변수이름")
+
+행과 열의 형태로 데이터 표시 (수식=행~열),data.frame반환
+dcast결과 데이터 프레임
+-dcast(data,Month~variable,sum)
+-dcast(data,Month+Day~variable,NULL)
+
+행과 열의 형태로 데이터 표시 (수식=행~열),martrix 반환
+acast결과 벡터/행렬/배열 타입
+-acast(data,Month~variable,sum)
+-acast(data,Month+Day~variable,sum)
+-acast(data,Day~variable~Month,sum)
+
+data.table
+데이터 테이블 
+data.table은 data.frame을 상속한 것으로  구문도 data.frame보다 편리하며 속도가 빠릅니다 
+install.packages("data.table")
+library(data.table)
+iris_t<-as.data.table(iris)
+data.table의 기본 문법 
+ iris_t[ 행 , 작업, 그룹핑 ]
+
+데이터 테이블의 색인
+iris_t[,Sepal.Length]    (벡터로 출력)
+iris_t[,'Sepal.Length']    (데이터 테이블로 출력)
+
+데이터 테이블 그룹연산
+iris_t[, mean(Sepal.Length), by = 'Species']
