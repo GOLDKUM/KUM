@@ -1,0 +1,38 @@
+2021-02-15
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+★마크다운 
+
+마크 다운 문법으로 코드를 작성해 [HTML](https://ko.wikipedia.org/wiki/HTML)로 변환
+HTML,워드,PDF등 다양한 포맷으로 저장 가능 
+
+   마크다운 문서 생성
+	[File -> New File -> R Markdown]
+
+
+   R마크다운 
+	```{r}
+	작성하려는 코드 
+	```
+
+    예제)
+	#gapminder::gapminder 데이터 셋을 이용하여 년도별로 gdp와 기대수명과의 관계를 
+	산점도를 그리고 대륙별 점의 색상을 달리 시각화
+	```{r}
+	ggplot(gapminder,aes(x=gdpPercap,y=lifeExp))+
+	  geom_point(aes(col=continent))+
+	  facet_wrap(~year)+
+	  coord_cartesian(xlim=c(0,4000))
+	```
+
+      문법
+	*기울임체*
+	**강조체**
+	~~취소선~~ 
+	문자 앞뒤[네이버](http://www.naver.com)
+	
+	#가장 크게(1단계)
+	## 크게(2단계)
+	###조금크게(3단계)
+	####보통(4단계)
+
