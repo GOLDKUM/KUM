@@ -1,0 +1,87 @@
+2021-02-18
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+★테스트 마이닝
+
+문자로 된 데이터에서 가치 있는 정보를 얻어 내는 분석 기법 
+SNS 나 웹 사이트에 올라온 글을 분석해 사람들이 어떤 이야기를 나누고 있는지 파악할 떄 활용 
+형태소 분석(Morphology Analysis):문장을 구성하는 어절들이 어떤 품사로 되어 있는지 분석
+분석 절차
+	-형태소 분석
+	-명사, 동사 형용사 등 의미를 지닌 품사 단어 추출
+	-빈도표 만들기
+	-시각화
+
+★패키지 
+install.packages('rJava')
+install.packages('memoise')
+install.packages('KoNLP')
+library(KoNLP)
+library(dplyr)
+
+★데이터 불러오기
+txt<-readLines('txt데이터.txt')
+
+★특수문자 제거
+install.packages('stringr')
+library(stringr)
+txt<-str_replace_all(txt,"\\w","")
+
+★명사 추출
+nonus<-extractNoun(txt)
+
+★추출한 명사list를 문자열 벡터로 변환,단어별 빈도표
+wordcount<-table(unlist(nouns))
+
+★데이터프레임으로 변환
+data_frame_word<-as.data.frame(wordcount,stringAsFactors=F)
+
+★변수명 수정
+data_frame_word<-rename(df_word,
+			word=Var1,
+			freq=Freq)
+
+★두 글자 이상 단어 추출
+data_frame_word<-filter(data_frame_word,nchar(word)>=2)
+top_20<-data_frame_word%>%
+	arrange(desc(freq))%>%
+	head(20)
+
+★워드클라우드 패키지
+install.packages('wordcloud')
+library(wordcloud)
+library(RColorBrewer)
+
+col<-brewer.pal(8,'Dark2')
+
+★워드클라우드
+wordcloud(words=data_frame_word, #단어
+	freq=data_frame_word, #빈도
+	min.freq=2, #최소 단어 빈도
+	max,words=200, #표현 단어 수 
+	random.order= F, #고빈도 단어 중앙 배치
+	rot.per=.1, #회전 단어 비율
+	scale = c(4,0.3), #단어 크기 범위
+	colors= col #색깔 목록
+	)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
