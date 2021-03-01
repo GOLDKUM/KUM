@@ -1,0 +1,49 @@
+2021-02-26
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+예외처리
+	오류발생 가능성이 있는 부분에 대한 처리를 미리 프로그래밍 
+
+try~except
+	try:
+		#예외가 발생할 가능성 있는 문장
+	except Exception:
+		#예외가 발생했을 경우 실행할 문장(생략가능)
+	else:
+		#try절이 예외를 발생시키지 않을 때 실행해야하는 코드에 사용
+		(잘사용하지 않음)
+
+raise
+	raise는 강제로 예외를 발생해야 할 필요가 있을 떄 사용
+	ex)
+	def insert(data):
+		if len(data)==0:
+			raise Exception("길이가 0입니다")#강제 에러 발생! 
+		print(data,"을 입력",sep="")
+	
+	호출
+	data=[]
+	try:
+		insert(data)
+	except Exception as e:
+		print(e.args[0])
+	else:
+		print("정상 실행되었습니다.")
+	finally:
+		예외 발생 유/무와 상관없이 항상 실행 
+
+추상 클래스와 추상 메서드
+	추상 클래스(Abstract class)는 객체를 생성할 수 없으며 반드시 상속을 통해서만 사용
+	추상 메서드(Abstract method)는 구현부가 없고 함수 선언부만 존재하는 함수
+	파이썬에는 자바처럼 추상클래스 또는 추상메서드를 위한 키워드가 없기떄문에 
+	raise를 통한 강제 에러발생으로 마치 추상클래스와같은 역할을 함 
+	ex)
+		class Shape:
+			def __init__(self):
+				raise NotImplementedError
+		#※자식클래스에서 재정의하지 하지않고 사용하게 되면 에러가 발생하겠죠~ 
+
+	
+	
+	

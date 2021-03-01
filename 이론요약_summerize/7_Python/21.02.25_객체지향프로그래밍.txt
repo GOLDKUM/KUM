@@ -1,0 +1,80 @@
+2021-02-25
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+클래스
+class 클래스명(상속받을클래스명):
+    함수나 변수들 선언
+
+변수와 메소드
+	 객체를 이용해 데이터를 저장하기 위해 ▶ 변수
+ 	객체 고유의 기능을 갖기 위해           ▶    메서드
+★self
+	self를 인스턴스 메서드의 인자로 정의해서 자신 객체의 멤버를 참조할 수 있도록 하는 것
+	ex)
+	class Person:
+   		name = "홍길동"
+    		gender = "남자"
+   		 age = 30
+   		 def print_info(self): # 객체만 실행가능한 메소드 = 인스턴스 메소드
+
+★파이썬에서 주의
+	☆파이썬은 클래스와 인스턴스(객체)의 이름공간 분리되어 있음
+	☆클래스와 인스턴스의 변수명이 다를 수 있다
+	☆동적으로 인스턴스(객체)에 멤버 추가 가능
+
+★클래스 메소드 vs. static 메소드
+	인스턴스 메소드 : 첫 인자에 self를 꼭 삽입. 객체를 통해서 호출할 메소드
+	클래스 메소드 : @classmethod를 통해서 선언한 메소드. 첫 인자에 cls(clazz)를 꼭 삽입.
+		       클래스 메소드는 인스턴스가 공유하는 클래스 데이터를 사용
+	static 메소드 : @staticmethod를 통해서 선언한 메소드.
+	클래스 메소드,static메소드 객체를 만들지 않고 클래스 이름으로 참조 가능
+
+★생성자와 소멸자
+	☆생성자함수를 통한 멤버변수의 초기화 
+	☆파이썬은 함수를 중복정의(오버로딩) 불가 
+	☆생성자 함수도 중복정의 불가 
+	__init__() :init (self[, 매개변수1, ...]) 객체가 생성될 때 자동 실행
+	__del__() :del (self) 객체가 소멸될 때 자동 실행
+
+★상속
+	#super()는 부모 클래스의 멤버를 참조
+		Person.__init__(self,name,gender) Person이라는 클래스에 __init__시스템 메소드를 가지고온다
+        		super().__init__(name,gender)      부모클래스의 __init__시스템 메소드를 가지고온다
+
+★소스를 보면서 한눈에★
+부모 클래스
+	class Person:
+    		"name과 gender를 갖는 Person 타입"
+  		 def __init__(self, name, gender): 
+      		 print("Person 객체를 생성합니다")
+      		 self.name = name
+     		 self.gender = gender
+    	def __del__(self):
+     		 print("Person 객체를 소멸시킵니다")
+	def print_info(self):
+        		 print("일반메소드 - {}님은 {}입니다".format(self.name, self.gender))
+    	def __str__(self):
+        		return "일반메소드 - {}님은 {}입니다".format(self.name, self.gender)
+
+자식 클래스
+	class Student(Person):
+    	"name과 gender에 major 변수를 갖는 Student 타입(객체 갯수도 포함)"
+   	 __count = 0; # static 변수
+   	 
+	def __init__(self, name, gender, major): #__init__ 객체가 생성되면 자동실행
+        		Student._Student__count += 1 # 객체가 생성될 때마다 __count증가
+        		Person.__init__(self, name, gender)
+        		self.major = major
+    	def __del__(self):
+        		Student._Student__count -= 1 # 객체가 소멸될 때마다 __count 감소
+    	def print_info(self):
+        		print("%s님은 전공 %s에 %s입니다" % (self.name, self.major, self.gender))
+    	def __str__(self):#마치 java의 toString과 유사~ 
+        		return super().__str__() + " 전공은 {}입니다".format(self.major)
+        		#return Person.__str__(self) + " 전공은 {}입니다".format(self.major)
+    	@classmethod
+    	def get_count(cls):
+        		return Student._Student__count
+
+	

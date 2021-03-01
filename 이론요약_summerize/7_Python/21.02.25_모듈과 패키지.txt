@@ -1,0 +1,51 @@
+2021-02-25
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+모듈 & 패키지
+
+파이썬 모듈 
+파이썬 모듈은 파이썬 정의와 문장을 담고 있는 파일(함수, 변수, 클래스가 있는 *.py파일)
+
+import
+	패키지 사용자는 패키지에서 개별 모듈을 가져올 수 있음
+	상위 패키지를 import 한다고 해서 하위 패키지까지 로드되지 않음
+	한번 로드된 패키지는 다시 로드되지 않음
+
+import 방법
+	import A - A 모듈을 가져옴
+	import A as B - A모듈을 B이름으로 가져옴
+	from A import B - A모듈안에 B함수(A패키지안에 B모듈)를 가져옴
+	from A import B as C - A모듈안에 B함수(A패키지안에 B모듈)를 C이름으로 가져옴
+	from A.B import C - A패키지안에 B모듈안에 C함수를 가져옴
+	from A.B import C as D- A패키지안에 B모듈안에 C함수를 D이름으로 가져옴
+	ex)
+		from time import ctime as ct
+		ct() #출력
+		del ct # 삭제 
+	
+dir() 모듈이 정의한 이름을 정렬된 문자열 목록으로 반환 
+패키지 리로드
+	import importlib
+	importlib.reload(sample_pac)
+
+패키지
+(패키지를 만들떄 패키지의 __init__.py 파일의 코드에 __all__ 속성
+으로 모듈의 목록을 정의하면 패키지 import *가
+발생할 때 가져와야 하는 모듈 이름의 목록으로 간 주함)
+※패키지 사용자는 패키지에서 개별 모듈을 가져올 수 있음
+※한번 로드된 패키지는 다시 로드되지 않음
+  다시 로드시키려면 커널을 재시작
+
+	import sys #패키지경로추가 
+	sys.path.append('C:/big/src/pylib')
+	
+	import sample_pac # 상위패키지를 import한다고 하위패키지 import되지 않음
+
+	import sample_pac.ab.a #sample_pac 패키지를 로드합니다.  sample_pac 패키지 안의 ab 패키지 import함
+	from sample_pac.ab import a
+	a.hello() #Hello - a모듈 안
+
+from ..ab import a   .. (현재 패키지의 상위 패키지)
+	선행 점(. 또는 ..)을 사용하여 상대 가져 오기에 관련된 현재(.) 및 부모(..) 패키지를 나타냄
+	
