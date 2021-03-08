@@ -1,0 +1,151 @@
+2021-03-02
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+파일 입/출력 프로그래밍
+	데이터 저장 및 불러오기 
+	피클 이용
+	csv 읽기/쓰기
+	JSON 읽기/쓰기
+	HDF5 파일 읽기/쓰기
+
+
+open() : 파일 객체를 반환
+file_pointer = open(file_name, mode, encoding='ASCII')
+	file_pointer : 열린 파일 객체
+	파일 객체의 readline() 또는 readlines() 함수를 이용하여 데이터를 읽음
+	write() 함수를 이용하여 데이터를 씀
+	mode : 파일 열기 모드를 의미
+		r : 읽기 모드
+		w : 쓰기 모드
+		a : 추가 모드 - (w모드와 다르게 파일의 마지막에 내용 추가)
+		b : 바이너리 모드 – 피클 등을 사용하여 저장하거나 불러올 때는 바이너리 모드로 지정해야 함
+	 encoding : 파일의 인코딩을 지정
+		UTF-8 인코딩으로 저장되어 있는 파일이라면 encoding='UTF8'을 사용
+	simple ex)
+		쓰기
+		with open('data/sample_text.txt', 'a') as f:
+    		f.write('1 방법. Hello\nWorld\n')
+    		textlist = ['Python is easy.', 'R is easy.', 'Java is easy.']
+    		f.write('2 방법.')
+    		for line in textlist:
+        			f.write(line+'\n')
+    		f.write('3 방법.')
+    		f.writelines(textlist)
+		
+		읽기
+		with open('data/sample_text.txt', 'r') as txtfile:
+    		lines = txtfile.readlines() 
+    		print(lines)
+
+피클링
+	파이썬 객체 계층 구조가 바이트 스트림으로 변환되는 것
+	pickle.dump(obj,file,protocol=None,*,fix_imports=True)
+	pickler(file,protocol).dump(obj)
+	obj : 열려있는 파일에 저장할 객체
+	file : 피클링하기 위한 파일 객체
+		단일 바이트 인수를 받아들이는 write() 메서드가 있어야 함
+		open() 함수를 이용해 파일을 열 때 피클링하기 위한 모드는 ‘wb’
+	protocol : 프로토콜을 사용하기 위한 정수(0 ~ HIGHEST_PROTOCOL) 값
+		기본값은 DEFAULT_PROTOCOL, 음수이면 HIGHEST_PROTOCOL이 선택
+	fix_imports : 이 인수가 True이고 프로토콜은 3보다 작으면 파이썬 2에서 피클 데이터 스트림을 읽을 수 있음
+	
+	ex)쓰기
+	user_list = [user1, user2, user3]
+	with open('data/ch09_member.data','wb') as f:
+    		import pickle
+    		pickle.dump(user_list,f)
+	읽기
+	with open('data/ch09_member.data', 'rb') as f:
+    		ul = pickle.load(f)
+	for user in ul:
+    		print(user)
+
+CSV 형식 파일 읽기/쓰기
+	엑셀에서 선호하는 형식으로 데이터를 쓰거나 엑셀에서 생성된 CSV 파일의 데이터를 읽을 수 있음
+	일반적으로 csv 모듈의 reader()와 writer()를 이용
+	 메타정보를 저장하고 싶다면 csv 모듈의 DictReader와 DictWriter 클래스를 사용하여 딕셔너리 형식
+	
+	reader() 함수
+	csv.reader(csvfile,dialect='excel',**fmtparams)
+		csvfile : 데이터가 저장되어 있는 CSV 파일의 객체
+		dialect=’excel’ : 엑셀에서 생성한 CSV 파일의 일반적인 속성일 경우 기본값 ‘excel’을 사용
+		**fmtparams : 추가적인 속성을 부여할 때 사용
+			delimiter 속성(기본값은 ‘,’)은 필드 구분자를 지정
+			quotechar 속성(기본값은 ‘“’)은 인용할 문자를 지정
+				CSV 파일에서 읽은 각 행은 문자열 목록을 반환
+				quoting=csv.QUOTE_NONNUMERIC 속성을 지정하지 않으면 quotechar로 둘러싸인 문자가 아니어도 자동으로 데이터 형 변환이 수행되지 않음
+	DictReader
+		reader와 비슷하지만 딕셔너리 형식으로 불러옴
+		csv.DictReader(f,fieldnames=None,restkey=None, restval= None, dialect ='excel',*args,**kwds)
+			fieldnames : 파일객체 f가 헤더 정보를 포함하고 있지 않을 경우 필드의 이름들을 설정하기 위해 사용
+ 			restkey : 행에 필드 이름보다 많은 필드가 있으면 나머지 데이터가 restkey 속성에 지정된 필드 이름과 함께 저장
+ 			restval : 필드 이름보다 필드 수가 적으면 restval에 지정된 값으로 채워 짐
+	ex)
+	#header가 있는 csv파일을 딕셔너리데이터로 읽기
+	import csv
+	with open('text_data1.csv','r',encoding='UTF8') as f:
+		dict_reader = csv. DictReader(f)
+		for row in dict_reader
+			print(row['name'],row['age'],'row['email'],row['address'])
+	result
+	홍길동 20 kildong@hong.com 서울
+	윤석동 23 yun@hong.com 인천
+	마동길 22 ma@hong.com 안양
+	
+	writer() 함수
+	csv.writer(csvfile,dialect='excel',**fmtparams)
+	csvfile: 데이터를 저장하기 위한 CSV 파일의 객체
+	dialect = 'excel': 엑셀에서 생성한 CSV파일의 일반적인 속성일 경우 기본값
+	**fmtparams : 추가적인 속성을 부여할 때 사용
+		delimiter 속성(기본값은 ‘,’)은 필드 구분자를 지정
+		quotechar 속성(기본값은 ‘“’)은 인용할 문자를 지정
+		quoting 속성은 문자열을 quotechar로 인용할지 여부를 결정
+			csv.QUOTE_NONNUMERIC을 사용하면 숫자가 아닌 데이터만 quotechar로 인용
+	
+	DictWriter 클래스는 딕셔너리 데이터 행 별로 CSV 파일에 저장
+	csv.DictWriter(f,filednames,restval='',extrasaction='raise',dialect='excel',*args,**kwds)
+		fieldnames : 저장할 데이터의 헤더 정보를 지정
+		restval : 필드 이름보다 필드 수가 적으면 restval에 지정된 값으로 채워짐
+		extrasaction : extrasaction 인수는 ‘raise’일 경우 fieldnames 없는 필드면 error ,'ignore'일 경우 무시
+	ex)
+	with open('text_data2.csv', 'w', newline='', encoding='CP949') as f:
+    		writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
+    		writer.writerows(user_list)
+
+JSON 데이터
+	JSON(JavaScript Object Notation)은 데이터를 교환하기 위한 형식
+	 사람이 읽고 쓰기 쉽고, 기계가 분석하고 생성하기도 쉬움
+	
+	json.dump -파이썬 객체를 JSON 형식으로 변환
+		json.dump(obj,fp,skipkeys=False)
+		obj : JSON 데이터로 변환할 파이썬 객체
+ 		fp : JSON 데이터를 저장하기 위한 파일 객체
+ 		skipkeys : skipkeys가 True이면 기본 유형(str, int, float, bool, None)이 아닌키의 TypeError를 발생시키지 않음
+	
+	load() 함수는 JSON 형식 데이터를 파이썬 객체로 변환
+		json.load(fd,cls=None,object_hook=None)
+			fp : JSON 데이터가 저장되어 있는 파일 객체
+ 			cls : JSONDecoder의 서브클래스를 지정 그렇지 않으면 JSONDecoder가 사용
+ 			object_hook : object_hook은 디코딩 된 객체 리터럴의 결과로 호출되는 함수를 지정
+	
+HDF5
+	HDF 그룹에 의해 관리되고 있는 이기종 데이터를 저장, 관리, 처리하기 위한 고성능 데이터 소프트웨어 라이브러리 및 파일 형식
+	판다스(Pandas) 패키지의 read_hdf() 함수와 to_hdf() 함수를 사용해서 데이터프레임으로 읽거나 씀
+	
+	 pandas 라이브러리를 통해 hdf5 파일 읽어오기
+	ex)	#쓰기
+		import pandas as pd
+		iris_df=pd.DataFrame(iris_dic)
+		iris_df.to_hdf('iris2.hdf5',key="iris)
+		#읽기
+		iris_df2 = pd.read_hdf('iris2.hdf5', key='iris')
+		iris_df2
+
+	
+	
+		
+	
+	
+
+
