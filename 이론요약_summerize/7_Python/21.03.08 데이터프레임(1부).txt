@@ -1,0 +1,117 @@
+2021-03-08
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+데이터 프레임 
+
+★판다스 패키지
+	1차원 구조를 갖는 시리즈, 2차원 구조를 갖는 데이터 프레임 제공
+	결측치 처리, 크기 변경(열삽입 삭제), 데이터 정렬, 데이터 분할, 병합, 
+	데이터 프레임 생성, 부분 데이터 셋 추출, 피벗과 언피벗, 레이블링, 파일 입출력 등에 용이
+	 파일 입출력 : CSV 파일 또는 구분자에 의한 플랫 파일, Excel 파일, 데이터베이스 및 초고속 HDF5형식의 데이터 저장/로드를 위한 입출력 도구를 제공
+
+★판다스 DataFrame
+	 2차원(행, 열) 구조(엑셀 시트 구조)
+	행(Row)					열(Column)
+	-1개 행은 각각 다른 데이터를 갖는 튜플	-열 내의 모든 데이터는 같은 타입
+	-행의 이름과 인덱스(위치)를 가짐		-열의 이름과 인덱스(위치)를 가짐
+ 	-행의 이름은 인덱스와 같을 경우가 많음
+	DataFrame(data=None,index=None,columns=None,dtype=None,copy=False)
+	ex)	import pandas as pd
+		a = [1,2,3,4,5]
+		b = [6,7,8,9,10]
+		df = pd.DataFrame({'col1':a, 'col2':b})
+		#import numpy as np
+		#df = pd.DataFrame(np.c_[a,b], columns=["col1", "col2"])
+		
+★판다스 CSV파일 불러오기
+	pandas.read_csv(filepath_or_buffer,sep=',',delimiter=None,header='None',encoding=..,skiprow=....)
+		skiprow=[제외할 행들]
+		comment="#" #주석행 제외 지정하기
+
+★데이터 프레임의 열 이름 변경
+	data_df.columns=["name1","name2","name3"]
+
+★데이터프레임 조회
+	단일  조회
+		data_df['열이름'] or data_df.열이름
+		data_df.index=['index_name',..]
+
+	loc를 이용한 이름으로조회
+		data_df.loc['row','column']
+		ex) member_df.loc[[0:2],['Name']]
+		# 다음코드는 0행부터 2행까지 출력(2행 포함). 콜론(:)은 사이의 모든 행을 선택해 줌
+		loc[행조건]:행 조건에 맞는 모든 열을 반환
+	
+	iloc를 이용한 인덱스로 조회
+		data_df.iloc[행인덱스,열인덱스]
+
+★데이터 추가 및 삭제
+	DataFrame.drop(labels=None,axis=0,inplace=False)
+		labels:삭제할 index 또는 컬럼의 이름을 지정합니다.
+		axis:(0 또는 index)와 (1 또는 columns) 1이면 열을 삭제합니다.
+		inplace: True일 경우 데이터프레임에서 데이터를 삭제하고 None을 반환
+
+★데이터프레임의 요소 추가 
+	데이터프레임['새로운_열_이름']=[값1,값2,값3]
+	데이터프레임['새로운_열_이름']=pd.Series([2001,2002,2004],index=['index_number'])
+
+★딕션너리로 행추가
+	데이터프레임 추가가 아닐때 ignore_index=True 파라미터 지정
+	ex)
+	new_member = {"Name"  : "홍길동",
+              "Age"   : 13,
+              "Email" : "hong@abc.com",
+              "Address":"서울시 마포구"}
+	new_df = member_df.append(new_member, ignore_index=True)
+	(소스에 가시면 결과를 보실 수 있습니다.)
+
+★시리즈를 이용한 리스트 데이터의 행 추가
+	new_list = ["파이썬", 13, "abc@abc.com","서울시 마포구"]
+	new_series = pd.Series(new_list, index=member_df.columns)
+	new_df = member_df.append(new_series, ignore_index=True)
+	(소스에 가시면 결과를 보실 수 있습니다.)
+
+★정렬
+	행 또는 이름으로 정렬
+	DataFrame.sort_index(axis=0,level=None,ascending=True,inplace=False,kind='quicksort',na_position='last',
+				sort_remaining=True,by=None)
+			axis=1 열의 순서를 바꿈
+
+	값으로 정렬 
+	DataFrame.sort_values(by,axis=0,ascending=True,inplace=False,kind='quicksort',na_position='last')
+
+★기초통계분석
+	판다스에서 제공하는 통계분석은 기본적인 기술통계 및 데이터 요약
+	count : NA를 제외한 갯수
+		min : 최소값
+		max : 최대값
+		sum : 합
+		cumprod : 누적합
+		mean : 평균
+		median : 중앙값
+		quantile : 분위수
+		corr : 상관관계
+		var : 표본분산
+		std : 분산
+
+	DataFrame.describe(percentiles=None,include=None,exclude=None)#include='all'
+		percentiles :기본 값은[.25, .5, .75]. 25%, 50%, 75% 위치 데이터를 출력
+		include: 출력에 포함될 데이터의 유형을 지정합니다
+		exclude:출력에서 제외할 데이터의 유형을 지정합니다.
+		숫자 데이터일 경우 count, mean, std, min, max 및 하위 백분위 수, 상위 백분위 수 및 상위 백분율
+`		문자 데이터일 경우count, unique, top 그리고 freq
+
+★공분산, 상관계수
+	DataFrame.cov(min_periods=None) #공분산
+	DataFrame.corr(methond='person',min_periods=1)#상관계수
+	
+
+	
+	
+	
+
+	
+	
+	
+	

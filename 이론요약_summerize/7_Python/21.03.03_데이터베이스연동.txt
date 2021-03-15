@@ -1,0 +1,78 @@
+2021-03-03
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+데이터 베이스 연결 
+
+★order:
+	DB Browser for SQLite 설치
+	SQLite 버젼확인
+	1. sqlite3.connect() 함수를 이용해서 데이터베이스 연결(Connection) 객체를생성. 
+	2. Cursor 객체 생성
+	3. Cursor 객체의 execute() 메서드를 이용하여 SQL 구문 실행(불러오기,조회하기,수정하기,삭제하기)
+	4. Connection 객체의 commit() 메서드를 이용하여 변경된 내용을 데이터베이스에 반영(커밋; Commit)하거나 변경된 내용을 취소(롤백; Rollback)
+	5. 데이터베이스 연결 닫기
+
+
+★SQL lite
+★SQLite 데이터 베이스는 별도의 서버프로세스 없이 SQL을 사용하여 DB액세스할 수 있도록 만든 간단한 디스크 기반 데이터베이스를 제공하는 C라이브러리			
+	ex)import sqlite3
+	sqlite3.sqlite_version
+	
+
+★데이터 베이스 연결
+sqlite3.connect(database[,timeout,detect_types,isolation_level,check_same_thread,factory,cached_statemnet,uri])
+	ex)conn=sqlite('data/example.db') # DB 연결 객체 생성시, 파일이 없으면 파일 생성. 파일이 있으면 그 파일 연결
+	
+	☆sqlite3.Connection
+	cursor( ) 커서 객체를 생성
+	commit( )현재 트랜잭션을 커밋(변경사항 적용). 이 메서드를 호출하지 않으면 마지막 호출 이후 수행한 작업이 다른 데이터베이스 연결에서 볼 수 없음.
+	rollback( ) 마지막 호출 이후 데이터베이스에 대한 모든 변경 사항을 롤백(취소)
+	close( ) 데이터베이스 연결이 닫힙니다. 이 작업은 자동으로 호출되지 않음. commit()을 먼저 호출하지 않고 데이터베이스 연결을 닫으면 변경 사항이 손실됨.
+	execute(sql[,parameters])cursor() 메서드 를 호출하여 커서 객체를 생성하고 주어진 매개 변수로 커서의 execute() 메서드를 호출 한 다음 커서를 반환함. Connection의 execute(), executemany(),executescript() 메서드는 비표준임.
+	
+	☆sqlite3.Cursor
+	execute(sql[,parameters])
+	SQL 문을 실행. SQL 문을 매개변수화 할 수 있음
+	- qmark 스타일 : cur.execute("insert into people values (?, ?)", (who,age))
+	- named 스타일 : cur.execute("select * from people where name_last=:who and age=:age",{"who":who,"age":age})
+	close( )커서를 닫음( __del__() 메서드가 호출될 때는 커서가 닫히지 않음). 이 시점부터는 커서를 사용할 수 없음. 이후 커서에 어떤 작업이 시도되면 ProgrammingError 예외가 발생
+	
+	과정 예시
+	conn=sqlite3.connect("contact.db")
+	cursor=conn.cursor()
+	cursor.execute('SELECT*FROM contact')
+	#수정할 경우 conn.execute("UPDATE contact SET name='heo' WHERE email='heo@coderby.com')
+	#select문의 결과를 받는 함수 
+	## fetchall() - 결과를 모두 받을 때, 
+	## fetchone() - 결과를 한 행씩 받을 때, 
+	## fetchmay(n) - 결과를 n행 받을 때
+	members=cursor.fetchall()   
+	for member in members:
+		print(member)
+
+★cx_Oracle 
+	오라클데이터 베이스 연결 
+	connect() 함수를 이용해 Connection 객체를 생성하는 것만 다르고 나머지는 SQLite 데이터베이스와 같음
+	cx_Oracle.makedsn(host,port,sid=None)
+	cx_Oracle.connect(user=None,password=None,dsn=None)
+	host:데이터베이스가 설치되어 있는 컴퓨터의 주소, 오라클 데이터베이스 “localhost” 
+	port : 데이터베이스의 포트번호, 오라클은 주로 1521번 사용
+	sid : 데이터베이스 인스턴스의 고유 이름(System ID) 입니다. 오라클 Express  Edition을 설치했다면 sid는 xe
+	user: 데이터베이스 아이디
+	password: 데이터베이스 접속 비밀번호
+	ex)
+	import cx_Oracle # 데이터 베이스 설정(DBMS가 있는 서버 주소, 포트번호, sid등을 설정)
+	import cx_Oracle
+	oracle_dsn = cx_Oracle.makedsn(host="localhost", port=1521, sid="xe")     # conn 얻어오기
+	conn = cx_Oracle.connect("scott","tiger", dsn=oracle_dsn)
+	cursor = conn.cursor()                                                                  # cursor 얻어오기
+	sql = "SELECT * FROM EMP"
+	cursor.execute(sql)
+	emp = cursor.fetchall()
+	cursor.close()
+	conn.close()
+
+
+
+	
