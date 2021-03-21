@@ -1,0 +1,91 @@
+2021-03-09
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+★데이터 그룹화
+	☆groupby()는 데이터를 구분 할 수 있는 열(column)의 값들을 이용하여 데이터를 여러 기준에 의해 구분하여 
+	그룹화 한 후 기초 통계 함수등을 적용 할 수 있도록 함
+	DataFrame.groupby(by=None,axis=0,level=None,as_index=True,
+				sort=True,group_keys=True,squeeze=False,
+				observed=False,**kwargs)
+	   ex)iris_df = datasets.get_rdataset("iris", package="datasets").data
+	       iris_grouped=iris_df.groupby(iris_df.Species)#종류별로 단일열 그룹화 +기술통계가능! 
+	       iris_grouped2=iris_df.groupby([iris_df.Species,iris_df['Sepal.Length']])#종류별, 'Sepal.Length'별로 그룹화
+
+★데이터 구조 변경
+	☆와이드 포멧(wide format)		롱 포맷(long format)
+	가로로 긴 형식의 데이터 구조		세로로 긴 형식의 데이터구조
+	열 단위 데이터 구조			행단위 데이터 구조
+	피벗테이블(pivot table)		언피벗테이블(unpivot table)
+
+	☆melt()를 이용한 언피벗팅
+	pd.melt(data,id_vars,var_name,value_name)
+		id_vars : 기준이 되는 컬럼을 지정
+		var_name:var컬럼 명
+		value_name:value컬럼명
+
+	☆DataFrame.pivot_table(values=None,index=None,columns=None,aggfunc='mean',fill_value=None,
+				margins=False,dropna=True,margins_name='All')
+			index : #행 위치에 들어갈 열
+			columns : #열 위치에 들어갈 열
+			values: '#데이터에 사용할 열
+			aggfunc : 데이터 집계함수 
+
+★데이터프레임에 함수적용 
+	☆apply -데이터프레임이나 시리즈에 각 열또는 각 행에 함수 적용
+	DataFrame.apply(func,axis=0,raw=False,result_type=None,args=(),**kwds)
+		func:각 열 또는 행에 적용할 함수
+		axis:함수가 적용될 축.
+			-기본값(0또는 'index')이면 각 열 별로 함수가 적용
+			-1 또는 'columns'이면 각 행 별로 함수가 적용
+	ex)
+	import statsmodels.api as sm
+	iris_df = sm.datasets.get_rdataset("iris", package="datasets").data
+	iris_df.iloc[:,:-1].apply(np.round.head()) #넘파이의 round함수는 항목 별로 동작하는 함수
+				iris_df 마지막 열인 Petal.Width의 모든 열에 round함수 적용
+	iris_df.apply(np.sum,axis=0) #열별 sum
+	iris_df.apply(np.sum,axis=1) #행별 sum
+	
+	☆보통 apply는 람다함수와 많이 응용
+	ex)
+	avg = iris_df.apply(np.average)
+	iris_df.apply(lambda x : list(x-avg), axis=1)
+	
+	applymap
+	☆apply와 차이점!
+	apply : 행 또는 열단위로 함수적용 (데이터프레임이나 시리즈 적용가능)
+	applymap : 각 요소 하나하나 별로 적용 (데이터프레임에서만 가능)
+	ex)iris_df.applymap(lambda x : x**2)#모든요소에 제곱
+
+	map
+	-시리즈타입의 벡터만 가능
+	ex)
+	s = pd.Series([1,2,3,4,None])
+	s.map(lambda x : (x, x**2), na_action='ignore')#옵션 na_action='ignore' 연산적용이 안되는 부분은 적용하지 않도록!
+
+★데이터 일괄 변경하기
+	☆df.fillna(결측치를 어떤 측정값으로 바꿔줍니다.)
+	df.fillna(0)#모든 결측치를 0으로 바꾼다
+	df.fillna(method="ffill")# pad/ ffill : 결측치가 아닌 이전값으로 채움
+	df.fillna(method="bfill")# backfill/ bfill : 결측치가 아닌 다음값으로 채움
+	df.fillna(df.mean()):결측치를 변수별 평균으로 대체 
+	df.fillna(method="ffill", limit=1)#열별 한번만 결측치 대체
+ 	
+	☆replace 값을 변경한다.
+	replace(to_value, new_value, inplace=False)
+		- to_value를 new_value로 변경
+    		 - inplace=False : 변경된 내용을 반환. 데이터프레임 적용되지 않음
+    		 - inplace=True : 변경된 내용이 데이터 프레임에 적용되고 반환값은 없음
+	
+	☆where,mask 
+	where;조건이 만족하는 요소는 그대로 출력
+	차이점: where은 조건식이 참일떄 데이터를 두고 mask는 반대로 거짓일 겨우 살려둔다
+		
+	☆dropna(결측치 있는 데이터를 누락시킨다)
+	df.dropna() # 결측치가 있는 행 제거
+	df.dropna(how='all', inplace=True) # 행의 모든 열의 데이터가 다 결측치인 행만 제거
+	df.dropna(axis='columns') # 결측치가 있는 열들 제거
+	df.dropna(thresh=2)
+
+	☆astype (dtype 속성을 변경)
+	df['columns명']=df['columns명'].astype('str')#str,int등

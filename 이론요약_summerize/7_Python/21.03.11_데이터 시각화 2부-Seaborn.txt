@@ -1,0 +1,132 @@
+2021-03-11
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+★데이터 시각화(Seaborn)
+	시각화 라이브러리
+
+※참고	
+matplotlib을 기반으로 만든 고수준 그래픽 라이브러리 공식사이트 : https://seaborn.pydata.org/
+API : https://seaborn.pydata.org/api.html
+
+★Seaborn으로 그래프를 그리기 위한 단계 
+	1) 데이터 준비
+	2) 미적속성 설정
+	3) 함수를 이용하여 그래프 그리기
+	4) 그래프 출력, 저장
+
+★import seaborn as sns
+★sns.set(context='notebook',style='darkgrid',palette='deep',font='sans-serif',font_scale=1,color_codes=True,rc=None)
+	context  배율조정( 그래프 배율이 커짐)
+	style :white(기본), darkgrid, whitegrid, dark, ticke
+
+★set_palette()  컬러 팔레트 지정
+	●seaborn.set_palette(palette,n_colors=None)
+		palette : 씨본의 컬러 팔레트(deep, muted, bright, pastel, dark, colorblind), 
+		Matplotlib의 컬러맵 그리고 hls, husl, 색상 리스트 등
+		n_colors : 사이클의 색상 수. 기본 색상 수는 형식에 따라 다름
+	※파라미터 참고:https://seaborn.pydata.org/tutorial/color_palettes.html
+		        https://seaborn.pydata.org/generated/seaborn.color_palette.html#seaborn.color_palette
+
+	
+★set_context():플롯팅 컨텍스트 파라미터 설정
+	※ 레이블의 크기, 선 그리고 그래프의 다른 요소들에는 영향을 미치지만 전반적인 스타일에는 영향을 미치지 않음
+	●seaborn.set_contexxt(context=None, font_scale=1,rc=None)
+		context : dict, None 또는 {paper, notebook, talk, poster} 중 하나를 지정
+		 기본 컨텍스트는 "notebook"이고 다른 컨텍스트는 "paper", "talk"및 "poster"이며 각각 0.8, 1.3 및 1.6으로 배율이 조정
+		 font_scale : float, 선택사항, 글꼴 요소의 크기를 독립적으로 조정하려면 배율 인수를 별도로 지정
+
+★Seaborn함수 이용 그래프 그리기
+	☆관계형(Relational), 범주형(Categorical), 분포(Distribution), 회귀(Regression), 행렬(Matrix)과 관련된 그래프 함수들 제공
+	관계형-relplot(),scatterplot(),lineplot()
+	범주형-catplot(),stripplot(),swarmplot(),pointplot(),barplot(),countplot()
+	분포-displot(),boxplot(),,boxenplot(),kdeplot(),violinplot()
+	회귀-lmplot(),regplot()
+	행렬-heatmap()
+
+	
+★Relational plots: 관계형 그래프
+	●relplot([x,y, hue, size, style, data, row, …]) -관계형 플롯을 FacetGrid에 그리기위한 Figure 레벨 인터페이스입니다
+	●scatterplot([x, y, hue, style, size, data, …]) -몇 가지 의미 있는 그룹화가 가능한 산점도(scatter) 그래프를 그립니다.
+	●lineplot([x, y, hue, size, style, data, …]) -몇 가지 의미 그룹화가 가능한 선(line) 그래프를 그립니다
+
+	☆scatterplot()은 산점도 그래프를 그려줌
+	ex)
+	import seaborn as sns
+	sns.scatterplot(x='petal_length',y='petal_width',hue='species',style='species',data=iris)
+	
+	☆lineplot()-신뢰 구간을 나타내는 오차 밴드가 있는 단일 선 그래프
+	ex)
+	sns.lineplot(x="petal_length", y="petal_width", data=iris, 
+            hue="species", style="species", palette="dark")
+	
+	☆relplot- lineplot(),scatterplot()의 상위 개념 함수
+	# lineplot을 서브플롯으로 표현 : relplot
+	ax = sns.relplot(x="petal_length", y="petal_width", data=iris, hue="species",
+           		kind="line", # 기본값은 scatter, 
+           		col="species", # col 단위로 서브플롯 표현
+           		col_wrap=2) # 한줄에 표현될 서브플롯 수
+
+★Categorical plots : 범주형 그래프
+	●boxplot([x,y, hue,data, order, hue_order, …]) 범주와 관련된 분포를 표시하는 박스 플롯을 그립니다.
+	●stripplot([x, y, hue, data, order, …]) 하나의 변수가 범주형인 산점도를 그립니다.
+	●swarmplot([x, y, hue, data, order, …]) 중첩되지 않는 점들로 범주형 산점도를 그립니다.
+	●pointplot([x, y, hue, data, order, …]) 산점도 그림문자(glyph)를 사용하여 점 추정치 및 신뢰 구간을 표시합니다
+	●barplot([x,y, hue, data, order, hue_order, …]) 포인트 추정치와 신뢰 구간을 직사각형 막대로 표시합니다.
+	●countplot([x, y, hue, data, order, …]) 막대를 사용하여 각 범주 구간의 관측 수를 표시합니다
+	
+	☆stripplot 예시
+	sns.stripplot(x="species", y="petal_width", data=iris)
+
+	☆swarmplot 예시
+	sns.swarmplot(x="species", y="petal_width", data=iris)
+
+	☆ barplot 예시
+	 sns.barplot(x="sex", y="survived", data=titanic)
+	※번외(# barplot을 서브플롯으로 : catplot):
+	 sns.catplot(x="sex", y="survived", data=titanic, hue="class", ci=None,kind="bar", col="class")
+	
+	☆countplot예시
+	sns.countplot(x="deck", data=titanic, palette="Greens_d")
+	
+	☆pointplot예시
+	sns.pointplot(x="class", y="survived", hue="sex", data=titanic,
+             palette={"male":"b","female":"r"},
+             markers=["^","o"],
+             linestyles=['-','--'])
+
+★Distribution plots : 분포형 그래프
+	●violinplot([x, y, hue, data, order, …]) 박스 플롯과 커널 밀도 추정치의 조합을 그립니다.
+	●boxplot([x,y, hue,data, order, hue_order, …]) 범주와 관련된 분포를 표시하는 박스 플롯을 그립니다.
+	●boxenplot([x, y, hue, data, order, …]) 더 큰 데이터 세트를 위한 향상된 상자 플롯을 그립니다.
+	
+	☆boxplot 예시
+	sns.boxplot(y="sex", x="age", data=titanic, hue="survived")
+
+	☆violinplot 예시
+	sns.violinplot(y="sex", x="age", data=titanic, hue="survived")
+
+	☆boxenplot 예시
+	sns.boxenplot(x="alive", y="age", hue="adult_male", data=titanic)
+
+번외※ 쌍관계그래프
+	column별 데이터에 대한 상관관계나 분류적 특성을 바로 명령 한 줄로 확인할 수 있거든요.
+	sns.pairplot(data=iris, hue="species", palette="husl", markers=['o','s','D'])
+
+★Regression plots : 회귀형 그래프
+	●lmplot(x, y, data[, hue, col, row, palette, …]) -데이터와 회귀 모델 적합을 FacetGrid에 그립니다.
+	●regplot(x, y[, data, x_estimator, x_bins, …]) -데이터와 선형 회귀 모델을 그립니다/
+			regplot의 단점 : hue를 못 씀
+	
+	☆lmplot 예시
+	sns.lmplot(x="petal_width", y="petal_length", data=iris, hue="species")
+
+	☆regplot예시
+	sns.regplot(x="petal_width", y="petal_length", data=iris)
+
+★Matrix plots : 행렬형 그래프
+	●heatmap(data[, vmin, vmax, cmap, center, …]) 데이터를 색으로 인코딩 된 직사각형 행렬(히트맵)로 표시합니다
+	☆heatmap예시
+	iris.corr()
+	sns.heatmap(iris.corr(), vmin=-1, vmax=1, annot=True, cmap="YlGnBu",fmt=".1f")
+

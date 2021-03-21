@@ -1,0 +1,95 @@
+2021-03-10
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 수 있습니다>
+
+★데이터 시각화(matplotlib)
+	시각화 라이브러리
+	matplotlib, seaborn, folium(지도시각화),...
+	matplotlib : 파이썬에서 가장 많이 사용하는 시각화 라이브러리, 판다스에도 내부적으로 matplotlib 사용.
+
+★matplotlib 그리기 앞서
+%matplotlibp inline : 주피터노트북이 실행되는 브라우저에서 시각화!
+%config InlineBackend.figure_format='retina' ; 그래프의 해상도를 높임 'png'(기본) 'jpge', 'svg', 'pdf'
+
+★Matplotlib로 그래프를 그리기 위한 단계
+	1) 데이터 준비
+	2) 그래프 생성
+	3) 그래프 함수로 그리기
+	4) 그래프 커스터마이징
+	5) 그래프 출력 및 저장
+
+★Figure 객체:matplotlib에서 그래프를 그리기 위한 객체
+★도화지(Figure)를 plt.subplots()으로 분할해 각 부분에 그래프를 그리는 방식
+	import matplotlib
+	import matplotlib.pyplot as plt
+	plt.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, 
+			FigureClass=<class 'matplotlib.figure.Figure'>,clear=False>,clear=False,**kwargs)
+		num:정수 또는 문자열, 선택 사항, 기본값:None.  이 값이 제공되지 않으면 새그림이 만들어지고 그림 번호가 증가.
+		figure:(float,float),선택,기본값:None. 너비와 높이를 인치 단위로 지정.
+
+	plt.subplot(*args,**kwargs)
+		args:서브플롯의 위치를 설명하는 3자리
+		norw,ncols,index:3개의 정수가 nrows,ncols 및 index 순서로 있는 경우 그려질 하위 그림은 nrows 행과 ncols 열이
+		있는 표에서 인덱스 위치에 그려짐.
+		index는 왼쪽 상단 모서리에서 1부터 시작하여 오른쪽으로 증가
+	
+	matplotlib.pyplot.plot([x],y,[fmt],data=None,**kwargs)
+		fmt: 색, 점, 라인의스타일을 문자열로 지정. 예를 들면 ‘ro-’는 빨간색 동그란 점을 갖는 실선.
+			○점의 모양은 o(원), s(네모), v(역삼각형), ^(삼각형), x(x표시) 등
+			○선의 스타일은 '-'(실선), '--'(대시선), '-.'(대시닷선), ':'(점선), ''(선없음) 등
+			○linewidth: 선 두께
+			○linewidth: 실숫값
+	ex)
+	fig, axes = plt.subplots(2, 2, figsize=(8,5))
+	fig.suptitle("figure samplt plots")
+	axes[0,0].plot([1,2,3,4], 'ro-') # r(빨강), o(동그라미마크), -(실선)
+	axes[0,1].plot(np.random.randn(4, 10),
+               	np.random.randn(4, 10), 'cs-.') #c(cyan청록), s(네모), -.(대시닷)
+	axes[1,0].plot(np.linspace(0,5), np.cos(np.linspace(0,5)))
+	axes[1,1].plot([3,6],[3,5], 'b^:') # b(파랑), ^(세모마크), :(점선)
+	axes[1,1].plot([4,5],[5,4], 'kx--')#k(검정), x(X마크), --(대시선)
+	plt.show()	
+		
+	
+	plt.set()은 그래프의 제목과 축의 제목, 눈금, 눈금 레이블 등을 설정
+ 	set_xlim(), set_ylim()은 각각 X축과 Y축의 범위를 설정
+ 	set_xlabel(), set_ylabel()은 X축과 Y축의 레이블을 설정
+ 	set_xticks(), set_yticks()는 눈금 위치를 리스트 형식으로 지정
+	 set_xticklabels(), set_yticklabels()는 눈금의 레이블을 리스트 형식으로 지정
+ 	spines 속성은 그래프의 박스 경계를 설정
+ 	grid(True) 이면 눈금선을 보여줌
+	-> 더 많은 설정 참고할수있음  https://matplotlib.org/3.1.0/api/axis_api.html
+
+	축 공유-하나의 그래프 영역에 두 개 이상의 그래프를 그리면서 다른 축을 지정
+	※ 그래프 영역에 2~3개의 그래프를 그릴떄 사용
+	twinx() 함수는 x축을 공유하고 y축을 오른쪽에 표시해 주는 새로운 축 객체를 반환
+	twiny() 함수는 y축을 공유하고 x축을 위쪽에 표시해 주는 새로운 축 객체를 반환
+	
+	plot.suptitle()함수는 그래프의 제목을 설정
+	axes.Axes.set_title()함수는 그래프 영역 안에서 축의 제목을 설정
+
+
+★pyplot함수들 : https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html
+	☆fill(), fill_between() scatter()
+		•fill() 그래프의 영역을 색으로 채워 강조
+		•fill_between() : 두 개의 선분을 사이를 특정한 색으로 채워 강조
+		•scatter():산점도
+	☆bar(), axvline(), axhline(),...
+		• bar() 함수는 수직 막대그래프
+		• barh() 함수는 수평 막대그래프
+		• axhline()은 수평선, axvline()은수직선
+	☆hist(), boxplot(), violineplot()
+		•hist()데이터의 분포를 확인할 수 있는 가장 좋은 방법 중 하나는 히스토그램
+		•boxplot() 기술 통계학에서 다섯 수치 요약(최소값, 제1사분위,제2사분위,제3사분위,최대값)
+		•violineplot() 사분위수 그래프와 바이올릿 그래프는구간 별 데이터의 분포를 확인
+	☆ text(), annotate()
+		• text() : 함수 그래프에 텍스트 넣기 
+		• annotate() : 텍스트나 화살표와 같은 지시선 등을 그래프 상에 표기
+
+★그래프 저장
+	plt.savefig(fname, dpi, facecolor, format)
+	 	fname : 파일 경로나 파이썬의 유사한 객체를 나타내는 문자열
+		dpi : figure의 인치당 도트 해상도, 기본값은 100
+		facecolor : edgecolor로도 설정가능하며 배경 색상을 변경함, 기본값은 흰색
+		format : 명시적 파일 포맷 (png, svg, pdf...)
+		
