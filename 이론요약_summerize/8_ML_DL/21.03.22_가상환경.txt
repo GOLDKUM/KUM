@@ -1,0 +1,24 @@
+- 가상환경 생성
+    ⑴Anaconda Prompt를 관리자권한으로 실행 후
+    ⑵ pip 최신버전으로 업데이트 : >python -m pip install --upgrade pip
+    ⑶ 개발가상환경을 하나 생성해요
+	① python 버전을 3.7버전으로 가상환경을 생성(처음부터 기본 라이브러리 포함)
+               => conda create -n data_env python=3.7 openssl
+	② 지금 설치된 가상환경들 보여줘
+	   => conda info --env
+	③ 생성한 가상환경으로 전환
+               => activate data_env 
+	④ 파이썬 버전 확인
+	   => python -V
+	⑤ 개발툴은 웹기반의 IDE인 jupyter notebook을 이용하기 위해 먼저 설치
+                개발에 필요한 모든거 다 깔아
+               => conda install nb_conda
+	⑥ 환경설정파일을 하나 생성해요
+               => jupyter notebook --generate-config
+	⑦ working 디렉토리 설정
+               C:\Users\user\.jupyter\jupyter_notebook_config.py 안에 notebook_dir 검색
+	 c.NotebookApp.notebook_dir = 'c:/big/src'로 수정
+	⑧ conda install tensorflow=1.15
+	⑨ 특정 가상환경 삭제
+	=> conda remove -n data_env --all
+	⑩ ⑦번에서 작업했던 파일 원상복구

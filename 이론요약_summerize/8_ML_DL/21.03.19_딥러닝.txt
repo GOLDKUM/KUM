@@ -1,0 +1,52 @@
+딥러닝
+
+인공지능(머신러딩(딥러닝))
+
+						->분류(Classification)
+	->지도학습(가르쳐주는 학습Supervised Learning)
+머신러닝						->회귀(Regression)
+	->비지도학습(자율학습Unsupervised Learning) ->군집(Clustering)
+
+머신러닝을 쉽게 말하자면-데이터에서 답을 찾고 데이터에서 패턴을 발견
+
+머신러닝 프로그램 방식(분류분석)
+	☆데이터 확보 및 생성
+		import tensorflow.keras.utils as utils # 분류분석시 원핫인코딩 시
+		from tensorflow.keras.models import Sequential # 모델 생성 시
+		from tensorflow.keras.layers import Dense, Activation 
+
+	☆데이터 전처리 : 훈련데이터셋, 검증데이터셋, 시험데이터 셋,...
+		★데이터는 예시입니다.
+		# 학습데이터=훈련데이터
+		X_train = np.array([1,2,3,4,5,6,7,8,9]*10)
+		Y_train = np.array([2,4,6,8,10,12,14,16,18]*10)
+		# 검증데이터, 테스트데이터
+		X_val = np.array([1,2,3,4,5,6,7,8,9])
+		Y_val = np.array([2,4,6,8,10,12,14,16,18])
+	☆모델 구성
+		model = Sequential()
+		model.add(Dense(units=number, input_dim=1, activation="sigmoid"))
+		model.add(Dense(units=number, activation="elu"))
+		model.add(Dense(units=number, activation="elu"))
+		model.add(Dense(units=number, activation="softmax")) # softmax : 모든 출력결과의 합이 1
+	☆모델 학습과정 설정
+		model.compile(loss='categorical_crossentropy', optimizer='sgd',
+             		metrics=['accuracy'])
+	☆모델 학습 시키기
+		hist = model.fit(X_학습데이터, Y_학습데이터, epochs=300, batch_size=10, 
+                		verbose=2, validation_data=(X_테스트데이터, Y_테스트데이터))
+		- loss : 훈련 손실값 0에 가까울 수록 좋은 모델
+		- acc : 훈련 정확도  1에 가까울 수록 정확도가 높은 모델
+		- val_loss : 검증 손실값
+		- val_acc : 검증 정확도
+		손실 함수의 결과 값을 가장 작게 만드는 가중치 매개 변수를 찾는것
+		손실 함수의 값이 최소화되도록 W(weight(가중치)) 와 b(bias(편향))를 조정
+
+	☆모델 평가(시험데이터 셋으로)
+		score = model.evaluate(X_검증데이터, Y_검증데이터, batch_size=1)
+		score[0]-loss
+		score[1]-accuracy
+	☆모델 사용(입력값을 주어서 예측값을 받기)
+		model.predict('test_num')
+		
+		
