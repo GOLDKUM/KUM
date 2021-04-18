@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>학생들 리스트</title>
+    {% load static %}
+    <link href="{% static 'style.css'%}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <table>
+        <caption>Student List</caption>
+        <tr><th colspan="4"><a href="{% url 'students:register'%}">< 신규 학생 등록 ></a></th></tr>
+        <!--
+        <tr><th colspan="4"><a href="/students/register">< 신규 학생 등록 ></a></th></tr>
+        -->
+        <tr><th>이름</th><th>전공</th><th>학년</th><th></th></tr>
+        {% if student_list %}
+            {% for student in student_list %}
+                <tr>
+                    <td><a href="{% url 'students:detail' student.s_name%}">{{student.s_name}}</a></td>
+                    <td>{{student.s_major}}</td>
+                    <td>{{student.s_grade}}</td>
+                    <td>
+                        <button onclick="location='{% url 'students:modify' student.s_name %}'">수정</button>
+                        <button onclick="location='{% url 'students:delete' student.s_name %}'">삭제</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr><th colspan="4">Student : 현재 0명</th></tr>
+        {% endif %}
+    </table>
+</body>
+</html>
+
+
+
+
+
+
+

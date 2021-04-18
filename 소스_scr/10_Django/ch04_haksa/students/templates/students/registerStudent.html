@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>학생 등록</title>
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form action="{% url 'students:registerCon' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr><th>이름</th><td><input type="text" name="name"></td></tr>
+            <tr><th>전공</th><td><input type="text" name="major"></td></tr>
+            <tr><th>나이</th><td><input type="number" name="age"></td></tr>
+            <tr><th>학년</th><td><input type="number" name="grade"></td></tr>
+            <tr><th>성별</th><td>
+                <input type="radio" name="gender" value="남" checked="checked">남
+                <input type="radio" name="gender" value="여">여
+            </td></tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="학생등록">
+                    <input type="button" value="학생목록"
+                           onclick="location='{% url 'students:listAll' %}'">
+                    <input type="button" value="학생목록"
+                           onclick="location='/students/listAll'">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link href="{% static 'css.ex.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>글자수 : {{strlength}}</h2>
+    <h2>단어수 : {{cnt}}</h2>
+    <h2>입력한 텍스트 : {{full}}</h2>
+    <h2>단어 카운트 결과</h2>
+    {% for key, value in dic %}
+        <span>{{ key }}</span> : {{ value }}<br>
+    {% endfor %}
+    <a href="{% url 'wordcnt:wordinput'%}">글자다시 입력하기</a>
+</body>
+</html>

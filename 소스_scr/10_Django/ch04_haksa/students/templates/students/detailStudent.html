@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상세보기</title>
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <table>
+        <caption>상세보기</caption>
+        {% if student %}
+            <tr><th>이름</th><td>{{student.s_name}}</td></tr>
+            <tr><th>전공</th><td>{{student.s_major}}</td></tr>
+            <tr><th>나이</th><td>{{student.s_age}}살</td></tr>
+            <tr><th>학년</th><td>{{student.s_grade}}학년</td></tr>
+            <tr><th>성별</th><td>{{student.s_gender}}</td></tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="location='{% url 'students:modify' student.s_name %}'">수정</button>
+                    <button onclick="location='{% url 'students:delete' student.s_name %}'">삭제</button>
+                    <button onclick="location='{% url 'students:listAll' %}'">목록</button>
+                </td>
+            </tr>
+        {% else %}
+            <tr><th>없는 데이터 입니다</th></tr>
+            <tr>
+                <td>
+                    <button onclick="location='/students/listAll'">목록</button>
+                    <button onclick="location='{% url 'students:listAll' %}'">목록</button>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+</body>
+</html>

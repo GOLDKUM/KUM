@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link href="{% static 'css/ex.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>render함수를 이용해서 템플릿(client가 보는 화면) 사용</h1>
+    <h2>입력하신 ID타입은 {{type}}</h2>
+    <h2>{{msg}}</h2>
+    <a href="{% url 'index' %}">index(처음)로 가기</a>
+</body>
+</html>

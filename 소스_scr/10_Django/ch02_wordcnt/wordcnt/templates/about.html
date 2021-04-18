@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link href="{% static 'css/ex.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>글자수, 단어수 세고, 각 단어별 출현 횟수 출력</h1>
+    <a href="{% url 'wordcnt:wordinput' %}">글자 입력</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link href="{% static 'css/ex.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>단어와 글자 수 세기 프로그램</h1>
+    <h3><a href="{% url 'wordcnt:about' %}">자세한 도움말은 ABOUT</a></h3>
+    <form action="{% url 'wordcnt:result' %}" method="get">
+        <textarea name="fulltext" cols="30" rows="3"></textarea>
+        <input type="submit" value="계산">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
