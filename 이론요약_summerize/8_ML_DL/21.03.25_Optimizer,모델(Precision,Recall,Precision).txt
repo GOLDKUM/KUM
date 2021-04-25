@@ -1,0 +1,50 @@
+2021-03-25
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 뿐만
+ 아니라 Ozone량 예측모델 및 이미지 분석 모델이 있습니다>
+
+딥러닝 모델 학습과정 설정중에 모델이나 패턴의 분류 성능 평가에
+사용되는 지표에 대해 study! 
+
+모델을 분류분석과 정담
+데이터를 분류분석 할경우 정답이 True와 False로 나누어져있고, 분류결과 또한 True False 나누어 져있다.
+	 			실제정답
+				True 		False
+
+	분	True		True Positive1	False Positive2
+	류	
+	결	False		False Negotive1	True Negative6
+	과
+	True Positive	: True인 정답을 True로 예측
+	False Positive	: False인 정답을 True로 예측
+ 	False Negotive	: True인 정답을 False로 예측
+	True Negative	: False인 정답을 False로 예측
+ 
+matrix =[Precision, Reall, Accuacy]
+	Precision (정밀도)
+		True라고 분류한 것 중에서 실제 True인 것의 비율! 
+		Precision = 	TP/ TP+FP
+
+	Recall(재현율)
+		실제 True인 것 중에서 모델이 True라고 예측한 것
+		Recall = TP/TP+FN
+	Accuracy(정확도)
+		True를 True로 마준것 False를 False로 맞춘것 계산 
+		정확도가 가장 직관적으로 모델 성능이 우주하지만 domain의 편중을 생각해보아야한다.
+
+	★가장좋은것은 재현율이 100%의 가정하에 Precision을 측정하는것이 가장 좋다고 생각합니다.! 
+
+
+★Optimizer 
+	GD 모든 자료를 다 검토해서 내위치의 산기울기를 계산해서 방향을 찾아주는것 
+		SGD 모든자료를 보면 오래걸리기 떄문에 조금만 보고 빨리판단 GD보다 빠름
+			MOmentum 스텝계산해서 움직인 후, 가던 방향으로 지속적으로 
+				NAG 움직인 자리에 스텝계산후 빠른판단
+					Nadam Adam + NAG
+				Adam RMSProp +Momentum 방향도 스텝사이즈도 적절하게
+
+			Adagard 여러방향을 훓어 보고 갈수록 보폭을 줄여가면서 세밀히 탐색
+				RMSProp 상황 맥락을 보면서 보폭을 줄여나감
+					Adam RMSProp +Momentum 방향도 스텝사이즈도 적절하게
+						Nadam Adam + NAG
+				AdaDelta 보복을 줄여나가면서 정지하는것을 방지

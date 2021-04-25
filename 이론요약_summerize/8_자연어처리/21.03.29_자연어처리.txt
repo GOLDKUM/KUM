@@ -1,0 +1,41 @@
+2021-03-29
+ⓚ금경용
+<소스페이지에 가시면 형태소 소스 및 연관분석 소스를 볼 수 있습니다>
+한글 형태소 분석
+	일반적인 형태소 분석 절차
+	어절 
+	 ↓
+	전처리 -단어 또는 어절을 추출
+	↓
+	분석 후보 생성	-형태소 분리
+		       	-원형 복원  <-원형 복원 규칙
+			-어미,조사,접두사 등 인식↓↓
+			-음운의 축약, 탁락 등의 음운 현상에 따른 형태소 복원
+	↓
+	결합 제약 검사	-규칙에 어긋난 분석 후보 제거 <-결합 제약 규칙
+	↓
+	분석 후보 선택	-어휘 사전 검색 및 단어 형성 규칙에 의해 최종 후보 선택
+	↓
+	후처리		-중의어 처리를 통해 분석 결과 필터링
+			-문장 구조 등 검사
+	↓
+	형태소
+
+형태소 분석 엔진
+konlpy.tag.Hannanum(jvmpath=None)
+	analyze(phrase)- 각 토큰에 대한 다양한 형태소 후보를 반환
+	morphs(phrase)- 형태소 분석 문구를 반환
+	nouns(phrase)- 명사를 추출
+	pos(phrase, flatten=True) ntags는 태구의 수, 9(한문자) or 22(두 문자)일 수 있음
+
+konlpy.tag.Kkma(jvmpath=None)
+	morphs(phrase)- 형태소 분석문구를 반환
+	nouns(phrase)- 명사를 추출
+	pos(phrase, flatten=True) flatten이 False이면 어절을 보존
+
+konlpy.tag.Komoran(jvmpath=None, dicpath=None)
+	morphs(phrase)	행태소 분석 문구를 반환
+	nouns(phrase) 	명사를 추출
+	pos(phrase,flatten=True) flatten이 False이면 어절을 보존
+
+ 

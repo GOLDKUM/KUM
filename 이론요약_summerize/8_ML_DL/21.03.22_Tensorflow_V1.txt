@@ -1,0 +1,122 @@
+2021-03-22
+ⓚ금경용
+<소스페이지에 가시면 더욱 상세히 보실 뿐만 아니라 Ozone량 예측예제가 있습니다>
+#인스톨 업그레이드 
+	pip install --upgrade pip  
+	conda install tensorflow #Tensorflow 설치 
+
+Python 에서 tensorflow v1사용
+import tensorflow.compat.v1 as tf
+★Tensorflow 
+	Tensorflow에서 상수를 사용하기 위해서는 constant를 이용하여 
+	sess=tf.Session()를 실행하여 sess.run()을 통해 값을 확인 할수 있습니다. 
+	※EX
+		import numpyas np
+		node1 =tf.constant(np.array([1,2,3],dtype=tf.int16)
+		sess=tf.Session()
+		print(sess.run(node1))
+			출력: [1,2,3]
+
+
+★ 독립변수 x 1개  or 독립변수 여러개일 경우 방법
+	x=[1,2,3] 독립변수
+	y=[1,2,3] 결과 
+	W=tf.Variable(tf.random.normal([1]),name='weight')  #가중치
+	b=tf.Variable(tf.random.normal([1]),name='bias') #편향 
+	H=W*x+b 
+	cost =tf.reduce_mean(tf.square(H-y))
+	#cost의 오차 줄이면서 학습하는 목적 
+	#최소제곱법을 이용해서 W와b의 값을 가장 적합한  선을 같는 것이다
+	#여러법의 학습과 수정을 해 나가면서 데이터 가장 적합한 선을 찾는 과정
+	optimizer=tf.train.GradientDescentOptimizer (learning_rate=0.01)
+	train=optimizer.minimizer(cost)
+	#6000번학습
+	for step in range(1,6001):
+		_,cost_val,W_val,b_val = sess.run([train,cost,W,b])
+		print('{}번쨰 cost:{}, w값:{}, b값{}'.format(step,cost_val,W_val,b_val))
+	
+
+★ 독립변수 여러개일 경우 (위와 많이 유사하여 다른점만 수기함)
+	※독립변수 여러개일 경우 한개와 다른경우 
+	#※(H=tf.matmul(X,W)+b)
+	for step in range(1,6001):
+		_,cost_val,W_val,b_val = sess.run([train,cost,feed_dict={X:x_data,Y:y_data}])
+		print('{}번쨰 cost:{}, w값:{}, b값{}'.format(step,cost_val))
+
+★multinomial classification(3개 이상)
+Multinomial Classification -Softmaxx
+x1(Quiz1) x2(Quiz2) x3(Quiz3) x4(출석) y(결과):결과는 ABC로 3가지
+10         7                8           5         a                
+원핫인코딩 a =[1,0,0] b=[0,1,0]  c=[0,0,1]
+
+퀴즈 3가지 성적과 출석에 따른 등급분류
+	x_data = [[10,7,8,5],
+	          [8,8,9,4],
+	          [7,8,2,3],
+	          [6,3,9,3],
+ 	         [7,5,7,4],
+ 	         [3,5,6,2],
+  	        [2,4,3,1]]
+	y_data =[[1, 0, 0],[1, 0, 0], [0, 1, 0], [0, 1, 0],[0, 1, 0], [0, 0, 1],[0, 0, 1]]
+	# placeholder
+	X = tf.placeholder(shape=[None, 4], dtype=tf.float32)  #독립변수가 4가지
+	Y = tf.placeholder(shape=[None, 3], dtype=tf.float32) #분류 3가지 
+	
+	# Weight(4x3행렬) , bias(3개)
+	W = tf.Variable(tf.random_normal([4,3]), name="weight")
+	b = tf.Variable(tf.random_normal([3])  , name="bias")
+	
+	# Hypothesis
+	# logits = X @ W + b
+	logits = tf.matmul(X, W) + b
+	# H = tf.nn.sigmoid(logits)
+	H = tf.nn.softmax(logits) # softmax분류분석 최종단계에서 결과의 합이 1이 되도록
+	
+	# cost function
+	# cost = tf.reduce_mean(tf.square(H - Y))
+	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits,
+                                         	               labels=Y))
+	# train
+	train = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(cost)
+
+	# session & 초기화
+	sess = tf.Session()
+	sess.run(tf.global_variables_initializer())
+
+
+★XOR 분류구분하여 학습시키기 
+	# training data set
+	x_data = [[0,0], [0,1], [1,0], [1,1]]
+	y_data = [[0],   [1],   [1],   [0]]
+	# placeholder
+	X = tf.placeholder(shape=[None, 2], dtype=tf.float32)
+	Y = tf.placeholder(shape=[None, 1], dtype=tf.float32)
+
+	# Weight & bias
+	W = tf.Variable(tf.random_normal([2,1]), name="weight")
+	b = tf.Variable(tf.random_normal([1]), name="bias")
+	# Hypothesis
+	# H = X@W + b
+	logits = tf.matmul(X, W) + b
+	H = tf.sigmoid(logits)
+
+	# cost
+	cost = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=logits,
+                                                             labels=Y))
+	# train
+	train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
+	# Session & 초기화
+	sess = tf.Session()
+	sess.run(tf.global_variables_initializer())
+	#3000번 학습 
+	for step in range(1, 3001):
+   	 _, cost_val = sess.run([train, cost], feed_dict={X:x_data, Y:y_data})
+  	  if step%300 == 0:
+  	      print("{}번째 cost : {}".format(step, cost_val))
+	# accuracy 측정
+	predict = tf.cast(H>0.5, dtype=tf.float32)
+	correct = tf.equal(predict, Y) # False True False True
+	accuracy = tf.reduce_mean(tf.cast(correct, dtype=tf.float32))
+	print('정확도 :', sess.run(accuracy, feed_dict={X:x_data, Y:y_data}))
+		x_data
+
