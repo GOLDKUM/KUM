@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    $(function () {
+      $('button').click(function () {
+        var mId = $('#mId').val();
+        //$.get('idConfirm.jsp?mId='+mId,콜백함수)
+        $.get('idConfirm.html?mId=' + mId,
+          function (data, status) {
+            // data : 요청 페이지 결과 데이터
+            // status : 요청상태(success, error, ...)
+            if (status == 'success') {
+              $('#result').html(data);
+            } else {
+              alert('실패');
+            }
+          });
+      });
+      $('#mId').keyup(function () {
+        var mId = $('#mId').val();
+        //$.get('idConfirm.jsp?mId='+mId,콜백함수)
+        $.get('idConfirm.html?mId=' + mId,
+          function (data, status) {
+            // data : 요청 페이지 결과 데이터
+            // status : 요청상태(success, error, ...)
+            if (status == 'success') {
+              $('#result').html(data);
+            } else {
+              alert('실패');
+            }
+          });
+      });
+    });
+  </script>
+</head>
+<body>
+  <p>
+    아이디 <input type="text" name="mId" id="mId" />
+    <button>중복확인</button>
+  </p>
+  <span id="result"></span>
+</body>
+</html>

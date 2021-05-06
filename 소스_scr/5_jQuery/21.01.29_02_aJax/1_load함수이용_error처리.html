@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('button').click(function () {
+        $('#div1').load('demo_test1.txt #p1',
+                    function (responseTxt, statusTxt, xhr) {
+                    //responseTxt : 요청성공시 가져올 데이터
+                    //statusTxt : 요청상태(success, error, timeout,...)
+                      //xhr : XMLHttpRequest 객체
+                      if (statusTxt == 'success') {
+                        alert('성공');
+                      } else {
+                        alert('load 실패' + statusTxt + xhr.status
+                          + xhr.statusText);
+                        //xhr.status : 404 없는 파일
+                        //xhr.statusText : 에러 타입
+                      }
+
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="div1">
+    <h2>Ajax 첫 예제</h2>
+  </div>
+  <button>외부파일 가져오기</button>
+</body>
+</html>

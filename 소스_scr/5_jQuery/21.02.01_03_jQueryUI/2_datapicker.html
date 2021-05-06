@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $("#datepicker").datepicker({
+      dateFormat: "yy-mm-dd", // 날짜 출력 순서
+      showMonthAfterYear: true,
+      yearSuffix: '년',
+      showOtherMonths: true,
+      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+      changeMonth: true,
+      monthNamesShort: ['1월', '2월', '3월', '4월', '5월', 
+        '6월','7월', '8월', '9월', '10월', '11월', '12월',],
+      changeYear: true,
+      minDate: '-100y', // 현재부터 100년전이 최소날짜
+    });
+  } );
+  </script>
+</head>
+<body>
+  <input type="text" name="birth" id="datepicker" />
+</body>
+</html>
